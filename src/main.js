@@ -1,47 +1,76 @@
 /**
- * ═══════════════════════════════════════════════════════════════════
- * IGNICIÓN: AIP_landing_v0.1 — Bootstrap del Sistema
- * ═══════════════════════════════════════════════════════════════════
- * VERSIÓN:   0.1.0
- * DOCTRINA:  R0 | R2 | R3 | R4
- * DEPS:      store.js → at-i18n.js → theme-engine.js → scene-manager.js
- * ═══════════════════════════════════════════════════════════════════
+ * @file main-connector-opord12.js
+ * @role Entry Point — OPORD-12
+ * @description Punto de conexión para main.js. Orquesta inicialización de módulos.
  */
 
-import { Store }        from './core/store.js';
-import { SceneManager } from './core/scene-manager.js';
-import { ThemeEngine }  from './core/theme-engine.js';
-import { i18n }         from './core/at-i18n.js';
-import { PassportEngine } from './core/passport-engine.js';
-import { GenesisEngine }  from './core/genesis-engine.js';
-import '../src/layouts/app-shell.js'; // Registra el Web Component soberano (R2 Light DOM)
+// Orden de carga (respetar dependencias):
+// 1. ReferralCapture (sin dependencias, debe correr primero)
+// 2. JurisdictionRouter (lee cookie, emite navegación)
+// 3. PreKycEngine (depende de ReferralCapture para leer AIP_REFERRAL_NODE)
 
-document.addEventListener('DOMContentLoaded', async () => {
-    console.group('🚀 [AIP_LANDING] SYSTEM IGNITION');
-
-    try {
-        // 1. Inicializar Store con ADN de la vertical
-        Store.init('AIP_LANDING');
-
-        // 2. Inicializar Motores Centrales
-        PassportEngine.init();
-
-        // 3. Inicializar i18n (locale por defecto: español)
-        await i18n.init('es');
-
-        // 4. Inicializar ThemeEngine (inyecta tokens CSS en :root)
-        ThemeEngine.init();
-
-        // 5. Inicializar Controladores de Escenas
-        GenesisEngine.init();
-
-        // 6. Inicializar SceneManager (determina escena inicial)
-        SceneManager.init();
-
-        console.log('✅ [AIP_LANDING] SYSTEM READY');
-    } catch (error) {
-        console.error('🔥 [AIP_LANDING] CRITICAL BOOT ERROR:', error);
+(function() {
+    'use strict';
+    
+    const NS = window.Skeleton || (window.Skeleton = {});
+    
+    /**
+     * Inicialización maestra OPORD-12
+     * Llamar desde main.js al arranque de aplicación
+     */
+    function initOpord12() {
+        // 1. Captura de referido (siempre, en cualquier escena)
+        if (NS.ReferralCapture) {
+            NS.ReferralCapture.init();
+        }
+        
+        // 2. Escuchar cambios de escena para inicializar routers específicos
+        document.addEventListener('Skeleton:Scene:Mounted', handleSceneMount);
+        
+        // 3. Verificar escena actual al cargar
+        const currentScene = document.querySelector('[data-scene-active]')?.dataset.sceneActive;
+        if (currentScene) {
+            mountSceneLogic(currentScene);
+        }
     }
-
-    console.groupEnd();
-});
+    
+    /**
+     * Handler de montaje de escena
+     */
+    function handleSceneMount(event) {
+        const scene = event.detail?.scene;
+        if (scene) {
+            mountSceneLogic(scene);
+        }
+    }
+    
+    /**
+     * Router de inicialización por escena
+     */
+    function mountSceneLogic(scene) {
+        switch(scene) {
+            case 'JURISDICTION':
+                if (NS.JurisdictionRouter) {
+                    NS.JurisdictionRouter.init();
+                }
+                break;
+                
+            case 'PRE_KYC':
+                if (NS.PreKycEngine) {
+                    NS.PreKycEngine.init();
+                }
+                break;
+                
+            case 'LANDING':
+                // Hero scene: no requiere lógica específica de OPORD-12
+                break;
+        }
+    }
+    
+    // Exposición global
+    NS.Opord12 = {
+        init: initOpord12,
+        version: '1.0.0'
+    };
+    
+})();
