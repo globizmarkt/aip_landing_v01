@@ -17,7 +17,7 @@
  * ═══════════════════════════════════════════════════════════════════
  */
 
-import { Store } from './store-blueprint.js';
+import { Store } from './store.js';
 
 /* [SEC-01] CONSTANTES DE CONTROL */
 const _PASSPORT_KEY        = 'skeleton_passport_v1';

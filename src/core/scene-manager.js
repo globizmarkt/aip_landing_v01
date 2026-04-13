@@ -15,8 +15,8 @@
  * ═══════════════════════════════════════════════════════════════════
  */
 
-import { Store }      from './store-blueprint.js';
-import { Gatekeeper } from './gatekeeper-blueprint.js'; // Dependencia externa al núcleo
+import { Store }      from './store.js';
+import { Gatekeeper } from './gatekeeper.js'; // Dependencia externa al núcleo
 
 /* [SEC-01] REGISTRO CANÓNICO DE ESCENAS
  *
