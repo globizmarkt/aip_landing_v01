@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Atlantis International Projects — Plataforma Institucional de Acceso Soberano">
+    <title data-i18n="app.name">AIP — Acceso Institucional</title>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         ORDEN DE CARGA CSS — CONSTITUCIONAL (no alterar el orden)
+         1. Tokens de color  → theme-landing.css
+         2. Reset + Tipografía → base.css
+         3. Geometría Trinity   → workspace-layout.css
+         ═══════════════════════════════════════════════════════════ -->
+    <link rel="stylesheet" href="src/styles/theme-landing.css">
+    <link rel="stylesheet" href="src/styles/base.css">
+    <link rel="stylesheet" href="src/styles/workspace-layout.css">
+
+    <!-- Google Fonts — Inter + Cormorant Garamond (tipografía institucional) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500&family=DM+Mono&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!--
+        CÁSCARA PASIVA — R4 Compliant
+        Cero texto hardcodeado en este archivo.
+        Todo contenido es hidratado por app-shell.js + at-i18n.js.
+
+        Geometría Trinity:
+          slot="orbit-1" → Navegación (izquierda)
+          slot="orbit-2" → Canvas / Workspace (centro)
+          slot="orbit-3" → Inspector (derecha)
+    -->
+    <app-shell
+        theme="dark"
+        orbit-1-visible="false"
+        orbit-3-visible="false"
+        locale="es"
+        id="sk-root"
+    >
+
+        <!-- ÓRBITA 1: NAV — oculta en la landing, visible en el workspace -->
+        <nav slot="orbit-1" id="sk-nav">
+            <!-- Hidratado por universal_nav.js tras login -->
+        </nav>
+
+        <!-- ÓRBITA 2: CANVAS — escenas de la landing -->
+        <div slot="orbit-2" id="sk-canvas">
+
+            <!-- Escena: Landing / Crystallization Manifesto -->
+            <section id="scene-landing" data-scene="LANDING" class="sk-scene sk-scene--active">
+                <!-- Hidratado por genesis-engine.js -->
+            </section>
+
+            <!-- Escena: Jurisdiction Router -->
+            <section id="scene-jurisdiction" data-scene="JURISDICTION" class="sk-scene">
+                <!-- Hidratado dinámicamente -->
+            </section>
+
+            <!-- Escena: Pre-KYC / Fiduciary Dialogue -->
+            <section id="scene-pre-kyc" data-scene="PRE_KYC" class="sk-scene">
+                <!-- Hidratado dinámicamente -->
+            </section>
+
+            <!-- Escena: Access Gate -->
+            <section id="scene-gate" data-scene="GATE" class="sk-scene">
+                <!-- Hidratado por access-gate.js -->
+            </section>
+
+            <!-- Escena: Custodia Fiduciaria -->
+            <section id="scene-custody" data-scene="CUSTODY" class="sk-scene">
+                <!-- Hidratado por passport-engine.js Custody Hold -->
+            </section>
+
+            <!-- Escena: Workspace (post-login) -->
+            <section id="scene-workspace" data-scene="WORKSPACE" class="sk-scene">
+                <!-- Hidratado por workspace-canvas.js -->
+            </section>
+
+        </div>
+
+        <!-- ÓRBITA 3: INSPECTOR — oculto en la landing -->
+        <aside slot="orbit-3" id="sk-inspector">
+            <!-- Hidratado por governance-panel.js -->
+        </aside>
+
+    </app-shell>
+
+    <!-- Punto de ignición del sistema -->
+    <script type="module" src="src/main.js"></script>
+
+</body>
+</html>

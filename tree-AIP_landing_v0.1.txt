@@ -1,0 +1,66 @@
+AIP_landing_v0.1
+├── 00_brief
+│   ├── bootloader_archive
+│   ├── memory_bridge
+│   └── memory_dump
+│       └── CONVERSATION_INDEX_Sprint_00.md
+├── 01_arquitectura
+│   ├── AGNOSTIC_ADAPTABILITY_STANDARDS.md
+│   ├── AIP_AIP_MASTER_ARCH.md
+│   ├── GATEKEEPER_TRUTH_TABLES.md
+│   ├── MASTER_INGESTION_FLOW.md
+│   ├── ref-app-shell.md
+│   ├── ref-passport-engine.md
+│   ├── ref-scene-manager.md
+│   ├── ref-store.md
+│   ├── SKELETON_META_FACTORY_MANIFESTO.md
+│   ├── TRINITY_GEOMETRY_SPEC.md
+│   ├── UNIVERSAL_API_INTERFACES.md
+│   └── UNIVERSAL_GATEKEEPER_LOGIC.md
+├── 02_auditoria
+├── 02_esquemas_datos
+├── 03_prototipo
+├── 05_workshop
+│   ├── gatekeeper_universal.js
+│   ├── passport-engine_universal.js
+│   ├── project_manifest.json
+│   └── universal_nav.js
+├── assets
+│   ├── css
+│   └── img
+├── bridge
+│   └── README.md
+├── docs
+│   └── AGENT_FILE_SPEC.md
+├── index.html
+├── logic
+├── public
+├── README.md
+├── RECOVERY_MAP.md
+└── src
+    ├── core
+    │   ├── aimon-client.js
+    │   ├── at-i18n.js
+    │   ├── auth-manager.js
+    │   ├── event-bus.js
+    │   ├── firebase.js
+    │   ├── gatekeeper.js
+    │   ├── genesis-engine.js
+    │   ├── passport-engine.js
+    │   ├── router.js
+    │   ├── scene-manager.js
+    │   ├── store.js
+    │   └── theme-engine.js
+    ├── features
+    │   ├── access-gate.js
+    │   └── universal_nav.js
+    ├── i18n
+    │   ├── en.json
+    │   └── es.json
+    ├── layouts
+    │   └── app-shell.js
+    ├── main.js
+    └── styles
+        ├── base.css
+        ├── theme-landing.css
+        └── workspace-layout.css

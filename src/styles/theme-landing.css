@@ -1,0 +1,60 @@
+/* 
+ * 
+ *   ARCHIVO : src/styles/theme-aip.css                              
+ *   VERSIÓN : 1.0.0 → 1.1.0                                  
+ *   FECHA   : 2026-03-16                                            
+ *   PROPÓSITO:  Definición de Tokens de Marca (Deep Ocean / UK Gold)
+ *               R3 — purga rgba crudos + extirpación bloque estructural a workspace-layout.css ║
+ * 
+ */
+
+:root {
+  /* DIMENSIONES CANÓNICAS (TRINITY) */
+  --sidebar-width: 250px;
+  --inspector-width: 320px;
+  --header-height: 64px;
+  --footer-height: 40px;
+
+  /* PALETA MAESTRA [SKELETON_AIP] */
+  --color-bg-primary: #0a1628;
+  /* Abyss Blue */
+  --color-bg-elevated: #112240;
+  /* Surface Deep */
+  --color-bg-card: #1a3356;
+  /* Card Base */
+  --color-bg-hover: #1e3d63;
+  /* Interaction */
+
+  --color-accent: #c9a84c;
+  /* UK Gold */
+  --color-accent-light: #e8c96d;
+  /* Gold Hover */
+  --color-accent-dim: color-mix(in srgb, var(--color-accent) 15%, transparent);
+  --color-accent-glow: color-mix(in srgb, var(--color-accent) 8%, transparent);
+
+  --color-text-primary: #f0f4f8;
+  /* Ivory White */
+  --color-text-muted: #8ba3c7;
+  /* Stone Grey */
+  --color-text-dim: #4a6a8a;
+  /* Low Contrast */
+
+  --color-border: #1e3a5f;
+  /* Structural Grid */
+  --color-border-accent: #2a4a70;
+
+  /* ESTADOS DE RESILIENCIA */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+
+  /* TIPOGRAFÍA DE AUTORIDAD ("Magic Circle") */
+  --font-primary: 'Outfit', system-ui, sans-serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-mono: 'DM Mono', monospace;
+
+  /* TRANSICIONES Y EFECTOS */
+  --transition-fast: 0.2s ease;
+  --transition-soft: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --glass-effect: backdrop-filter: blur(8px);
+}
