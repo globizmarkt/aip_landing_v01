@@ -16,18 +16,18 @@
   --footer-height: 40px;
 
   /* PALETA MAESTRA [SKELETON_AIP] */
-  --color-bg-primary: #0a1628;
-  /* Abyss Blue */
-  --color-bg-elevated: #112240;
+  --color-bg-primary: #101D33;
+  /* Deep Ocean */
+  --color-bg-elevated: #142240;
   /* Surface Deep */
-  --color-bg-card: #1a3356;
+  --color-bg-card: #162645;
   /* Card Base */
   --color-bg-hover: #1e3d63;
   /* Interaction */
 
-  --color-accent: #c9a84c;
-  /* UK Gold */
-  --color-accent-light: #e8c96d;
+  --color-accent: #C1A85D;
+  /* UK Gold AIP */
+  --color-accent-light: #D8C478;
   /* Gold Hover */
   --color-accent-dim: color-mix(in srgb, var(--color-accent) 15%, transparent);
   --color-accent-glow: color-mix(in srgb, var(--color-accent) 8%, transparent);
