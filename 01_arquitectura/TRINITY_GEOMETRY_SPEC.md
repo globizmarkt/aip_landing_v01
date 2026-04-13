@@ -1,52 +1,47 @@
----
-METAFAC_VER: 0.3.3
-GEO_LOC: MetaFactory/lab/AIP/01_arquitectura/TRINITY_GEOMETRY_SPEC.md
-PRODUCED_BY: Antigravity
-AFFINITY_GROUP: SISTEMA
-CONTENT_CAT: ARCH
-PATTERN_TYPE: ARCHITECT
-STATUS: AUDITED
-TIMESTAMP: 2026-03-15
----
-
 # SPEC: Trinity Geometry (WebOS Layout)
-**Estado:** AGNOSTIC / Baselines v2.5
-**Aplicación:** Agnostic Core (Skeleton / Meta SaaS)
+**Estado:** SOBERANO / Baselines v3.0 (Post-Purga)
+**Versión:** 3.0.1
+**Doctrina:** R3 (Zero-Hex) / Alta Banca
+
+---
 
 ## 1. Concepto: El WebOS de Tres Órbitas
-El sistema no se comporta como una web tradicional, sino como un **Sistema Operativo Web (WebOS)**. La estructura de 3 columnas (Órbitas) permite que la verticalidad del negocio (Inmobiliaria, Commodities, Legal) sea intercambiable sin afectar la experiencia del usuario.
+El sistema no se comporta como una web tradicional, sino como un **Sistema Operativo Web (WebOS)**. La estructura de 3 columnas (Órbitas) garantiza la inmutabilidad de la experiencia mientras la lógica de negocio fluye dinámicamente.
 
 ## 2. Anatomía de las Órbitas
 
 | Órbita | Ancho | Función | Responsabilidad |
 |---|---|---|---|
-| **Órbita 1 (Sidebar)** | 250px | Navegador de Contextos | Selector de "mundos" o módulos. Colapsable a 64px. |
-| **Órbita 2 (Canvas)** | flex: 1 | Área de Ejecución | Inyección dinámica de Gadgets (`gd-*`). Grid de 12 columnas. |
-| **Órbita 3 (Inspector)** | 320px | Gobernanza y Sistema | AIMON (IA), Gatekeeper Status, Metadatos. |
+| **Órbita 1 (Sidebar)** | `var(--sidebar-width)` | Navegador de Contextos | Selector de mundos. Colapsable a 64px. |
+| **Órbita 2 (Canvas)** | `flex: 1` | Área de Ejecución | Inyección dinámica de Gadgets. |
+| **Órbita 3 (Inspector)** | `var(--inspector-width)` | Gobernanza y Sistema | AIMON (IA), Gatekeeper y Metadatos. |
 
-## 3. Geometría CSS (Design Tokens)
+## 3. Geometría CSS (Abstracción Total)
+
+Queda estrictamente prohibido el uso de valores hexadecimales en este documento. Toda la geometría debe referenciar los tokens institucionales del `theme-landing.css`:
 
 ```css
 :root {
-  --orbit-1-width: 250px;
+  /* Dimensiones Trinity */
+  --orbit-1-width: var(--sidebar-width);
   --orbit-2-min-width: 600px;
-  --orbit-3-width: 320px;
-  --header-height: 64px;
-  --footer-height: 48px;
+  --orbit-3-width: var(--inspector-width);
+  --header-height: var(--header-height);
+  --footer-height: var(--footer-height);
 
-  /* Colores de Sistema (Agnósticos) */
-  --surface-primary: #0a1628;  /* Fondo Base */
-  --surface-elevated: #112240; /* Sidebar/Inspector */
-  --surface-canvas: #fafafa;   /* Lienzo de Trabajo */
-  --accent-primary: #3b82f6;   /* Color de Acción Principal */
-  --border-standard: rgba(255,255,255,0.1);
+  /* Colores de Sistema (Soberanos) */
+  --surface-primary: var(--color-bg-primary);     /* Profundidad Fiduciaria */
+  --surface-elevated: var(--color-bg-elevated);   /* Elevación de Contexto */
+  --surface-canvas: var(--color-bg-primary);      /* Inmutabilidad del Fondo */
+  --accent-primary: var(--color-accent);          /* UK Gold (Autoridad) */
+  --border-standard: var(--color-border);         /* Rejilla Estructural */
 }
 ```
 
-## 4. Reglas de Inyección Automática
-- El `project_manifest.json` define qué Gadgets se cargan en la **Órbita 2**.
-- La **Órbita 1** emite eventos de cambio de contexto a través del `globalBus`.
-- La **Órbita 3** inspecciona reactivamente el estado del Gadget activo en la Órbita 2.
+## 4. Invariantes de Diseño
+1.  **Cero Hexadecimales:** Ningún componente puede definir colores fuera de la variable `--color-*`.
+2.  **Espaciado Aislado:** El Canvas (Órbita 2) no puede afectar el ancho de las Órbitas 1 y 3.
+3.  **Fiduciary Tone:** El uso de bordes debe limitarse a la separación de contextos (Structural Grid).
 
 ---
-*Extraído y Agnostizado por El Bibliotecario desde los residuos históricos v2.5.*
+*Rectificado por Antigravity tras Auditoría Sentinel v2.5. La arquitectura SaaS ha sido purgada.*

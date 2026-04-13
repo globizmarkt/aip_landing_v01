@@ -2,9 +2,9 @@
  * ═══════════════════════════════════════════════════════════════════
  * ARCHIVO: main.js
  * ═══════════════════════════════════════════════════════════════════
- * VERSIÓN:   4.0.0 (Unified Bootloader — OPORD-P-02)
+ * VERSIÓN:   5.0.0 (Unified Stitch-Compatible — OPORD-P-03)
  * DOCTRINA:  R0 (Agnosticismo Radical)
- * PROPÓSITO: Secuencia de ignición soberana con hidratación externa
+ * PROPÓSITO: Secuencia de ignición soberana con hidratación externa (v1.1.0)
  * ═══════════════════════════════════════════════════════════════════
  */
 
@@ -13,7 +13,6 @@ import { Store }          from './core/store.js';
 import { SceneManager }   from './core/scene-manager.js';
 import { PassportEngine } from './core/passport-engine.js';
 import { GenesisEngine }  from './core/genesis-engine.js';
-import { i18n }           from './core/at-i18n.js';
 
 /**
  * INYECTOR DINÁMICO DE LÓGICA POR ESCENA
@@ -29,38 +28,37 @@ const handleSceneChange = (event) => {
 };
 
 /**
- * BOOTLOADER — SECUENCIA DE ARRANQUE DETERMINISTA (OPORD-P-02)
+ * BOOTLOADER — SECUENCIA DE ARRANQUE DETERMINISTA (OPORD-P-03)
  */
 const initBootloader = async () => {
-    console.log('[BOOTLOADER] 🚀 Iniciando Ignición Soberana...');
+    console.log('[BOOTLOADER] 🚀 Iniciando Ignición Soberana (D3/D8/D9)...');
 
     try {
-        // [PASO 1] — Fetch de locales (Diccionario Externo)
+        // [PASO 1] — Fetch de locales (Diccionario Externo v1.1.0)
         const response = await fetch('./src/locales/locales.json');
         if (!response.ok) throw new Error('Fallo al cargar diccionario locales.json');
         const localesData = await response.json();
 
-        // [PASO 2] — Instanciar window.LuxI18n e inicializar Motor
-        i18n.init(localesData, 'es'); 
+        // [PASO 2] — Poblar Globales para i18n-engine.js (D3 Stitch Compatibility)
+        window.__LOCALES__ = localesData;
+        window.__CURRENT_LOCALE__ = 'es';
 
-        // [PASO 3] — Registrar Componentes Visuales (CustomElements)
+        // [PASO 3] — Registrar Componentes Visuales y Motores i18n
         await import('./components/ticker-module.js');
+        await import('./core/i18n-engine.js'); // Motor con re-mapeo STITCH
 
-        // [PASO 4] — Emitir Hydration Signal y arrancar Motores Core
+        // [PASO 4] — Arrancar Motores Core y Emitir Hydration Signal
         Store.init();
         PassportEngine.init();
         
         document.addEventListener('skeleton:scene:activate', handleSceneChange);
         SceneManager.init();
 
-        document.dispatchEvent(new CustomEvent('Skeleton:System:Hydrated'));
-        
         console.log('[BOOTLOADER] ✅ Sistema Hydrated. Operación Nominal.');
 
     } catch (error) {
         console.error('[BOOTLOADER] ❌ FALLO CRÍTICO:', error.message);
-        // Fallback: Estado de Custodia si el fetch falla
-        document.body.innerHTML = `<div style="color:white; padding:2rem;">[ERROR_FIDUCIARIO] Fallo de integridad en la carga de activos: ${error.message}</div>`;
+        document.body.innerHTML = `<div style="color:white; padding:2rem; background:#0a1628; height:100vh;">[ERROR_FIDUCIARIO] Fallo de integridad en la carga de activos: ${error.message}</div>`;
     }
 };
 

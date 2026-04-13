@@ -1,5 +1,81 @@
 {
+    "_meta": {
+        "version": "1.1.0",
+        "schema": "stitch-compatible-v1",
+        "compliance": "R4-strict",
+        "tone_profile": "swiss_private_banking",
+        "audit_ready": true,
+        "last_modified": "2026-04-13T19:15:00Z",
+        "note": "Expansión con claves STITCH para evitar errores [key]"
+    },
     "en": {
+        "meta": {
+            "app_name": "AIP — Institutional Access"
+        },
+        "hero": {
+            "investor": {
+                "title": "Preserve Sovereign Capital",
+                "subtitle": "Secure the future of institutional holdings through deep-sea algorithmic mediation and jurisdictional arbitrage across Tier-1 corridors.",
+                "cta": "Access Fiduciary Suite",
+                "badge": "Sovereign Wealth Protocol"
+            },
+            "staff": {
+                "label": "Institutional Personnel",
+                "title": "Execute Institutional Mandates",
+                "subtitle": "Direct execution protocols for sovereign wealth entities requiring zero-latency compliance and absolute discretion.",
+                "action": {
+                    "title": "Secure Workspace",
+                    "desc": "Authenticated personnel only"
+                },
+                "emergency": "Emergency Custody Protocol"
+            },
+            "investor_badge": "Sovereign Wealth Protocol",
+            "investor_title": "Preserve Sovereign Capital",
+            "investor_desc": "Secure the future of institutional holdings through deep-sea algorithmic mediation and jurisdictional arbitrage across Tier-1 corridors.",
+            "investor_button": "Access Fiduciary Suite",
+            "agent_label": "Institutional Personnel",
+            "agent_title": "Execute Institutional Mandates",
+            "agent_desc": "Direct execution protocols for sovereign wealth entities requiring zero-latency compliance and absolute discretion.",
+            "agent_action_title": "Secure Workspace",
+            "agent_action_desc": "Authenticated personnel only",
+            "or_divider": "or",
+            "agent_emergency": "Emergency Custody Protocol"
+        },
+        "gatekeeper": {
+            "title": "Restricted Access",
+            "subtitle": "Institutional Verification Required",
+            "input": {
+                "label": "Access Credentials",
+                "placeholder": "Enter your secure key"
+            },
+            "cta": "Verify Identity",
+            "disclaimer": "This system is protected by sovereign-grade encryption. Unauthorized access attempts are logged and prosecuted."
+        },
+        "gate": {
+            "title": "Restricted Access",
+            "subtitle": "Institutional Verification Required",
+            "input_label": "Access Credentials",
+            "placeholder": "Enter your secure key",
+            "cta": "Verify Identity",
+            "disclaimer": "This system is protected by sovereign-grade encryption. Unauthorized access attempts are logged and prosecuted."
+        },
+        "common": {
+            "divider_or": "or"
+        },
+        "risk_selector": {
+            "preservation": {
+                "label": "Absolute Capital Preservation",
+                "description": "Principal protection with minimal volatility exposure"
+            },
+            "balanced": {
+                "label": "Growth & Liquidity Balance",
+                "description": "Moderate appreciation with maintained redemption capacity"
+            },
+            "audit": {
+                "label": "Continuous Neural Audit",
+                "description": "Real-time integrity scoring with automated compliance verification"
+            }
+        },
         "commodities": {
             "XAU": {
                 "name": "Gold",
@@ -13,28 +89,86 @@
                 "name": "Brent Crude",
                 "category": "Energy"
             },
-            "XPT": {
-                "name": "Platinum",
-                "category": "Precious Metals"
-            },
-            "COPPER": {
-                "name": "Copper",
-                "category": "Industrial Metals"
-            },
             "ticker": {
                 "live_feed": "Live Market Feed",
                 "delayed_disclaimer": "Prices indicative. Execution via certified counterparties only."
             }
         },
         "news": {
+            "section_title": "Intelligence Brief",
             "item_1": "G7 Unified Protocol: Liquidity corridors secured for Q3.",
             "item_2": "Neutral Zone Alpha: Synthetic asset classification approved.",
-            "item_3": "Sovereign Debt yields stabilize across Tier-1 jurisdictions.",
-            "item_4": "Central Banks signal prolonged quantitative tightening.",
-            "item_5": "Offshore physical bullion reserves reach 10-year high."
+            "item_3": "Sovereign Debt yields stabilize across Tier-1 jurisdictions."
         }
     },
     "es": {
+        "meta": {
+            "app_name": "AIP — Acceso Institucional"
+        },
+        "hero": {
+            "investor": {
+                "title": "Preservación de Capital Soberano",
+                "subtitle": "Asegure el futuro de las tenencias institucionales mediante mediación algorítmica de profundidad y arbitraje jurisdiccional en corredores Tier-1.",
+                "cta": "Acceder a Suite Fiduciaria",
+                "badge": "Protocolo de Patrimonio Soberano"
+            },
+            "staff": {
+                "label": "Personal Institucional",
+                "title": "Ejecución de Mandatos Institucionales",
+                "subtitle": "Protocolos de ejecución directa para entidades de patrimonio soberano que requieren cumplimiento de latencia cero y discreción absoluta.",
+                "action": {
+                    "title": "Espacio de Trabajo Seguro",
+                    "desc": "Solo personal autenticado"
+                },
+                "emergency": "Protocolo de Custodia de Emergencia"
+            },
+            "investor_badge": "Protocolo de Patrimonio Soberano",
+            "investor_title": "Preservación de Capital Soberano",
+            "investor_desc": "Asegure el futuro de las tenencias institucionales mediante mediación algorítmica de profundidad y arbitraje jurisdiccional en corredores Tier-1.",
+            "investor_button": "Acceder a Suite Fiduciaria",
+            "agent_label": "Personal Institucional",
+            "agent_title": "Ejecución de Mandatos Institucionales",
+            "agent_desc": "Protocolos de ejecución directa para entidades de patrimonio soberano que requieren cumplimiento de latencia cero y discreción absoluta.",
+            "agent_action_title": "Espacio de Trabajo Seguro",
+            "agent_action_desc": "Solo personal autenticado",
+            "or_divider": "o",
+            "agent_emergency": "Protocolo de Custodia de Emergencia"
+        },
+        "gatekeeper": {
+            "title": "Acceso Restringido",
+            "subtitle": "Verificación Institucional Requerida",
+            "input": {
+                "label": "Credenciales de Acceso",
+                "placeholder": "Ingrese su clave segura"
+            },
+            "cta": "Verificar Identidad",
+            "disclaimer": "Este sistema está protegido por cifrado de grado soberano. Los intentos de acceso no autorizados son registrados y perseguidos."
+        },
+        "gate": {
+            "title": "Acceso Restringido",
+            "subtitle": "Verificación Institucional Requerida",
+            "input_label": "Credenciales de Acceso",
+            "placeholder": "Ingrese su clave segura",
+            "cta": "Verificar Identidad",
+            "disclaimer": "Este sistema está protegido por cifrado de grado soberano. Los intentos de acceso no autorizados son registrados y perseguidos."
+        },
+        "common": {
+            "divider_or": "o"
+        },
+        "risk_selector": {
+            "preservation": {
+                "label": "Preservación Absoluta de Capital",
+                "description": "Protección de principal con exposición mínima a volatilidad"
+            },
+            "balanced": {
+                "label": "Equilibrio Crecimiento y Liquidez",
+                "description": "Apreciación moderada con capacidad de redención mantenida"
+            },
+            "audit": {
+                "label": "Auditoría Neural Continua",
+                "description": "Puntuación de integridad en tiempo real con verificación automatizada de cumplimiento"
+            }
+        },
         "commodities": {
             "XAU": {
                 "name": "Oro",
@@ -48,28 +182,86 @@
                 "name": "Crudo Brent",
                 "category": "Energía"
             },
-            "XPT": {
-                "name": "Platino",
-                "category": "Metales Preciosos"
-            },
-            "COPPER": {
-                "name": "Cobre",
-                "category": "Metales Industriales"
-            },
             "ticker": {
                 "live_feed": "Feed de Mercado en Vivo",
                 "delayed_disclaimer": "Precios indicativos. Ejecución únicamente mediante contrapartes certificadas."
             }
         },
         "news": {
+            "section_title": "Resumen de Inteligencia",
             "item_1": "Protocolo Unificado G7: Corredores de liquidez asegurados para Q3.",
             "item_2": "Zona Neutral Alfa: Clasificación de activos sintéticos aprobada.",
-            "item_3": "Rendimientos de Deuda Soberana se estabilizan en jurisdicciones Tier-1.",
-            "item_4": "Bancos Centrales señalan un endurecimiento cuantitativo prolongado.",
-            "item_5": "Reservas físicas de lingotes offshore alcanzan máximo de 10 años."
+            "item_3": "Rendimientos de Deuda Soberana se estabilizan en jurisdicciones Tier-1."
         }
     },
     "pt": {
+        "meta": {
+            "app_name": "AIP — Acesso Institucional"
+        },
+        "hero": {
+            "investor": {
+                "title": "Preservação de Capital Soberano",
+                "subtitle": "Assegure o futuro das participações institucionais mediante mediação algorítmica de profundidade e arbitragem jurisdicional em corredores Tier-1.",
+                "cta": "Aceder à Suite Fiduciária",
+                "badge": "Protocolo de Patrimônio Soberano"
+            },
+            "staff": {
+                "label": "Pessoal Institucional",
+                "title": "Execução de Mandatos Institucionais",
+                "subtitle": "Protocolos de execução direta para entidades de patrimônio soberano que requerem conformidade de latência zero e discrição absoluta.",
+                "action": {
+                    "title": "Espaço de Trabalho Seguro",
+                    "desc": "Apenas pessoal autenticado"
+                },
+                "emergency": "Protocolo de Custódia de Emergência"
+            },
+            "investor_badge": "Protocolo de Patrimônio Soberano",
+            "investor_title": "Preservação de Capital Soberano",
+            "investor_desc": "Assegure o futuro das participações institucionais mediante mediação algorítmica de profundidade e arbitragem jurisdicional em corredores Tier-1.",
+            "investor_button": "Aceder à Suite Fiduciária",
+            "agent_label": "Pessoal Institucional",
+            "agent_title": "Execução de Mandatos Institucionais",
+            "agent_desc": "Protocolos de execução direta para entidades de patrimônio soberano que requerem conformidade de latência zero e discrição absoluta.",
+            "agent_action_title": "Espaço de Trabalho Seguro",
+            "agent_action_desc": "Apenas pessoal autenticado",
+            "or_divider": "ou",
+            "agent_emergency": "Protocolo de Custódia de Emergência"
+        },
+        "gatekeeper": {
+            "title": "Acesso Restrito",
+            "subtitle": "Verificação Institucional Necessária",
+            "input": {
+                "label": "Credenciais de Acesso",
+                "placeholder": "Introduza a sua chave segura"
+            },
+            "cta": "Verificar Identidade",
+            "disclaimer": "Este sistema está protegido por criptografia de grau soberano. Tentativas de acesso não autorizadas são registadas e processadas."
+        },
+        "gate": {
+            "title": "Acesso Restrito",
+            "subtitle": "Verificação Institucional Necessária",
+            "input_label": "Credenciais de Acesso",
+            "placeholder": "Introduza a sua chave segura",
+            "cta": "Verificar Identidade",
+            "disclaimer": "Este sistema está protegido por criptografia de grau soberano. Tentativas de acesso não autorizadas são registadas e processadas."
+        },
+        "common": {
+            "divider_or": "ou"
+        },
+        "risk_selector": {
+            "preservation": {
+                "label": "Preservação Absoluta de Capital",
+                "description": "Proteção do principal com exposição mínima à volatilidade"
+            },
+            "balanced": {
+                "label": "Equilíbrio Crescimento e Liquidez",
+                "description": "Apreciação moderada com capacidade de resgate mantida"
+            },
+            "audit": {
+                "label": "Auditoria Neural Contínua",
+                "description": "Pontuação de integridade em tempo real com verificação automatizada de conformidade"
+            }
+        },
         "commodities": {
             "XAU": {
                 "name": "Ouro",
@@ -83,28 +275,86 @@
                 "name": "Petróleo Brent",
                 "category": "Energia"
             },
-            "XPT": {
-                "name": "Platina",
-                "category": "Metais Preciosos"
-            },
-            "COPPER": {
-                "name": "Cobre",
-                "category": "Metais Industriais"
-            },
             "ticker": {
                 "live_feed": "Feed de Mercado ao Vivo",
                 "delayed_disclaimer": "Preços indicativos. Execução exclusivamente através de contrapartes certificadas."
             }
         },
         "news": {
+            "section_title": "Resumo de Inteligência",
             "item_1": "Protocolo Unificado G7: Corredores de liquidez assegurados para Q3.",
             "item_2": "Zona Neutra Alfa: Classificação de ativos sintéticos aprovada.",
-            "item_3": "Rendimentos de Dívida Soberana estabilizam-se em jurisdições Tier-1.",
-            "item_4": "Bancos Centrais sinalizam aperto quantitativo prolongado.",
-            "item_5": "Reservas físicas de ouro offshore atingem máxima de 10 anos."
+            "item_3": "Rendimentos de Dívida Soberana estabilizam-se em jurisdições Tier-1."
         }
     },
     "fr": {
+        "meta": {
+            "app_name": "AIP — Accès Institutionnel"
+        },
+        "hero": {
+            "investor": {
+                "title": "Préservation du Capital Souverain",
+                "subtitle": "Sécurisez l'avenir des participations institutionnelles par médiation algorithmique en profondeur et arbitrage juridictionnel dans les corridors Tier-1.",
+                "cta": "Accéder à la Suite Fiduciaire",
+                "badge": "Protocole de Patrimoine Souverain"
+            },
+            "staff": {
+                "label": "Personnel Institutionnel",
+                "title": "Exécution des Mandats Institutionnels",
+                "subtitle": "Protocoles d'exécution directe pour entités de patrimoine souverain exigeant conformité à latence zéro et discrétion absolue.",
+                "action": {
+                    "title": "Espace de Travail Sécurisé",
+                    "desc": "Personnel authentifié uniquement"
+                },
+                "emergency": "Protocole de Garde d'Urgence"
+            },
+            "investor_badge": "Protocole de Patrimoine Souverain",
+            "investor_title": "Préservation du Capital Souverain",
+            "investor_desc": "Sécurisez l'avenir des participations institutionnelles par médiation algorithmique en profondeur et arbitrage juridictionnel dans les corridors Tier-1.",
+            "investor_button": "Accéder à la Suite Fiduciaire",
+            "agent_label": "Personnel Institutionnel",
+            "agent_title": "Exécution des Mandats Institutionnels",
+            "agent_desc": "Protocoles d'exécution directe pour entités de patrimoine souverain exigeant conformité à latence zéro et discrétion absolue.",
+            "agent_action_title": "Espace de Travail Sécurisé",
+            "agent_action_desc": "Personnel authentifié uniquement",
+            "or_divider": "ou",
+            "agent_emergency": "Protocole de Garde d'Urgence"
+        },
+        "gatekeeper": {
+            "title": "Accès Restreint",
+            "subtitle": "Vérification Institutionnelle Requise",
+            "input": {
+                "label": "Identifiants d'Accès",
+                "placeholder": "Entrez votre clé sécurisée"
+            },
+            "cta": "Vérifier l'Identité",
+            "disclaimer": "Ce système est protégé par un chiffrement de grade souverain. Les tentatives d'accès non autorisées sont enregistrées et poursuivies."
+        },
+        "gate": {
+            "title": "Accès Restreint",
+            "subtitle": "Vérification Institutionnelle Requise",
+            "input_label": "Identifiants d'Accès",
+            "placeholder": "Entrez votre clé sécurisée",
+            "cta": "Vérifier l'Identité",
+            "disclaimer": "Ce système est protégé par un chiffrement de grade souverain. Les tentatives d'accès non autorisées sont enregistrées et poursuivies."
+        },
+        "common": {
+            "divider_or": "ou"
+        },
+        "risk_selector": {
+            "preservation": {
+                "label": "Préservation Absolue du Capital",
+                "description": "Protection du principal avec exposition minimale à la volatilité"
+            },
+            "balanced": {
+                "label": "Équilibre Croissance et Liquidité",
+                "description": "Appréciation modérée avec capacité de rachat maintenue"
+            },
+            "audit": {
+                "label": "Audit Neural Continu",
+                "description": "Score d'intégrité en temps réel avec vérification automatisée de conformité"
+            }
+        },
         "commodities": {
             "XAU": {
                 "name": "Or",
@@ -118,25 +368,16 @@
                 "name": "Pétrole Brent",
                 "category": "Énergie"
             },
-            "XPT": {
-                "name": "Platine",
-                "category": "Métaux Précieux"
-            },
-            "COPPER": {
-                "name": "Cuivre",
-                "category": "Métaux Industriels"
-            },
             "ticker": {
                 "live_feed": "Flux Marché en Direct",
                 "delayed_disclaimer": "Prix indicatifs. Exécution uniquement via des contreparties certifiées."
             }
         },
         "news": {
+            "section_title": "Synthèse du Renseignement",
             "item_1": "Protocole Unifié G7: Corridors de liquidité sécurisés pour Q3.",
             "item_2": "Zone Neutre Alpha: Classification des actifs synthétiques approuvée.",
-            "item_3": "Rendements de la Dette Souveraine se stabilisent dans les juridictions Tier-1.",
-            "item_4": "Les Banques Centrales signalent un resserrement quantitatif prolongé.",
-            "item_5": "Les réserves physiques d'or offshore atteignent un sommet de 10 ans."
+            "item_3": "Rendements de la Dette Souveraine se stabilisent dans les juridictions Tier-1."
         }
     }
 }

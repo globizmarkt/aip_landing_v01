@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="dark">
+<html class="dark" lang="es" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,84 +17,300 @@
     <link rel="stylesheet" href="src/styles/base.css">
     <link rel="stylesheet" href="src/styles/workspace-layout.css">
 
-    <!-- Google Fonts — Inter + Cormorant Garamond (tipografía institucional) -->
+    <!-- Tailwind CDN Runtime -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Google Fonts — Inter + Cormorant Garamond (D8 Purge) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500&family=DM+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <!-- Google Fonts — Material Symbols (STITCH — deduplicado) -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL@24,400,0..1&display=swap"
+        rel="stylesheet">
+
+    <!-- ═══════════════════════════════════════════════════════════
+         TAILWIND CONFIG — PALETA SOBERANA AIP
+         Superficie: escala sobre #101D33 (Deep Ocean)
+         Oro: escala sobre #C1A85D (UK Gold)
+         ═══════════════════════════════════════════════════════════ -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-surface": "#d7e3ff",
+                        "error": "#ffb4ab",
+                        "primary-fixed-dim": "#C1A85D",
+                        "surface-container-low": "#142240",
+                        "on-tertiary": "#30312e",
+                        "primary": "#C1A85D",
+                        "on-primary-fixed-variant": "#574500",
+                        "surface-container": "#162645",
+                        "on-surface-variant": "#cec6b4",
+                        "inverse-on-surface": "#243047",
+                        "tertiary-container": "#abaaa6",
+                        "on-tertiary-container": "#3e3f3c",
+                        "on-tertiary-fixed": "#1b1c19",
+                        "on-background": "#d7e3ff",
+                        "secondary": "#bac7e4",
+                        "on-secondary-fixed-variant": "#3b475f",
+                        "error-container": "#93000a",
+                        "surface-dim": "#0E1A2E",
+                        "secondary-container": "#3d4961",
+                        "tertiary-fixed-dim": "#c8c6c2",
+                        "inverse-surface": "#d7e3ff",
+                        "surface": "#101D33",
+                        "primary-container": "#C1A85D",
+                        "surface-bright": "#30425C",
+                        "on-tertiary-fixed-variant": "#474744",
+                        "tertiary": "#c8c6c2",
+                        "on-error": "#690005",
+                        "secondary-fixed": "#d7e3ff",
+                        "on-secondary": "#243047",
+                        "on-secondary-fixed": "#0e1b31",
+                        "on-error-container": "#ffdad6",
+                        "surface-tint": "#C1A85D",
+                        "primary-fixed": "#D8C478",
+                        "surface-variant": "#2B3D58",
+                        "surface-container-high": "#21304E",
+                        "on-primary-container": "#4d3d00",
+                        "surface-container-highest": "#2B3D58",
+                        "outline-variant": "#4c4639",
+                        "outline": "#979080",
+                        "background": "#101D33",
+                        "secondary-fixed-dim": "#bac7e4",
+                        "on-primary": "#3c2f00",
+                        "inverse-primary": "#8B7333",
+                        "surface-container-lowest": "#0C1729",
+                        "tertiary-fixed": "#e4e2de",
+                        "on-secondary-container": "#acb8d5",
+                        "on-primary-fixed": "#231b00"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    fontFamily: {
+                        "headline": ["Cormorant Garamond", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Tokens canónicos AIP + utilidades glass (D5 pendiente migración a @layer) -->
+    <style>
+        :root {
+            --color-deep-ocean: #101D33;
+            --color-uk-gold: #C1A85D;
+            --color-uk-gold-dim: #A89050;
+            --color-ivory: #d7e3ff;
+            --color-alert: #ffb4ab;
+            --color-surface-glass: color-mix(in srgb, var(--color-deep-ocean) 60%, transparent);
+            --color-border-ghost: color-mix(in srgb, var(--color-uk-gold) 15%, transparent);
+        }
+
+        body {
+            background-color: var(--color-deep-ocean);
+            color: var(--color-ivory);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .serif-display {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .ghost-border {
+            outline: 1px solid var(--color-border-ghost);
+        }
+
+        .glass-panel {
+            backdrop-filter: blur(12px);
+            background: var(--color-surface-glass);
+        }
+
+        .gold-gradient {
+            background: linear-gradient(45deg, var(--color-uk-gold), var(--color-uk-gold-dim));
+        }
+    </style>
 </head>
 
 <body>
 
     <!--
         CÁSCARA PASIVA — R4 Compliant
-        Cero texto hardcodeado en este archivo.
-        Todo contenido es hidratado por app-shell.js + at-i18n.js.
-
-        Geometría Trinity:
-          slot="orbit-1" → Navegación (izquierda)
-          slot="orbit-2" → Canvas / Workspace (centro)
-          slot="orbit-3" → Inspector (derecha)
+        Cero texto hardcodeado. Hidratación: app-shell.js + at-i18n.js.
+        Geometría Trinity: orbit-1 (Nav) | orbit-2 (Canvas) | orbit-3 (Inspector)
+        Paleta: Deep Ocean #101D33 + UK Gold #C1A85D — Soberanía AIP
     -->
-    <app-shell
-        theme="dark"
-        orbit-1-visible="false"
-        orbit-3-visible="false"
-        locale="es"
-        id="sk-root"
-    >
+    <app-shell theme="dark" orbit-1-visible="false" orbit-3-visible="false" locale="es" id="sk-root">
 
-        <!-- ÓRBITA 1: NAV — oculta en la landing, visible en el workspace -->
+        <!-- ÓRBITA 1: NAV — oculta en landing, visible en workspace -->
         <nav slot="orbit-1" id="sk-nav">
             <!-- Hidratado por universal_nav.js tras login -->
         </nav>
 
-        <!-- ÓRBITA 2: CANVAS — escenas de la landing -->
+        <!-- ÓRBITA 2: CANVAS -->
         <div slot="orbit-2" id="sk-canvas">
 
-            <!-- Escena: Landing / Crystallization Manifesto -->
+            <!-- ESCENA: LANDING -->
             <section id="scene-landing" data-scene="LANDING" class="sk-scene sk-scene--active">
-                <!-- Ticker Module (Track B Integration) -->
                 <ticker-commodities></ticker-commodities>
-                
-                <!-- Hidratado por genesis-engine.js -->
+
+                <!-- Hero Bifurcation Grid — Paleta Sovereign -->
+                <section class="flex-grow grid grid-cols-1 lg:grid-cols-12 min-h-[870px]">
+
+                    <!-- Left: Investor Access — col-span-7 -->
+                    <div class="lg:col-span-7 flex flex-col justify-center px-8 lg:px-24 py-20 relative overflow-hidden group"
+                        data-purpose="investor-select">
+                        <div
+                            class="absolute inset-0 z-0 opacity-40 transition-transform duration-700 group-hover:scale-105">
+                            <img alt="" class="w-full h-full object-cover"
+                                data-alt="Abstract deep blue and gold textured background with ethereal light rays and crystalline geometric structures"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFdyH02Gm90d9FkCa2SeJ5uvCczCdrV0qR_2ym4YvxMQfhp8EF4hXEsdKmAVZItMAKe2cYBjKYVsTC1B00iuSJx7AXI0gOoRcSYvxGe3HWM-6GXDWyYxwPymX5QGxPNrS5mPXodbLbLhMOnAHcQWg0-1YldIyz-AzDvQKFgPR-L1puMR1zaxIH1SzhCZuof4pdlP9HIP8uOJrxQDNWQsdHmAyI39tyiUPcgb7q1v_mulz1CcAbh6zuauAYi1Gn_EFY0tXYLF4iBeox" />
+                            <div class="absolute inset-0 bg-gradient-to-r from-surface via-surface/60 to-transparent">
+                            </div>
+                        </div>
+                        <div class="relative z-10 max-w-xl">
+                            <div
+                                class="inline-flex items-center gap-2 mb-8 px-3 py-1 bg-secondary-container/30 border border-outline-variant/30 rounded-full">
+                                <span class="material-symbols-outlined text-[14px] text-primary"
+                                    style="font-variation-settings: 'FILL' 1;">security</span>
+                                <span
+                                    class="text-[10px] font-extrabold tracking-[0.3em] uppercase text-primary-fixed-dim"
+                                    data-i18n="hero.investor_badge"></span>
+                            </div>
+                            <h1 class="serif-display text-5xl md:text-7xl lg:text-8xl leading-[1.1] mb-8 text-on-surface"
+                                data-i18n="hero.investor_title"></h1>
+                            <p class="text-on-surface-variant font-light text-lg mb-12 max-w-md leading-relaxed"
+                                data-i18n="hero.investor_desc"></p>
+                            <button class="group/btn relative px-10 py-5 overflow-hidden rounded-md"
+                                data-purpose="investor-cta">
+                                <div
+                                    class="absolute inset-0 gold-gradient transition-transform duration-300 group-hover/btn:scale-105">
+                                </div>
+                                <span
+                                    class="relative z-10 flex items-center gap-3 text-on-primary font-extrabold tracking-widest uppercase text-xs">
+                                    <span data-i18n="hero.investor_button"></span>
+                                    <span class="material-symbols-outlined text-sm">arrow_forward_ios</span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right: Staff/Agent Access — col-span-5 -->
+                    <div class="lg:col-span-5 flex flex-col justify-center px-8 lg:px-16 py-20 bg-surface-container-low border-l border-outline-variant/10 relative"
+                        data-purpose="agent-select">
+                        <div class="relative z-10">
+                            <span class="block text-[10px] font-bold tracking-[0.4em] text-outline mb-12 uppercase"
+                                data-i18n="hero.agent_label"></span>
+                            <h2 class="serif-display text-4xl mb-6 text-on-surface" data-i18n="hero.agent_title"></h2>
+                            <p class="text-on-surface-variant font-light text-sm mb-10 max-w-sm leading-relaxed"
+                                data-i18n="hero.agent_desc"></p>
+                            <div class="space-y-4">
+                                <button
+                                    class="w-full flex items-center justify-between p-6 glass-panel ghost-border hover:bg-surface-container-highest transition-all duration-300 group">
+                                    <div class="flex flex-col items-start">
+                                        <span
+                                            class="text-[10px] font-bold tracking-widest text-primary-fixed-dim mb-1 uppercase"
+                                            data-i18n="hero.agent_action_title"></span>
+                                        <span class="text-on-surface font-semibold text-sm"
+                                            data-i18n="hero.agent_action_desc"></span>
+                                    </div>
+                                    <span
+                                        class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">login</span>
+                                </button>
+                                <div class="flex items-center gap-6 pt-4">
+                                    <div class="h-[1px] flex-grow bg-outline-variant/30"></div>
+                                    <span class="text-[9px] font-bold text-outline uppercase tracking-widest"
+                                        data-i18n="hero.or_divider"></span>
+                                    <div class="h-[1px] flex-grow bg-outline-variant/30"></div>
+                                </div>
+                                <button
+                                    class="w-full text-center py-4 text-[11px] font-bold tracking-[0.2em] text-on-surface-variant hover:text-primary transition-colors uppercase"
+                                    data-i18n="hero.agent_emergency"></button>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-0 right-0 p-8 opacity-5 select-none pointer-events-none">
+                            <span class="material-symbols-outlined text-[200px]"
+                                style="font-variation-settings: 'wght' 100;">grid_view</span>
+                        </div>
+                    </div>
+
+                </section>
             </section>
 
             <!-- Escena: Jurisdiction Router -->
-            <section id="scene-jurisdiction" data-scene="JURISDICTION" class="sk-scene">
-                <!-- Hidratado dinámicamente -->
-            </section>
+            <section id="scene-jurisdiction" data-scene="JURISDICTION" class="sk-scene"></section>
 
             <!-- Escena: Pre-KYC / Fiduciary Dialogue -->
-            <section id="scene-pre-kyc" data-scene="PRE_KYC" class="sk-scene">
-                <!-- Hidratado dinámicamente -->
-            </section>
+            <section id="scene-pre-kyc" data-scene="PRE_KYC" class="sk-scene"></section>
 
-            <!-- Escena: Access Gate -->
-            <section id="scene-gate" data-scene="GATE" class="sk-scene">
-                <!-- Hidratado por access-gate.js -->
-            </section>
+            <!-- ESCENA: GATE (MOVED TO BODY ROOT PER D9) -->
+            <section id="scene-gate" data-scene="GATE" class="sk-scene"></section>
 
             <!-- Escena: Custodia Fiduciaria -->
-            <section id="scene-custody" data-scene="CUSTODY" class="sk-scene">
-                <!-- Hidratado por passport-engine.js Custody Hold -->
-            </section>
+            <section id="scene-custody" data-scene="CUSTODY" class="sk-scene"></section>
 
             <!-- Escena: Workspace (post-login) -->
-            <section id="scene-workspace" data-scene="WORKSPACE" class="sk-scene">
-                <!-- Hidratado por workspace-canvas.js -->
-            </section>
+            <section id="scene-workspace" data-scene="WORKSPACE" class="sk-scene"></section>
 
         </div>
 
-        <!-- ÓRBITA 3: INSPECTOR — oculto en la landing -->
-        <aside slot="orbit-3" id="sk-inspector">
-            <!-- Hidratado por governance-panel.js -->
-        </aside>
+        <!-- ÓRBITA 3: INSPECTOR -->
+        <aside slot="orbit-3" id="sk-inspector"></aside>
 
     </app-shell>
 
-    <!-- Punto de ignición del sistema -->
+    <!-- ESCENA: GATE (D9 ROOT BLINDAGE) -->
+    <div class="fixed inset-0 z-[200] flex items-center justify-center p-6 bg-surface/80 backdrop-blur-xl hidden"
+        id="access-gate-container">
+        <div
+            class="max-w-md w-full glass-panel p-10 lg:p-16 border border-primary/20 shadow-[0_40px_100px_rgba(0,0,0,0.8)] relative overflow-hidden">
+            <div class="absolute -top-24 -left-24 w-48 h-48 bg-primary/10 blur-[80px]"></div>
+            <div class="absolute -bottom-24 -right-24 w-48 h-48 bg-primary/10 blur-[80px]"></div>
+            <div class="relative z-10 text-center">
+                <div
+                    class="mb-10 inline-flex items-center justify-center w-20 h-20 rounded-full border border-primary/40 bg-surface-container-highest">
+                    <span class="material-symbols-outlined text-3xl text-primary"
+                        style="font-variation-settings: 'wght' 200;">shield_person"></span>
+                </div>
+                <h3 class="serif-display text-3xl mb-4 text-on-surface" data-i18n="gate.title"></h3>
+                <p class="text-on-surface-variant text-xs tracking-widest uppercase mb-12"
+                    data-i18n="gate.subtitle"></p>
+                <form class="space-y-8">
+                    <div class="relative group">
+                        <label
+                            class="absolute -top-2.5 left-4 px-2 bg-surface-container-high text-[10px] font-bold tracking-widest text-primary uppercase z-20"
+                            data-i18n="gate.input_label"></label>
+                        <input
+                            class="w-full bg-transparent border-outline-variant/40 border p-5 text-on-surface focus:border-primary focus:ring-0 transition-all rounded-none font-mono text-center tracking-[0.5em]"
+                            data-i18n-placeholder="gate.placeholder" type="password" />
+                        <div
+                            class="absolute inset-0 border-primary/0 border pointer-events-none group-focus-within:border-primary/40 blur-[2px] transition-all">
+                        </div>
+                    </div>
+                    <button
+                        class="w-full py-5 gold-gradient text-on-primary font-extrabold tracking-[0.3em] uppercase text-xs shadow-lg shadow-primary/10 hover:shadow-primary/20 transition-all"
+                        data-purpose="validate-action" type="submit">
+                        <span data-i18n="gate.cta"></span>
+                    </button>
+                </form>
+                <p class="mt-10 text-[10px] text-outline leading-loose" data-i18n="gate.disclaimer"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Punto de ignición -->
     <script type="module" src="src/main.js"></script>
 
 </body>
+
 </html>
