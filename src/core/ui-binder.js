@@ -1,10 +1,16 @@
 /**
  * ═══════════════════════════════════════════════════════════════════
- * ARCHIVO: core/ui-binder.js
+ * BLUEPRINT: ui-binder.js — Sensor de Eventos y Despachador de Acciones
  * ═══════════════════════════════════════════════════════════════════
- * VERSIÓN:   2.0.0 (Sovereign Binder — OPORD-P-04)
- * DOCTRINA:  R0 (Vanilla) | R4 (i18n Strict)
- * PROPÓSITO: Sensor de eventos DOM y despachador de acciones fiduciarias
+ * VERSIÓN:   2.2.0 (Sovereign Core — OPORD-P-06)
+ * DOCTRINA:  R0 (Vanilla) | R4 (i18n) | R5 (Soberanía)
+ * DEPS:      src/config/constants.js (SELECTORS, ACTIONS, EVENTS)
+ * ───────────────────────────────────────────────────────────────────
+ * PROPÓSITO: Capturar intenciones del usuario en el DOM y emitir
+ *            eventos canónicos hacia los motores core.
+ * REGLAS:    - Delegación de eventos única sobre 'document'.
+ *            - Agnosticismo total sobre el resultado de la acción.
+ *            - Consumir selectores exclusivamente de AIP_CONSTANTS.
  * ═══════════════════════════════════════════════════════════════════
  */
 
@@ -17,41 +23,48 @@ export const UIBinder = {
     init() {
         if (this._initialized) return;
 
-        // Delegación de eventos para eficiencia (R2 Compliant)
+        // Delegación de eventos (R2 Compliant)
         document.addEventListener('click', (e) => this._handleGlobalClick(e));
         
+        // Manejo de sumisión de formularios (Gate)
+        document.addEventListener('submit', (e) => this._handleGlobalSubmit(e));
+
         this._initialized = true;
-        console.log('[UI-BINDER] ✅ Sensor de eventos activo (data-purpose).');
+        console.log('[UI-BINDER] ✅ Sensor de eventos activo (v2.2.0).');
     },
 
-    /**
-     * Orquestador de clics globales
-     */
     _handleGlobalClick(e) {
         const target = e.target.closest(`[${AIP_CONSTANTS.SELECTORS.PURPOSE_ATTR}]`);
         if (!target) return;
 
         const purpose = target.getAttribute(AIP_CONSTANTS.SELECTORS.PURPOSE_ATTR);
         
-        // Evitar navegación por defecto si es acción interna
-        e.preventDefault();
+        // Si el botón está dentro de un formulario y es submit, dejar que lo maneje _handleGlobalSubmit
+        if (target.type === 'submit' && target.closest('form')) return;
 
-        // 1. Extraer datos si la acción es de validación
+        e.preventDefault();
+        this._dispatchAction(purpose);
+    },
+
+    _handleGlobalSubmit(e) {
+        const form = e.target;
+        const submitBtn = form.querySelector(`[${AIP_CONSTANTS.SELECTORS.PURPOSE_ATTR}]`);
+        if (!submitBtn) return;
+
+        e.preventDefault();
+        const purpose = submitBtn.getAttribute(AIP_CONSTANTS.SELECTORS.PURPOSE_ATTR);
+        
         let credential = null;
         if (purpose === AIP_CONSTANTS.ACTIONS.VALIDATE_GATE) {
-            const input = document.querySelector(AIP_CONSTANTS.SELECTORS.PASS_INPUT);
+            const input = form.querySelector(AIP_CONSTANTS.SELECTORS.PASS_INPUT);
             credential = input ? input.value : null;
         }
 
-        // 2. Despachar acción institucional
         this._dispatchAction(purpose, credential);
     },
 
-    /**
-     * Emisión de evento soberano hacia el bus de sistema
-     */
     _dispatchAction(action, credential = null) {
-        const actionEvent = new CustomEvent('Skeleton:UI:ActionRequested', {
+        const actionEvent = new CustomEvent(AIP_CONSTANTS.EVENTS.UI_ACTION_REQUESTED, {
             bubbles: true,
             detail: {
                 action,
