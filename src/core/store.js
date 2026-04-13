@@ -1,70 +1,65 @@
 /**
  * ═══════════════════════════════════════════════════════════════════
- * BLUEPRINT: store.js — Motor de Estado Global (Vanilla)
+ * BLUEPRINT: store.js — Motor de Estado Global (Sincronizado)
  * ═══════════════════════════════════════════════════════════════════
- * VERSIÓN:   2.0.0 (Sovereign Core — OPORD-P-06)
- * DOCTRINA:  R0 (Single Source of Truth) | R3 (Zero-Hex)
+ * VERSIÓN:   2.1.0 (Ignition Ready — Sprint 3 Final)
+ * DOCTRINA:  R0 (SSoT) | R5 (Soberanía del Dato)
  * DEPS:      Ninguna.
  * ───────────────────────────────────────────────────────────────────
- * PROPÓSITO: Centralizar el estado reactivo del sistema Skeleton.
- *            Implementa un patrón Pub/Sub para que los componentes
- *            se suscriban a cambios en parcelas específicas.
- * REGLAS:    - Prohibido mutar el estado directamente (usar setState).
- *            - Solo el PassportEngine puede escribir en 'auth'.
- *            - Solo el SceneManager puede escribir en 'navigation'.
+ * PROPÓSITO: Centralizar el estado reactivo y despachar eventos al 
+ * bus de sistema global (Skeleton:Store:Updated).
  * ═══════════════════════════════════════════════════════════════════
  */
 
 export const Store = {
-    
+
     _state: {
         auth: {
             user: null,    // { uid, email, role }
-            claims: {}     // Hash plano O(1)
+            claims: {},    // Hash plano O(1)
+            authenticated: false
         },
         navigation: {
-            orbit: 'LANDING',
+            orbit: 'ORBIT_LANDING',
             scene: 'LANDING',
             context: {}
         },
         project: {
-            config: {},
-            lastSync: null
+            id: 'AIP-2026',
+            config: {
+                complianceThreshold: 60 // Hard gate institucional
+            },
+            lastSync: Date.now()
+        },
+        ui: {
+            theme: 'dark',
+            gateVisible: true
         }
     },
 
     _listeners: [],
 
-    /**
-     * Inicializa el Store (Placeholder para inyección de configuraciones)
-     */
     init() {
-        console.log('[STORE] ✅ Motor de Estado inicializado.');
+        console.log('[STORE] ✅ Motor de Estado v2.1.0 sincronizado para Ignición.');
     },
 
-    /**
-     * Retorna un snapshot inmutable del estado actual
-     */
     getState() {
         return JSON.parse(JSON.stringify(this._state));
     },
 
-    /**
-     * Actualiza el estado mediante un merge profundo (Shallow merge en primer nivel)
-     */
     setState(newState) {
+        // Shallow merge de primer nivel para mantener la reactividad
         this._state = {
             ...this._state,
-            ...newState
+            ...newState,
+            // Aseguramos que los objetos anidados no se pierdan si se pasan incompletos
+            auth: newState.auth ? { ...this._state.auth, ...newState.auth } : this._state.auth,
+            navigation: newState.navigation ? { ...this._state.navigation, ...newState.navigation } : this._state.navigation
         };
 
         this._notify();
     },
 
-    /**
-     * Suscribirse a cambios en el Store
-     * @param {Function} listener 
-     */
     subscribe(listener) {
         this._listeners.push(listener);
         return () => {
@@ -74,6 +69,17 @@ export const Store = {
 
     _notify() {
         const snapshot = this.getState();
+
+        // 1. Notificar a suscriptores directos (Pub/Sub)
         this._listeners.forEach(listener => listener(snapshot));
+
+        // 2. Despachar al Bus Global de Skeleton (Sincronía Sentinel)
+        document.dispatchEvent(new CustomEvent('Skeleton:Store:Updated', {
+            bubbles: true,
+            detail: { state: snapshot, timestamp: Date.now() }
+        }));
     }
 };
+
+// Sellado de integridad R5
+Object.freeze(Store);

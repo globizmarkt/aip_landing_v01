@@ -1,12 +1,12 @@
 {
     "_meta": {
-        "version": "1.1.0",
-        "schema": "stitch-compatible-v1",
+        "version": "1.2.0",
+        "schema": "gatekeeper-violations-v1",
         "compliance": "R4-strict",
         "tone_profile": "swiss_private_banking",
         "audit_ready": true,
-        "last_modified": "2026-04-13T19:15:00Z",
-        "note": "Expansión con claves STITCH para evitar errores [key]"
+        "last_modified": "2026-04-13T19:52:00Z",
+        "note": "Expansión con namespace violation y status anidado para Gatekeeper"
     },
     "en": {
         "meta": {
@@ -49,7 +49,20 @@
                 "placeholder": "Enter your secure key"
             },
             "cta": "Verify Identity",
-            "disclaimer": "This system is protected by sovereign-grade encryption. Unauthorized access attempts are logged and prosecuted."
+            "disclaimer": "This system is protected by sovereign-grade encryption. Unauthorized access attempts are logged and prosecuted.",
+            "status": {
+                "custody_hold": "CUSTODY HOLD: Asset Integrity Protocol Active",
+                "verifying": "Verifying credentials...",
+                "granted": "Access granted. Redirecting to secure workspace.",
+                "denied": "Access denied. Integrity score insufficient."
+            },
+            "violation": {
+                "invalid_credential": "Credential mismatch. The provided key does not match institutional records.",
+                "expired_session": "Session expired. Re-authentication required.",
+                "integrity_failed": "Integrity check failed. Custody protocol activated.",
+                "unauthorized_jurisdiction": "Access not permitted from current jurisdiction.",
+                "rate_limited": "Too many attempts. Temporary lockdown initiated."
+            }
         },
         "gate": {
             "title": "Restricted Access",
@@ -142,7 +155,20 @@
                 "placeholder": "Ingrese su clave segura"
             },
             "cta": "Verificar Identidad",
-            "disclaimer": "Este sistema está protegido por cifrado de grado soberano. Los intentos de acceso no autorizados son registrados y perseguidos."
+            "disclaimer": "Este sistema está protegido por cifrado de grado soberano. Los intentos de acceso no autorizados son registrados y perseguidos.",
+            "status": {
+                "custody_hold": "RETENCIÓN DE CUSTODIA: Protocolo de Integridad de Activos Activo",
+                "verifying": "Verificando credenciales...",
+                "granted": "Acceso concedido. Redirigiendo a espacio seguro.",
+                "denied": "Acceso denegado. Puntuación de integridad insuficiente."
+            },
+            "violation": {
+                "invalid_credential": "Discrepancia de credenciales. La clave proporcionada no coincide con los registros institucionales.",
+                "expired_session": "Sesión expirada. Re-autenticación requerida.",
+                "integrity_failed": "Verificación de integridad fallida. Protocolo de custodia activado.",
+                "unauthorized_jurisdiction": "Acceso no permitido desde la jurisdicción actual.",
+                "rate_limited": "Demasiados intentos. Bloqueo temporal iniciado."
+            }
         },
         "gate": {
             "title": "Acceso Restringido",
@@ -235,7 +261,20 @@
                 "placeholder": "Introduza a sua chave segura"
             },
             "cta": "Verificar Identidade",
-            "disclaimer": "Este sistema está protegido por criptografia de grau soberano. Tentativas de acesso não autorizadas são registadas e processadas."
+            "disclaimer": "Este sistema está protegido por criptografia de grau soberano. Tentativas de acesso não autorizadas são registadas e processadas.",
+            "status": {
+                "custody_hold": "RETENÇÃO DE CUSTÓDIA: Protocolo de Integridade de Ativos Ativo",
+                "verifying": "A verificar credenciais...",
+                "granted": "Acesso concedido. A redirecionar para espaço seguro.",
+                "denied": "Acesso negado. Pontuação de integridade insuficiente."
+            },
+            "violation": {
+                "invalid_credential": "Discrepância de credenciais. A chave fornecida não coincide com os registos institucionais.",
+                "expired_session": "Sessão expirada. Re-autenticação necessária.",
+                "integrity_failed": "Verificação de integridade falhada. Protocolo de custódia ativado.",
+                "unauthorized_jurisdiction": "Acesso não permitido a partir da jurisdição atual.",
+                "rate_limited": "Demasiadas tentativas. Bloqueio temporário iniciado."
+            }
         },
         "gate": {
             "title": "Acesso Restrito",
@@ -328,7 +367,20 @@
                 "placeholder": "Entrez votre clé sécurisée"
             },
             "cta": "Vérifier l'Identité",
-            "disclaimer": "Ce système est protégé par un chiffrement de grade souverain. Les tentatives d'accès non autorisées sont enregistrées et poursuivies."
+            "disclaimer": "Ce système est protégé par un chiffrement de grade souverain. Les tentatives d'accès non autorisées sont enregistrées et poursuivies.",
+            "status": {
+                "custody_hold": "GARDE À VUE FIDUCIAIRE: Protocole d'Intégrité des Actifs Actif",
+                "verifying": "Vérification des identifiants...",
+                "granted": "Accès accordé. Redirection vers l'espace sécurisé.",
+                "denied": "Accès refusé. Score d'intégrité insuffisant."
+            },
+            "violation": {
+                "invalid_credential": "Incohérence d'identifiants. La clé fournie ne correspond pas aux registres institutionnels.",
+                "expired_session": "Session expirée. Ré-authentification requise.",
+                "integrity_failed": "Vérification d'intégrité échouée. Protocole de garde activé.",
+                "unauthorized_jurisdiction": "Accès non autorisé depuis la juridiction actuelle.",
+                "rate_limited": "Trop de tentatives. Verrouillage temporaire initié."
+            }
         },
         "gate": {
             "title": "Accès Restreint",
