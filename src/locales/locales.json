@@ -1,0 +1,142 @@
+{
+    "en": {
+        "commodities": {
+            "XAU": {
+                "name": "Gold",
+                "category": "Precious Metals"
+            },
+            "XAG": {
+                "name": "Silver",
+                "category": "Precious Metals"
+            },
+            "BRENT": {
+                "name": "Brent Crude",
+                "category": "Energy"
+            },
+            "XPT": {
+                "name": "Platinum",
+                "category": "Precious Metals"
+            },
+            "COPPER": {
+                "name": "Copper",
+                "category": "Industrial Metals"
+            },
+            "ticker": {
+                "live_feed": "Live Market Feed",
+                "delayed_disclaimer": "Prices indicative. Execution via certified counterparties only."
+            }
+        },
+        "news": {
+            "item_1": "G7 Unified Protocol: Liquidity corridors secured for Q3.",
+            "item_2": "Neutral Zone Alpha: Synthetic asset classification approved.",
+            "item_3": "Sovereign Debt yields stabilize across Tier-1 jurisdictions.",
+            "item_4": "Central Banks signal prolonged quantitative tightening.",
+            "item_5": "Offshore physical bullion reserves reach 10-year high."
+        }
+    },
+    "es": {
+        "commodities": {
+            "XAU": {
+                "name": "Oro",
+                "category": "Metales Preciosos"
+            },
+            "XAG": {
+                "name": "Plata",
+                "category": "Metales Preciosos"
+            },
+            "BRENT": {
+                "name": "Crudo Brent",
+                "category": "Energía"
+            },
+            "XPT": {
+                "name": "Platino",
+                "category": "Metales Preciosos"
+            },
+            "COPPER": {
+                "name": "Cobre",
+                "category": "Metales Industriales"
+            },
+            "ticker": {
+                "live_feed": "Feed de Mercado en Vivo",
+                "delayed_disclaimer": "Precios indicativos. Ejecución únicamente mediante contrapartes certificadas."
+            }
+        },
+        "news": {
+            "item_1": "Protocolo Unificado G7: Corredores de liquidez asegurados para Q3.",
+            "item_2": "Zona Neutral Alfa: Clasificación de activos sintéticos aprobada.",
+            "item_3": "Rendimientos de Deuda Soberana se estabilizan en jurisdicciones Tier-1.",
+            "item_4": "Bancos Centrales señalan un endurecimiento cuantitativo prolongado.",
+            "item_5": "Reservas físicas de lingotes offshore alcanzan máximo de 10 años."
+        }
+    },
+    "pt": {
+        "commodities": {
+            "XAU": {
+                "name": "Ouro",
+                "category": "Metais Preciosos"
+            },
+            "XAG": {
+                "name": "Prata",
+                "category": "Metais Preciosos"
+            },
+            "BRENT": {
+                "name": "Petróleo Brent",
+                "category": "Energia"
+            },
+            "XPT": {
+                "name": "Platina",
+                "category": "Metais Preciosos"
+            },
+            "COPPER": {
+                "name": "Cobre",
+                "category": "Metais Industriais"
+            },
+            "ticker": {
+                "live_feed": "Feed de Mercado ao Vivo",
+                "delayed_disclaimer": "Preços indicativos. Execução exclusivamente através de contrapartes certificadas."
+            }
+        },
+        "news": {
+            "item_1": "Protocolo Unificado G7: Corredores de liquidez assegurados para Q3.",
+            "item_2": "Zona Neutra Alfa: Classificação de ativos sintéticos aprovada.",
+            "item_3": "Rendimentos de Dívida Soberana estabilizam-se em jurisdições Tier-1.",
+            "item_4": "Bancos Centrais sinalizam aperto quantitativo prolongado.",
+            "item_5": "Reservas físicas de ouro offshore atingem máxima de 10 anos."
+        }
+    },
+    "fr": {
+        "commodities": {
+            "XAU": {
+                "name": "Or",
+                "category": "Métaux Précieux"
+            },
+            "XAG": {
+                "name": "Argent",
+                "category": "Métaux Précieux"
+            },
+            "BRENT": {
+                "name": "Pétrole Brent",
+                "category": "Énergie"
+            },
+            "XPT": {
+                "name": "Platine",
+                "category": "Métaux Précieux"
+            },
+            "COPPER": {
+                "name": "Cuivre",
+                "category": "Métaux Industriels"
+            },
+            "ticker": {
+                "live_feed": "Flux Marché en Direct",
+                "delayed_disclaimer": "Prix indicatifs. Exécution uniquement via des contreparties certifiées."
+            }
+        },
+        "news": {
+            "item_1": "Protocole Unifié G7: Corridors de liquidité sécurisés pour Q3.",
+            "item_2": "Zone Neutre Alpha: Classification des actifs synthétiques approuvée.",
+            "item_3": "Rendements de la Dette Souveraine se stabilisent dans les juridictions Tier-1.",
+            "item_4": "Les Banques Centrales signalent un resserrement quantitatif prolongé.",
+            "item_5": "Les réserves physiques d'or offshore atteignent un sommet de 10 ans."
+        }
+    }
+}
