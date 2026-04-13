@@ -1,30 +1,28 @@
 /**
- * ═══════════════════════════════════════════════════════════════════
- * BLUEPRINT: gatekeeper.js — Guardián de Transiciones y Acceso (R0)
- * ═══════════════════════════════════════════════════════════════════
- * VERSIÓN:   3.0.0 (Sovereign Core — OPORD-P-06)
- * DOCTRINA:  R0 (Agnosticismo Radical) | R3 (Zero-Hex)
- * DEPS:      src/core/passport-engine.js | src/config/constants.js
- * ───────────────────────────────────────────────────────────────────
- * PROPÓSITO: Evaluar si el pasaporte actual permite la transición a
- *            una escena o recurso específico.
- * REGLAS:    - No contacta el backend. Confía en el PassportEngine.
- *            - Emite eventos canónicos ante violaciones de acceso.
- * ═══════════════════════════════════════════════════════════════════
- */
-
+═══════════════════════════════════════════════════════════════════
+BLUEPRINT: gatekeeper.js — Guardián de Transiciones y Acceso (R0)
+═══════════════════════════════════════════════════════════════════
+VERSIÓN:   3.0.1 (Sutura de Objeto Plano — OPORD-P-07)
+DOCTRINA:  R0 (Agnosticismo Radical) | R3 (Zero-Hex)
+DEPS:      src/core/passport-engine.js | src/config/constants.js
+───────────────────────────────────────────────────────────────────
+PROPÓSITO: Evaluar si el pasaporte actual permite la transición a
+           una escena o recurso específico.
+REGLAS:    - No contacta el backend. Confía en el PassportEngine.
+           - Acceso directo a propiedades del objeto plano.
+═══════════════════════════════════════════════════════════════════
+*/
 import { AIP_CONSTANTS } from '../config/constants.js';
 
 export const Gatekeeper = {
-
     _passportEngine: null,
-    
-    // Reglas de acceso por escena
+
+    // Reglas de acceso por escena (Refactorizado a objeto plano)
     _rules: {
-        'LANDING':     () => true, // Acceso público
-        'WORKSPACE':   (pe) => pe.hasClaim('canAccessWorkspace'),
-        'GATE':        (pe) => pe.getState() === 'AUTHENTICATED',
-        'JURISDICTION':(pe) => pe.getState() === 'AUTHENTICATED'
+        'LANDING': () => true, // Acceso público
+        'WORKSPACE': (pe) => pe._passport?.claims?.canAccessWorkspace === true,
+        'GATE': (pe) => pe._passport?.state === 'AUTHENTICATED',
+        'JURISDICTION': (pe) => pe._passport?.state === 'AUTHENTICATED'
     },
 
     init(passportEngine) {
