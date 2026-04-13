@@ -22,6 +22,15 @@ import { Gatekeeper }     from './core/gatekeeper.js';
 const handleSceneChange = (event) => {
     const { target } = event.detail ?? {};
     if (!target) return;
+
+    // [VECTOR 1] DEFENSA DE RUTA PROFUNDA: Pre-flight Check
+    // Protege la hidratación dinámica en caso de un evento directo o acceso por URL
+    if (!Gatekeeper.canAccess(target)) {
+        console.warn(`[DEFENSA DE RUTA] Acceso denegado a escena: ${target}. Forzando fallback a LANDING.`);
+        SceneManager.navigate('LANDING');
+        return;
+    }
+
     switch (target) {
         case 'LANDING':      GenesisEngine.init(); break;
         case 'JURISDICTION': import('./core/routing/jurisdiction-router.js').then(m => m.JurisdictionRouter.init()); break;

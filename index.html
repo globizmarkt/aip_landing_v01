@@ -23,10 +23,13 @@
     <!-- Google Fonts — Inter + Cormorant Garamond (D8 Purge) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
 
     <!-- Google Fonts — Material Symbols (STITCH — deduplicado) -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL@24,400,0..1&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL@24,400,0..1&display=swap"
         rel="stylesheet">
 
     <!-- ═══════════════════════════════════════════════════════════
@@ -139,10 +142,46 @@
         .gold-gradient {
             background: linear-gradient(45deg, var(--color-uk-gold), var(--color-uk-gold-dim));
         }
+
+        /* ANTI-FOUC CURTAIN STYLES */
+        #hydration-curtain {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background-color: var(--color-deep-ocean);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease, visibility 0.8s;
+        }
+
+        #hydration-curtain.curtain-hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
     </style>
 </head>
 
 <body>
+
+    <!-- CORTINA DE HIDRATACIÓN (Vector 3) -->
+    <div id="hydration-curtain">
+        <div class="text-center">
+            <span class="material-symbols-outlined text-6xl text-primary animate-pulse"
+                style="font-variation-settings: 'wght' 200;">token</span>
+            <p class="mt-4 text-[10px] font-bold tracking-[0.5em] text-primary uppercase">AIP-AIP • System Initializing
+            </p>
+        </div>
+        <script>
+            window.addEventListener('Skeleton:System:Hydrated', () => {
+                const curtain = document.getElementById('hydration-curtain');
+                if (curtain) {
+                    curtain.classList.add('curtain-hidden');
+                    setTimeout(() => curtain.remove(), 800);
+                }
+            });
+        </script>
+    </div>
 
     <!--
         CÁSCARA PASIVA — R4 Compliant
@@ -283,8 +322,8 @@
                         style="font-variation-settings: 'wght' 200;">shield_person"></span>
                 </div>
                 <h3 class="serif-display text-3xl mb-4 text-on-surface" data-i18n="gate.title"></h3>
-                <p class="text-on-surface-variant text-xs tracking-widest uppercase mb-12"
-                    data-i18n="gate.subtitle"></p>
+                <p class="text-on-surface-variant text-xs tracking-widest uppercase mb-12" data-i18n="gate.subtitle">
+                </p>
                 <form class="space-y-8">
                     <div class="relative group">
                         <label
