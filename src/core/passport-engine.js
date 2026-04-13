@@ -2,22 +2,22 @@
  * ═══════════════════════════════════════════════════════════════════
  * BLUEPRINT: passport-engine.js — Motor de Pasaportes de Identidad
  * ═══════════════════════════════════════════════════════════════════
- * VERSIÓN:   2.1.0 (Sovereign Core — OPORD-P-06)
+ * VERSIÓN:   2.1.1 (Sincronización SSOT v1.2.1)
  * DOCTRINA:  R0 (Agnosticismo Radical) | R4 (i18n) | R5 (Soberanía)
  * DEPS:      src/config/constants.js (CREDENTIAL, EVENTS, SCENES, ORBITS)
  * ───────────────────────────────────────────────────────────────────
  * PROPÓSITO: Gestionar el ciclo de vida del pasaporte de identidad.
  * REGLAS:    - Prohibido escribir en localStorage (fuga de seguridad).
- *            - IntegrityScore < 60 = bloqueo automático (hard gate).
+ * - IntegrityScore < 60 = bloqueo automático (hard gate).
  * ═══════════════════════════════════════════════════════════════════
  */
 
 import { Store } from './store.js';
 import { AIP_CONSTANTS } from '../config/constants.js';
 
-/* [SEC-01] CONSTANTES INTERNAS */
-const _PASSPORT_KEY = AIP_CONSTANTS.STORAGE.PASSPORT_KEY;
-const _DEFAULT_THRESHOLD = AIP_CONSTANTS.COMPLIANCE.MIN_INTEGRITY_SCORE;
+/* [SEC-01] CONSTANTES INTERNAS (Suturadas a CREDENTIAL) */
+const _PASSPORT_KEY = AIP_CONSTANTS.CREDENTIAL.SESSION_KEY;
+const _DEFAULT_THRESHOLD = AIP_CONSTANTS.CREDENTIAL.INTEGRITY_MIN_SCORE;
 
 /* [SEC-02] ESTADOS CANÓNICOS */
 const PassportState = Object.freeze({
@@ -67,7 +67,7 @@ export const PassportEngine = {
         });
 
         this._ready = true;
-        console.log('[PASSPORT-ENGINE] ✅ Motor de Pasaportes sincronizado (v2.1.0).');
+        console.log('[PASSPORT-ENGINE] ✅ Motor de Pasaportes sincronizado (v2.1.1).');
     },
 
     _processAuthentication(user, rawClaims) {
@@ -75,7 +75,8 @@ export const PassportEngine = {
         const score = rawClaims.integrityScore ?? null;
 
         if (this._isCustodyActive(rawClaims, score)) {
-            const reasonKey = rawClaims.custodyReason ?? AIP_CONSTANTS.COMPLIANCE.DEFAULT_CUSTODY_REASON;
+            // Sutura: COMPLIANCE.DEFAULT_CUSTODY_REASON -> CREDENTIAL.DEFAULT_CUSTODY_REASON
+            const reasonKey = rawClaims.custodyReason ?? AIP_CONSTANTS.CREDENTIAL.DEFAULT_CUSTODY_REASON;
             this._activateCustodyHold(user, normalizedClaims, score, reasonKey);
             return;
         }
@@ -101,7 +102,7 @@ export const PassportEngine = {
     _handleUIActionRequest(detail) {
         const { action, credential } = detail;
 
-        // ACCIÓN: Acceso Inversor (Directiva Turno 137)
+        // ACCIÓN: Acceso Inversor
         if (action === AIP_CONSTANTS.ACTIONS.INVESTOR_CTA) {
             this._processAuthentication(
                 { uid: 'guest_investor', email: null },
@@ -118,7 +119,6 @@ export const PassportEngine = {
                     { uid: 'staff_operator', email: null },
                     { role_staff: true, canAccessWorkspace: true }
                 );
-                // Staff siempre pasa por el flujo de validación de Bóveda
                 this._requestOrbitTransition(AIP_CONSTANTS.ORBITS.WORKSPACE, 'staff');
             } else {
                 this._activateCustodyHold(
@@ -138,18 +138,13 @@ export const PassportEngine = {
     },
 
     _requestOrbitTransition(orbit, role) {
-        // Emitir evento unificado de transición de órbita
-        const eventName = role === 'investor' 
-            ? AIP_CONSTANTS.EVENTS.INVESTOR_ACCESS_REQUESTED 
+        const eventName = role === 'investor'
+            ? AIP_CONSTANTS.EVENTS.INVESTOR_ACCESS_REQUESTED
             : AIP_CONSTANTS.EVENTS.SCENE_REQUEST_ORBIT;
 
         document.dispatchEvent(new CustomEvent(eventName, {
             bubbles: true,
-            detail: {
-                orbit,
-                role,
-                timestamp: Date.now()
-            }
+            detail: { orbit, role, timestamp: Date.now() }
         }));
     },
 
