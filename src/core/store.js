@@ -82,4 +82,4 @@ export const Store = {
 };
 
 // Sellado de integridad R5
-Object.freeze(Store);
+// Object.freeze(Store);
