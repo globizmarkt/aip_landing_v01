@@ -9,7 +9,6 @@
  */
 
 import { SceneManager } from './scene-manager.js';
-import { i18n } from './at-i18n.js';
 
 export const GenesisEngine = {
 
@@ -18,7 +17,7 @@ export const GenesisEngine = {
         this._bindEvents();
         
         // Re-hidratar en caso de cambio de idioma
-        document.addEventListener('skeleton:i18n:ready', () => {
+        document.addEventListener('Skeleton:System:Hydrated', () => {
             this._renderManifesto();
         });
 
@@ -54,13 +53,13 @@ export const GenesisEngine = {
             
             <div class="landing-action">
                 <p class="help-text" data-i18n="manifest.crystallization.help"></p>
-                <button id="btn-establish-contact" class="sk-btn sk-btn--primary" data-i18n="manifest.crystallization.action"></button>
+                <button id="btn-establish-contact" class="sk-btn sk-btn--primary" data-purpose="investor-cta" data-i18n="manifest.crystallization.action"></button>
             </div>
         `;
         
-        // Re-hidratar los textos si i18n ya estaba cargado
-        if (i18n.state.ready) {
-            i18n.hydrateElement(container);
+        // Re-hidratar los textos vinculados dinámicamente
+        if (window.Skeleton && window.Skeleton.i18n) {
+            window.Skeleton.i18n.hydrate();
         }
     },
 
