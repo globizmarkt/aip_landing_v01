@@ -74,7 +74,7 @@ export const PassportEngine = {
         // Intentar hidratar desde sesión anterior
         this._hydrateFromSession();
 
-        // Escuchar eventos del AuthManager
+        // 3. Escuchar eventos del AuthManager
         document.addEventListener('skeleton:auth:token-ready', (e) => {
             const { user, claims } = e.detail ?? {};
             if (user) {
@@ -84,8 +84,16 @@ export const PassportEngine = {
             }
         });
 
+        // 4. Convergencia Track B: Escuchar sumisión de Pre-KYC
+        document.addEventListener('Skeleton:PreKyc:Submitted', (e) => {
+            const payload = e.detail;
+            if (payload && payload.data) {
+                this.evaluateIntegrity(payload.data);
+            }
+        });
+
         this._ready = true;
-        console.log('[PASSPORT-ENGINE] ✅ Iniciado. Umbral de integridad:', this._threshold);
+        console.log('[PASSPORT-ENGINE] ✅ Motor de Pasaportes listo y sincronizado.');
     },
 
     /* ─────────────────────────────────────────────

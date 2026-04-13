@@ -1,76 +1,86 @@
 /**
- * @file main-connector-opord12.js
- * @role Entry Point — OPORD-12
- * @description Punto de conexión para main.js. Orquesta inicialización de módulos.
+ * ═══════════════════════════════════════════════════════════════════
+ * ARCHIVO: main.js
+ * ═══════════════════════════════════════════════════════════════════
+ * VERSIÓN:   3.0.0 (Convergencia Soberana — OPORD-P-01)
+ * DOCTRINA:  R0 (Agnosticismo Radical) | R2 (Light DOM)
+ * PROPÓSITO: Bootloader Centralizado (Track A + Track B)
+ * ═══════════════════════════════════════════════════════════════════
  */
 
-// Orden de carga (respetar dependencias):
-// 1. ReferralCapture (sin dependencias, debe correr primero)
-// 2. JurisdictionRouter (lee cookie, emite navegación)
-// 3. PreKycEngine (depende de ReferralCapture para leer AIP_REFERRAL_NODE)
+/* 1. IMPORTACIONES — TRACK A (Arquitectura Core) */
+import { Store }          from './core/store.js';
+import { SceneManager }   from './core/scene-manager.js';
+import { PassportEngine } from './core/passport-engine.js';
+import { GenesisEngine }  from './core/genesis-engine.js';
 
-(function() {
-    'use strict';
-    
-    const NS = window.Skeleton || (window.Skeleton = {});
-    
-    /**
-     * Inicialización maestra OPORD-12
-     * Llamar desde main.js al arranque de aplicación
-     */
-    function initOpord12() {
-        // 1. Captura de referido (siempre, en cualquier escena)
-        if (NS.ReferralCapture) {
-            NS.ReferralCapture.init();
-        }
+/* 2. IMPORTACIONES — TRACK B (Lógica & UI) */
+import { ReferralCapture }    from './core/referral-capture.js';
+import { JurisdictionRouter } from './core/routing/jurisdiction-router.js';
+import { PreKycEngine }       from './core/compliance/pre-kyc-engine.js';
+
+/**
+ * INYECTOR DINÁMICO DE LÓGICA POR ESCENA
+ * Mantiene el núcleo ciego al negocio (R0)
+ */
+const handleSceneChange = (event) => {
+    const { target } = event.detail ?? {};
+    if (!target) return;
+
+    console.log(`[BOOTLOADER] 🎭 Escena montada: ${target}`);
+
+    switch (target) {
+        case 'LANDING':
+            GenesisEngine.init();
+            break;
+            
+        case 'JURISDICTION':
+            JurisdictionRouter.init();
+            break;
+
+        case 'PRE_KYC':
+            PreKycEngine.init();
+            break;
+
+        case 'GATE':
+            // Lógica de acceso (Access Gate logic)
+            break;
+    }
+};
+
+/**
+ * BOOTLOADER — SECUENCIA DE ARRANQUE DETERMINISTA
+ */
+const initBootloader = () => {
+    console.log('[BOOTLOADER] 🚀 Iniciando secuencia de convergencia...');
+
+    try {
+        // [Fase 1] — Inicialización de persistencia y estado
+        Store.init();
         
-        // 2. Escuchar cambios de escena para inicializar routers específicos
-        document.addEventListener('Skeleton:Scene:Mounted', handleSceneMount);
+        // [Fase 2] — Captura de red (Referidos)
+        ReferralCapture.init();
+
+        // [Fase 3] — Motores de confianza y validación
+        // Nota: PassportEngine ya escucha 'Skeleton:PreKyc:Submitted' internamente
+        PassportEngine.init();
+
+        // [Fase 4] — Orquestación de Navegación
+        // Suscribirse a cambios de escena antes de inicializar SceneManager
+        document.addEventListener('skeleton:scene:activate', handleSceneChange);
         
-        // 3. Verificar escena actual al cargar
-        const currentScene = document.querySelector('[data-scene-active]')?.dataset.sceneActive;
-        if (currentScene) {
-            mountSceneLogic(currentScene);
-        }
+        SceneManager.init();
+
+        console.log('[BOOTLOADER] ✅ Sistema soberano en estado funcional.');
+
+    } catch (error) {
+        console.error('[BOOTLOADER] ❌ Fallo crítico en la ignición:', error);
     }
-    
-    /**
-     * Handler de montaje de escena
-     */
-    function handleSceneMount(event) {
-        const scene = event.detail?.scene;
-        if (scene) {
-            mountSceneLogic(scene);
-        }
-    }
-    
-    /**
-     * Router de inicialización por escena
-     */
-    function mountSceneLogic(scene) {
-        switch(scene) {
-            case 'JURISDICTION':
-                if (NS.JurisdictionRouter) {
-                    NS.JurisdictionRouter.init();
-                }
-                break;
-                
-            case 'PRE_KYC':
-                if (NS.PreKycEngine) {
-                    NS.PreKycEngine.init();
-                }
-                break;
-                
-            case 'LANDING':
-                // Hero scene: no requiere lógica específica de OPORD-12
-                break;
-        }
-    }
-    
-    // Exposición global
-    NS.Opord12 = {
-        init: initOpord12,
-        version: '1.0.0'
-    };
-    
-})();
+};
+
+// Punto de entrada único (DOM Ready)
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBootloader);
+} else {
+    initBootloader();
+}

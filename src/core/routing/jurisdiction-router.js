@@ -1,72 +1,56 @@
 /**
- * @file jurisdiction-router.js
- * @role DOM & Logic Engineer — OPORD-12
- * @doctrine R2 (Light DOM), R4 (i18n Strict), Vanilla Zero-Deps
- * @description Motor de enrutamiento jurisdiccional con persistencia de cookie
- * @event Skeleton:Navigation:JurisdictionConfirmed
- * @event Skeleton:Navigation:RedirectToFallback
+ * ═══════════════════════════════════════════════════════════════════
+ * ARCHIVO: core/routing/jurisdiction-router.js
+ * ═══════════════════════════════════════════════════════════════════
+ * VERSIÓN:   2.0.0 (Modularized)
+ * DOCTRINA:  R2 (Light DOM), R4 (i18n Strict), Vanilla Zero-Deps
+ * PROPÓSITO: Motor de enrutamiento jurisdiccional con persistencia
+ * ═══════════════════════════════════════════════════════════════════
  */
 
-(function() {
-    'use strict';
-    
-    const COOKIE_NAME = 'skeleton_jurisdiction_visited';
-    const COOKIE_MAX_AGE = 31536000; // 1 año en segundos
-    const FALLBACK_URL = '/restricted.html';
-    const VALID_JURISDICTIONS = ['UK', 'CH', 'EU', 'Americas-QP'];
-    
-    // Namespace canónico
-    const NS = window.Skeleton || (window.Skeleton = {});
-    
-    /**
-     * Utilidad: Setear cookie con SameSite=Lax
-     */
-    function setJurisdictionCookie() {
-        const expires = new Date();
-        expires.setFullYear(expires.getFullYear() + 1);
-        document.cookie = `${COOKIE_NAME}=true; expires=${expires.toUTCString()}; path=/; SameSite=Lax`;
-    }
-    
-    /**
-     * Utilidad: Leer cookie por nombre
-     */
-    function getCookie(name) {
-        const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-        return match ? match[2] : null;
-    }
-    
+const COOKIE_NAME      = 'skeleton_jurisdiction_visited';
+const FALLBACK_URL     = '/restricted.html';
+const VALID_JURISDICTIONS = ['UK', 'CH', 'EU', 'Americas-QP'];
+
+export const JurisdictionRouter = {
+
     /**
      * Inicialización del Router Jurisdiccional
      * Llamar desde main.js al cargar la escena JURISDICTION
      */
-    function initJurisdictionRouter() {
-        // Caso 1: Cookie existe → Navegar directo al Hero
-        if (getCookie(COOKIE_NAME)) {
+    init() {
+        // Caso 1: Cookie existe → Navegar directo al Hero (LANDING)
+        if (this.isVisited()) {
             document.dispatchEvent(new CustomEvent('Skeleton:Navigation:Request', {
                 detail: { target: 'LANDING', reason: 'jurisdiction_cookie_present' }
             }));
             return;
         }
         
-        // Caso 2: Esperar interacción del usuario
+        // Caso 2: Esperar interacción del usuario (Light DOM Selector)
         const confirmBtn = document.querySelector('[data-action="confirm-residence"]');
         if (!confirmBtn) {
             console.warn('[JurisdictionRouter] Botón confirm-residence no encontrado');
             return;
         }
         
-        confirmBtn.addEventListener('click', handleJurisdictionConfirm);
-    }
-    
-    /**
-     * Handler de confirmación de jurisdicción
-     */
-    function handleJurisdictionConfirm(event) {
-        // Leer selección desde atributo data o input asociado
+        // Usar arrow function para mantener el contexto o bind
+        confirmBtn.addEventListener('click', (e) => this._handleJurisdictionConfirm(e));
+    },
+
+    isVisited() {
+        return !!this._getCookie(COOKIE_NAME);
+    },
+
+    clearCookie() {
+        document.cookie = `${COOKIE_NAME}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; SameSite=Lax`;
+    },
+
+    /* --- PRIVADOS --- */
+
+    _handleJurisdictionConfirm(event) {
         const jurisdictionSelect = document.querySelector('[data-jurisdiction-select]');
         const selectedJurisdiction = jurisdictionSelect ? jurisdictionSelect.value : null;
-        
-        // Fallback: buscar en botón si tiene data-jurisdiction
         const jurisdiction = selectedJurisdiction || event.target.dataset.jurisdiction;
         
         if (!jurisdiction) {
@@ -75,8 +59,7 @@
         }
         
         if (VALID_JURISDICTIONS.includes(jurisdiction)) {
-            // Jurisdicción válida: setear cookie y navegar
-            setJurisdictionCookie();
+            this._setJurisdictionCookie();
             
             document.dispatchEvent(new CustomEvent('Skeleton:Navigation:JurisdictionConfirmed', {
                 detail: { 
@@ -87,7 +70,6 @@
             }));
             
         } else {
-            // Jurisdicción inválida: redirigir a fallback
             document.dispatchEvent(new CustomEvent('Skeleton:Navigation:RedirectToFallback', {
                 detail: { 
                     jurisdiction: jurisdiction,
@@ -96,18 +78,19 @@
                 }
             }));
             
-            // Redirección física después del evento
+            // Redirección física de seguridad
             window.location.href = FALLBACK_URL;
         }
+    },
+
+    _setJurisdictionCookie() {
+        const expires = new Date();
+        expires.setFullYear(expires.getFullYear() + 1);
+        document.cookie = `${COOKIE_NAME}=true; expires=${expires.toUTCString()}; path=/; SameSite=Lax`;
+    },
+
+    _getCookie(name) {
+        const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+        return match ? match[2] : null;
     }
-    
-    // Exposición pública
-    NS.JurisdictionRouter = {
-        init: initJurisdictionRouter,
-        isVisited: () => !!getCookie(COOKIE_NAME),
-        clearCookie: () => {
-            document.cookie = `${COOKIE_NAME}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-        }
-    };
-    
-})();
+};

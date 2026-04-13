@@ -3,17 +3,22 @@ AIP_landing_v0.1
 │   ├── bootloader_archive
 │   ├── memory_bridge
 │   └── memory_dump
-│       └── CONVERSATION_INDEX_Sprint_00.md
+│       ├── CONVERSATION_INDEX_Sprint_00.md
+│       ├── CONVERSATION_INDEX_Sprint_01.md
+│       └── REPORTE_BIBLIOTECARIO_2026-04-13.md
 ├── 01_arquitectura
 │   ├── AGNOSTIC_ADAPTABILITY_STANDARDS.md
 │   ├── AIP_AIP_MASTER_ARCH.md
+│   ├── AIP_LANDING_DOCTRINE.md
 │   ├── GATEKEEPER_TRUTH_TABLES.md
+│   ├── INTEGRITY_SCORE_SCHEMA.md
 │   ├── MASTER_INGESTION_FLOW.md
 │   ├── ref-app-shell.md
 │   ├── ref-passport-engine.md
 │   ├── ref-scene-manager.md
 │   ├── ref-store.md
 │   ├── SKELETON_META_FACTORY_MANIFESTO.md
+│   ├── SPRINT_DEFINITIONS.md
 │   ├── TRINITY_GEOMETRY_SPEC.md
 │   ├── UNIVERSAL_API_INTERFACES.md
 │   └── UNIVERSAL_GATEKEEPER_LOGIC.md
@@ -37,30 +42,33 @@ AIP_landing_v0.1
 ├── public
 ├── README.md
 ├── RECOVERY_MAP.md
-└── src
-    ├── core
-    │   ├── aimon-client.js
-    │   ├── at-i18n.js
-    │   ├── auth-manager.js
-    │   ├── event-bus.js
-    │   ├── firebase.js
-    │   ├── gatekeeper.js
-    │   ├── genesis-engine.js
-    │   ├── passport-engine.js
-    │   ├── router.js
-    │   ├── scene-manager.js
-    │   ├── store.js
-    │   └── theme-engine.js
-    ├── features
-    │   ├── access-gate.js
-    │   └── universal_nav.js
-    ├── i18n
-    │   ├── en.json
-    │   └── es.json
-    ├── layouts
-    │   └── app-shell.js
-    ├── main.js
-    └── styles
-        ├── base.css
-        ├── theme-landing.css
-        └── workspace-layout.css
+├── src
+│   ├── core
+│   │   ├── aimon-client.js
+│   │   ├── at-i18n.js
+│   │   ├── auth-manager.js
+│   │   ├── compliance
+│   │   ├── event-bus.js
+│   │   ├── firebase.js
+│   │   ├── gatekeeper.js
+│   │   ├── genesis-engine.js
+│   │   ├── passport-engine.js
+│   │   ├── router.js
+│   │   ├── routing
+│   │   ├── scene-manager.js
+│   │   ├── store.js
+│   │   └── theme-engine.js
+│   ├── features
+│   │   ├── access-gate.js
+│   │   └── universal_nav.js
+│   ├── i18n
+│   │   ├── en.json
+│   │   └── es.json
+│   ├── layouts
+│   │   └── app-shell.js
+│   ├── main.js
+│   └── styles
+│       ├── base.css
+│       ├── theme-landing.css
+│       └── workspace-layout.css
+└── tree-AIP_landing_v0.1.txt
