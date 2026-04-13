@@ -18,6 +18,7 @@
  */
 
 import { Store } from './store.js';
+import { AIP_CONSTANTS } from '../config/constants.js';
 
 /* [SEC-01] CONSTANTES DE CONTROL */
 const _PASSPORT_KEY        = 'skeleton_passport_v1';
@@ -84,12 +85,9 @@ export const PassportEngine = {
             }
         });
 
-        // 4. Convergencia Track B: Escuchar sumisión de Pre-KYC
-        document.addEventListener('Skeleton:PreKyc:Submitted', (e) => {
-            const payload = e.detail;
-            if (payload && payload.data) {
-                this.evaluateIntegrity(payload.data);
-            }
+        // 5. Escuchar acciones directas de la UI (OPORD-P-04)
+        document.addEventListener('Skeleton:UI:ActionRequested', (e) => {
+            this._handleUIActionRequest(e.detail);
         });
 
         this._ready = true;
@@ -115,7 +113,6 @@ export const PassportEngine = {
      */
     _processAuthentication(user, rawClaims) {
         // --- PASO 1: Normalizar claims a booleanos planos ---
-        // R-PE-03: IntegrityScore viene del backend como claim.
         const normalizedClaims = this._normalizeClaims(rawClaims);
         const score = rawClaims.integrityScore ?? null;
 
@@ -147,6 +144,51 @@ export const PassportEngine = {
         };
 
         this._commit();
+    },
+
+    /**
+     * Maneja peticiones de acción desde el UI-Binder (D4 Consolidation)
+     */
+    _handleUIActionRequest(detail) {
+        const { action, credential } = detail;
+
+        // ACCIÓN: Acceso Inversor (Directo)
+        if (action === AIP_CONSTANTS.ACTIONS.INVESTOR_CTA) {
+            this._processAuthentication({ uid: 'anonymous_investor' }, { isInvestor: true });
+            this._requestWorkspaceTransition('investor');
+            return;
+        }
+
+        // ACCIÓN: Validación de Gate (Staff)
+        if (action === AIP_CONSTANTS.ACTIONS.VALIDATE_GATE) {
+            if (this._validateInstitutionalCredential(credential)) {
+                this._processAuthentication({ uid: 'staff_operator' }, { isStaff: true, canAccessWorkspace: true });
+                this._requestWorkspaceTransition('staff');
+            } else {
+                this._activateCustodyHold({ uid: 'unknown' }, {}, 0, 'INVALID_GATE_CREDENTIAL');
+            }
+        }
+    },
+
+    /**
+     * Validación determinista de credencial fiduciaria (AIP-ACCESS-2026)
+     */
+    _validateInstitutionalCredential(input) {
+        const secret = AIP_CONSTANTS.CREDENTIAL.VALID_KEY;
+        if (!input || typeof input !== 'string') return false;
+        
+        // Comparación segura (constant-time aproximado)
+        return input.length === secret.length &&
+               [...input].every((ch, i) => ch === secret[i]);
+    },
+
+    /**
+     * Solicita transición al SceneManager
+     */
+    _requestWorkspaceTransition(role) {
+        document.dispatchEvent(new CustomEvent('skeleton:scene:activate', {
+            detail: { target: 'WORKSPACE', context: { role } }
+        }));
     },
 
     /* ─────────────────────────────────────────────

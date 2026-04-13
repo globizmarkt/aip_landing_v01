@@ -13,6 +13,7 @@ import { Store }          from './core/store.js';
 import { SceneManager }   from './core/scene-manager.js';
 import { PassportEngine } from './core/passport-engine.js';
 import { GenesisEngine }  from './core/genesis-engine.js';
+import { UIBinder }       from './core/ui-binder.js';
 
 /**
  * INYECTOR DINÁMICO DE LÓGICA POR ESCENA
@@ -50,6 +51,7 @@ const initBootloader = async () => {
         // [PASO 4] — Arrancar Motores Core y Emitir Hydration Signal
         Store.init();
         PassportEngine.init();
+        UIBinder.init();
         
         document.addEventListener('skeleton:scene:activate', handleSceneChange);
         SceneManager.init();
