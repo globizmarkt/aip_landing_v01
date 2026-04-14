@@ -1,17 +1,22 @@
 /**
  * ═══════════════════════════════════════════════════════════════════
- * ARCHIVO: main.js — ORQUESTADOR SANEADO v5.2.0 (Fase 2 Final)
+ * ARCHIVO: main.js — ORQUESTADOR SANEADO v5.2.1 (Sentinel Path Fix)
  * ═══════════════════════════════════════════════════════════════════
  */
 
 import { Store } from './core/store.js';
 import { SceneManager } from './core/scene-manager.js';
 import { PassportEngine } from './core/passport-engine.js';
-import { FirebaseConnector } from './core/firebase-triple-write.js';
 import { UIBinder } from './core/ui-binder.js';
-import { GoldenGate } from './core/golden-gate.js';
-import { LandingOrbitLogic } from './core/landing-orbit-logic.js';
 import { loadNamespace } from './core/i18n-engine.js';
+
+// RUTAS CORREGIDAS SEGÚN INVENTARIO FÍSICO (SENTINEL)
+import { FirebaseConnector } from './core/firebase-connector.js';
+import { Gatekeeper as GoldenGate } from './core/gatekeeper.js';
+
+// ALERTA: LandingOrbitLogic no detectado en tree.txt. 
+// Se mantiene comentado hasta localización física por Antigravity.
+// import { LandingOrbitLogic } from './core/landing-orbit-logic.js';
 
 const boot = async () => {
     console.log('[BOOTLOADER] 🚀 Iniciando secuencia fiduciaria...');
@@ -25,18 +30,17 @@ const boot = async () => {
         Store.init();
         PassportEngine.init();
 
-        // [PASO 3] Conexión de Persistencia y Seguridad (Cierra error de Firebase)
-        // Importante: Inyectamos el conector para que GoldenGate tenga combustible
+        // [PASO 3] Seguridad (GoldenGate + Connector)
         GoldenGate.init(PassportEngine, FirebaseConnector);
 
-        // [PASO 4] Lógica de Órbitas y Escenas
-        LandingOrbitLogic.init();
+        // [PASO 4] Lógica de Escenas y UI
+        // LandingOrbitLogic?.init(); 
         SceneManager.init();
         UIBinder.init();
 
         console.log('[BOOTLOADER] ✅ Planta Iluminada. Operación Nominal.');
 
-        // [PASO 5] SEÑAL DE IGNICIÓN (Abre la cortina en index.html)
+        // [PASO 5] SEÑAL DE IGNICIÓN
         document.dispatchEvent(new CustomEvent('Skeleton:System:Hydrated', {
             bubbles: true,
             composed: true
