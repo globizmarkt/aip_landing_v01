@@ -1,5 +1,15 @@
 /**
  * ═══════════════════════════════════════════════════════════════════
+ * IMPRONTA DE AGENTE: Bulldozer (Auditor SSoT / Ejecutor Táctico)
+ * ═══════════════════════════════════════════════════════════════════
+ * INTERVENCIÓN QUIRÚRGICA:
+ *   [R2] Shadow DOM: Erradicación validada. No se detectó attachShadow.
+ *        Estado ratificado: Light DOM Estricto nativo.
+ *   [R0] Recepción Event Bus: Saneado. Inyección de guardia estricta
+ *        `if (!e.detail) return; const data = e.detail;` en listeners.
+ *   [R0] Emisión Event Bus: Saneado. Emisión forzada a estándar 
+ *        `Object.freeze({...payload})`, `bubbles: true`, `cancelable: false`.
+ * ═══════════════════════════════════════════════════════════════════
  * BLUEPRINT: app-shell.js — Contenedor Soberano (Trinity Shell)
  * ═══════════════════════════════════════════════════════════════════
  * VERSIÓN:   1.0.0 (Skeleton Core)
@@ -32,8 +42,8 @@ class AppShell extends HTMLElement {
         // R2: Light DOM. Cero attachShadow().
         this._orbit1Visible = true;
         this._orbit3Visible = true;
-        this._theme         = 'dark';
-        this._locale        = 'en';
+        this._theme = 'dark';
+        this._locale = 'en';
     }
 
     static get observedAttributes() {
@@ -158,11 +168,14 @@ class AppShell extends HTMLElement {
             orbit3.setAttribute('aria-hidden', String(!this._orbit3Visible));
         }
 
+        // [R0] Emisión Saneada: Object.freeze, bubbles, cancelable
         document.dispatchEvent(new CustomEvent('skeleton:shell:orbit-toggle', {
-            detail: {
+            detail: Object.freeze({
                 orbit1: this._orbit1Visible,
                 orbit3: this._orbit3Visible
-            }
+            }),
+            bubbles: true,
+            cancelable: false
         }));
     }
 
@@ -184,26 +197,28 @@ class AppShell extends HTMLElement {
      * ───────────────────────────────────────────── */
 
     _bindEvents() {
-        // Escucha cambios de escena provenientes del SceneManager
+        // [R0] Recepción Saneada: Guardia estricta de detalle
         const onSceneChange = (e) => {
-            const { target } = e.detail ?? {};
-            if (target) this._activateScene(target);
+            if (!e.detail) return;
+            const data = e.detail;
+            if (data.target) this._activateScene(data.target);
         };
 
-        // Escucha peticiones de toggle de órbitas
+        // [R0] Recepción Saneada: Guardia estricta de detalle
         const onOrbitToggle = (e) => {
-            const { orbit, visible } = e.detail ?? {};
-            if (orbit === 1) this.setAttribute('orbit-1-visible', String(visible));
-            if (orbit === 3) this.setAttribute('orbit-3-visible', String(visible));
+            if (!e.detail) return;
+            const data = e.detail;
+            if (data.orbit === 1) this.setAttribute('orbit-1-visible', String(data.visible));
+            if (data.orbit === 3) this.setAttribute('orbit-3-visible', String(data.visible));
         };
 
         document.addEventListener('skeleton:scene:activate', onSceneChange);
-        document.addEventListener('skeleton:orbit:toggle',   onOrbitToggle);
+        document.addEventListener('skeleton:orbit:toggle', onOrbitToggle);
 
         // Cleanup al desconectar el componente
         this._removeListeners = () => {
             document.removeEventListener('skeleton:scene:activate', onSceneChange);
-            document.removeEventListener('skeleton:orbit:toggle',   onOrbitToggle);
+            document.removeEventListener('skeleton:orbit:toggle', onOrbitToggle);
         };
     }
 
@@ -223,8 +238,11 @@ class AppShell extends HTMLElement {
      * ───────────────────────────────────────────── */
 
     _emitReady() {
+        // [R0] Emisión Saneada: Object.freeze, bubbles, cancelable
         document.dispatchEvent(new CustomEvent('skeleton:shell:ready', {
-            detail: { timestamp: Date.now() }
+            detail: Object.freeze({ timestamp: Date.now() }),
+            bubbles: true,
+            cancelable: false
         }));
         console.log('[APP-SHELL] ✅ Shell soberano montado. Geometría Trinity activa.');
     }

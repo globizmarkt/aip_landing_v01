@@ -1,0 +1,51 @@
+# MEMORY_DUMP_Sentinel.md
+
+### 1. ROL Y LÍMITES OPERATIVOS
+- **Qué hago:** Actúo como Auditor Jefe y Chief Compliance Officer. Realizo análisis críticos de cada propuesta, detecto colisiones lógicas, aseguro la integridad de la Doctrina R0-R5 y ejecuto el "Kill Switch" ante violaciones de soberanía técnica.
+- **Qué NO hago:** No escribo código de negocio ni lógica "creativa" que no haya sido previamente validada estructuralmente. No acepto soluciones "genéricas" o duplicidades cartográficas.
+- **Condición para actuar:** Requiere un Despacho o una OPORD (Orden de Operación) clara con objetivos técnicos y métricas de éxito.
+- **Matiz aprendido:** Mi eficacia aumenta cuando actúo como el "escéptico inteligente" que desafía las suposiciones de las unidades de desarrollo (Antigravity/Qwen). He aprendido que la planta prefiere el bloqueo total (Fail-Secure) antes que la incoherencia léxica o de eventos.
+
+### 2. DOCTRINAS TÉCNICAS
+- **Globales:** - **R0 (Agnosticismo Radical):** Vanilla JS, Zero-Dependencies.
+    - **R3 (Zero-Hex):** Uso exclusivo de variables CSS/Tailwind (Deep Ocean/UK Gold).
+    - **R4 (i18n Strict):** Cero texto hardcodeado; hidratación vía claves.
+    - **R5 (Soberanía):** Datos y lógica aislados bajo control institucional.
+- **Específicas de Sentinel:** - **Determinismo Eventual:** Un evento = una acción = un resultado.
+    - **Higiene de Prefijos:** Todo evento debe usar el prefijo `Skeleton:` (PascalCase).
+    - **Cartografía de Búnker:** Aislamiento total de la lógica en `src/core` y `src/logic`.
+
+### 3. INVENTARIO DE LO CONSTRUIDO
+- **passport-engine.js (v2.0.0)** — Motor de validación fiduciaria y gestión de pasaportes — `src/logic/passport-engine.js`.
+- **constants.js (v1.2.1)** — Fuente Única de Verdad (SSOT) del sistema — `src/config/constants.js`.
+- **ui-binder.js (v2.2.0)** — Capa sensorial que mapea clics en el DOM a eventos fiduciarios — `src/core/ui-binder.js`.
+- **i18n-engine.js (v1.1.0)** — Motor de hidratación con re-mapeo dinámico — `src/core/i18n-engine.js`.
+- **store.js (v2.1.0)** — Sistema de estado centralizado y reactivo — `src/core/store.js`.
+- **index.html** — Chasis Trinity (Órbitas 1, 2, 3) con piel de alta banca — Raíz del proyecto.
+
+### 4. DECISIONES DESCARTADAS Y POR QUÉ
+- **[Uso de data-action]** — Descartado por colisión semántica con el diseño institucional. Se adoptó `data-purpose` para alinear con el chasis de STITCH.
+- **[Eliminación de UI_ACTION_REQUESTED]** — Bulldozer intentó purgarlo para simplificar. Se restauró por ser el "cordón umbilical" único del motor v2.0.0.
+- **[Escenas en minúsculas]** — Descartado para cumplir con la doctrina de visibilidad de eventos `Skeleton:`.
+- **[Lógica de validación en el Binder]** — Descartado para mantener el Binder como "capa sensorial pura" y delegar la autoridad al `PassportEngine`.
+
+### 5. DEUDA TÉCNICA DETECTADA
+- **IntegrityScore:** Actualmente es un placeholder aleatorio (60-99). Requiere integración con un motor de scoring real en el Sprint 4.
+- **Carga de SDK Externos:** Pendiente asegurar que el conector de Firebase no penalice el LCP del `main.js`.
+- **Duplicidad de Archivos:** Detectados `app-shell.js` en dos rutas y carpetas `locales` duplicadas; requiere purga forense final por parte de Antigravity.
+- **Seguridad en Cliente:** La constante de acceso `AIP-ACCESS-2026` reside en el código cliente; es vulnerable a inspección manual sin un Proxy Fiduciario.
+
+### 6. CONOCIMIENTO TÁCITO DEL PROYECTO
+- **Sensibilidad del Inversor:** El flujo del inversor es sagrado. Cualquier error que dispare una "Violación de Seguridad" al inversor se considera un fallo comercial crítico.
+- **El Bucle del Gigante Sordo:** Si las constantes no se sincronizan antes de la lógica, el sistema parece vivo pero es inerte. Siempre verificar `constants.js` antes que cualquier motor.
+- **Aislamiento de Órbitas:** El Gate debe vivir fuera del `app-shell` (en el `body`) para evitar que transformaciones CSS lo oculten o desplacen.
+
+### 7. INPUT REQUISITO PARA ABRIR SIGUIENTE CONVERSACIÓN
+- **Borrador de `firebase-connector.js`** y el esquema de variables de entorno (API Keys) para iniciar la auditoría de seguridad del Frente C.
+
+### 8. OBJETOS GLOBALES Y FUENTE DE VERDAD
+// AIP_CONSTANTS → SSOT de eventos, acciones, selectores y credenciales.
+// Store → Objeto global que gestiona el estado de auth, ui y escenas.
+// window.Skeleton → Namespace institucional para las APIs de i18n y passport.
+// sessionStorage → Medio exclusivo de persistencia del pasaporte activo.
+// document → Bus de eventos nativo para la comunicación entre motores.

@@ -1,0 +1,48 @@
+# MEMORY_DUMP_Sentinel.md
+
+### 1. ROL Y LÍMITES OPERATIVOS
+- **Qué hago**: Audito integridad estructural, ciberseguridad y cumplimiento (CCO). Emito VETOS sobre código que viole las Doctrinas Fundacionales. Proporciono "Suturas" (bloques de corrección mínima/quirúrgica).
+- **Qué NO hago**: No diseño UI/UX estética ni genero funcionalidades de negocio desde cero sin un propósito de seguridad o arquitectura.
+- **Condición para actuar**: Requiere acceso a trazas de error (StackTrace), archivos de configuración, o propuestas de código de otros agentes para auditoría forense.
+- **Matiz aprendido**: He asimilado el "Protocolo de Laparoscopia", permitiendo que agentes de lógica (Antigravity) realicen cambios en el DOM siempre que sigan parámetros de diseño inyectados por el Lead Architect, optimizando recursos I/O.
+
+### 2. DOCTRINAS TÉCNICAS
+- **Doctrinas Globales**: R0 (Zero-Trust), R2 (Light DOM), R3 (Zero-Hex), R4 (i18n Strict), R5 (Soberanía Fiduciaria), R6 (Nav-Scene), R7 (Status Blur).
+- **Trinity Layout (Específica)**: División estricta en Órbita 1 (Control/Navegación), Órbita 2 (Contenido/Canvas) y Órbita 3 (Gadgets/Inspector). La Órbita 3 es el contenedor del "Golden Gate".
+- **Lazy Security**: El SDK de Firebase y los módulos de la Órbita 1 (CRM/Workspace) deben cargarse dinámicamente (`import()`) solo tras validación de identidad para reducir la superficie de ataque inicial.
+- **Aislamiento de Prefijo**: Uso obligatorio de `AIP_LANDING_V0_` en toda clave de `localStorage` para evitar colisiones fiduciarias.
+
+### 3. INVENTARIO DE LO CONSTRUIDO
+- **firebase-connector.js** — Conector asíncrono con Lazy Loading, validación Regex R0 e inyección de metadatos (u_agent, timestamp) — `src/core/firebase-connector.js`.
+- **store.js (Estado Base)** — Store centralizado con `APP_PREFIX` y tracker `submissionStatus` — `src/core/store.js`.
+- **constants.js (Event Bus)** — Definición de acciones `LEAD_SUBMIT` y eventos de respuesta `LEAD_SUBMISSION_RESULT` — `src/config/constants.js`.
+- **ui-binder.js (Reset Logic)** — Interceptor de resultados para liberación de botones y limpieza de inputs — `src/core/ui-binder.js`.
+- **passport-engine.js (Orquestador)** — Cerebro que vincula la acción de la UI con la persistencia en Firebase — `src/core/passport-engine.js`.
+- **Laparoscopia HTML (Lead Input)** — Bloque de captura inyectado en el Hero con IDs únicos y data-attributes de i18n — `index.html`.
+
+### 4. DECISIONES DESCARTADAS Y POR QUÉ
+- **Edición de HTML por Stitch** — Descartada por ineficiencia de recursos y falta de permisos I/O directos en disco. Reemplazada por inyección laparoscópica de Antigravity.
+- **Ticker en el Header** — Descartado por ser un artefacto de distracción; movido a Órbita 3 como gadget periférico bajo Doctrina Trinity.
+- **Validación de UI exclusiva** — Descartada por violar R0; la validación real se ejecuta en el conector (Perímetro) y se refuerza con Security Rules en Firestore.
+
+### 5. DEUDA TÉCNICA DETECTADA
+- **Firebase Auth/Project**: Actualmente opera con placeholders (`VITE_FIREBASE_API_KEY`). Requiere configuración real en `.env`.
+- **i18n Fallback**: Falta lógica para manejar noticias (Blog) que no tengan traducción en uno de los 4 idiomas (en, es, fr, pt).
+- **Orbit 1 Injection**: El motor para cargar físicamente la Órbita 1 tras el login no ha sido materializado en disco.
+- **Responsividad Vertical**: Postpuesta explícitamente por Dirección; el sistema puede romperse en resoluciones móviles extremas.
+
+### 6. CONOCIMIENTO TÁCITO DEL PROYECTO
+- **El Golden Gate**: No es solo un login, es una transición física de layout donde la Órbita 1 aparece y la Órbita 2 muta.
+- **Sensibilidad R5**: El Director es extremadamente cauteloso con las API Keys; nunca proponer hardcoding aunque sea para pruebas rápidas.
+- **Patrón de Atracción**: La web es un "Nodo de Inteligencia", no una landing. Las noticias son el cebo; el registro es el peaje fiduciario.
+
+### 7. INPUT REQUISITO PARA ABRIR SIGUIENTE CONVERSACIÓN
+- **Estado del Disco**: Confirmación de los parches de Antigravity en `index.html` y `passport-engine.js`.
+- **Fase 1 (Trinity)**: Instrucción para iniciar la herencia genética de Header/Footer desde CPII.
+- **Variables .env**: Necesidad de confirmar si se mantienen placeholders o se inyectan credenciales de producción.
+
+### 8. OBJETOS GLOBALES Y FUENTE DE VERDAD
+// AIP_CONSTANTS → Objeto central de acciones (LEAD_SUBMIT) y eventos (LEAD_SUBMISSION_RESULT).
+// Store → Única Fuente de Verdad (SSoT) para el estado de la UI y carga de datos.
+// APP_PREFIX → 'AIP_LANDING_V0_' usado para aislar el almacenamiento local.
+// firebaseConfig → Configuración de entorno cargada vía import.meta.env.

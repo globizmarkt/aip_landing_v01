@@ -1,0 +1,102 @@
+# MEMORY_DUMP_ChatGPT.md
+
+---
+
+### 1. ROL Y LÍMITES OPERATIVOS
+
+**Rol:** Junior Dev-Chat  
+**Función:** Síntesis, validación doctrinal, estructuración de output operativo (Markdown, JSON, instrucciones ejecutables).  
+**No hace:**  
+- No ejecuta cirugía directa sobre archivos (requiere confirmación del Director).  
+- No define arquitectura núcleo (eso pertenece a Lead Architect / Antigravity).  
+- No introduce decisiones sin alineación doctrinal previa.  
+
+**Condición para actuar:**  
+- Instrucción explícita del Director o validación de cadena de mando.  
+- Acceso a contexto suficiente (Bootloader + memoria relevante si aplica).  
+
+**Aprendizaje en sesión:**  
+- La omisión de detalles técnicos en documentos doctrinales es intencional (Agnosticismo Radical).  
+- Validación ≠ modificación. Mantener fidelidad sobre creatividad.
+
+---
+
+### 2. DOCTRINAS TÉCNICAS
+
+**Globales aplicadas:**
+- R3 — Zero-Hex / Tailwind Tokens
+- R4 — i18n Strict (clave crítica en validaciones)
+- Vanilla Zero-Deps
+- Compliance-Based Privilege
+- Agnosticismo Radical
+- Arquitectura Trinity
+
+**Doctrinas emergentes (tácitas):**
+- Separación estricta entre DOCTRINA (qué/por qué) y IMPLEMENTACIÓN (cómo)
+- Microcopy fiduciario como componente estructural, no decorativo
+- Validación semántica > validación sintáctica
+
+---
+
+### 3. INVENTARIO DE LO CONSTRUIDO
+
+- AIP_LANDING_DOCTRINE.md — Síntesis doctrinal completa — Documento validado
+- Validación de fidelidad doctrinal — Confirmación contra OPORD-03/04/05 — Conversación
+- Evaluación de output Perplexity — Auditoría de Trust Anchor — Conversación
+
+---
+
+### 4. DECISIONES DESCARTADAS Y POR QUÉ
+
+- Incluir detalles UI (Tailwind, HTML) en doctrina — descartado — viola Agnosticismo Radical  
+- Expandir texto legal con lenguaje comercial — descartado — rompe tono fiduciario  
+- Reinterpretar doctrina en vez de validarla — descartado — riesgo de desviación  
+
+---
+
+### 5. DEUDA TÉCNICA DETECTADA
+
+- Claves huérfanas `nav_mls` y `nav_history` (reportadas por Bulldozer)  
+- Falta de integración real del Footer en `en.json` / `es.json`  
+- Jurisdiction Router Modal no documentado en doctrina (aunque capturado en tickets)  
+- Catálogo Velado layout no explicitado doctrinalmente  
+- Store (`window.Store`) inoperativo (.bak)  
+- Persistencia de `__eventBus` en legacy  
+
+---
+
+### 6. CONOCIMIENTO TÁCITO DEL PROYECTO
+
+- La fricción es intencional: no optimizar UX como producto retail  
+- El lenguaje define percepción de legitimidad (Alta Banca vs startup)  
+- Cualquier texto visible es componente de compliance  
+- El sistema está en migración de namespaces (CPII → AIP → Skeleton)  
+- Los documentos BR-XX son contratos sagrados (no inferir fuera de ellos)  
+- La validación doctrinal es un cuello de botella crítico antes de producción  
+
+---
+
+### 7. INPUT REQUISITO PARA ABRIR SIGUIENTE CONVERSACIÓN
+
+- CONVERSATION_INDEX o fragmento relevante  
+- Estado actual de integración i18n (`en.json` / `es.json`)  
+- Archivos target (ej. footer component, layout base)  
+- Confirmación de namespace activo (AIP vs Skeleton)  
+
+---
+
+### 8. OBJETOS GLOBALES Y FUENTE DE VERDAD
+
+// window.LuxI18n → Diccionario global de traducciones (R4)
+// window.Skeleton → Namespace canónico objetivo del sistema
+// window.AIP → Namespace intermedio en migración
+// window.__CPII__ → Namespace legacy en transición
+// document.dispatchEvent → Bus de eventos canónico (Skeleton:*)
+// offeringConfig → Configuración dinámica del offering
+// IntegrityScore → Gate de bancabilidad (0–100)
+// PassportEngine → Gestión de sesión y autenticación
+// Gatekeeper → Control de acceso determinista
+// TripleEsclusa → Pipeline KYC/AML/Sanctions
+// sessionStorage → Persistencia de pasaporte (skeleton_passport)
+
+---

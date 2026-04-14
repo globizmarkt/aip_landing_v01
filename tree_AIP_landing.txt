@@ -1,0 +1,105 @@
+ULTIMO CAMBIO: 2026-04-14 17:52
+
+AIP_landing_v0.1/
+[2026-04-14 08:32] |-- .env
+[2026-04-13 08:41] |-- .gitignore
+[2026-04-13 08:41] |-- 00_brief
+[2026-04-13 08:41] |   |-- bootloader_archive
+[2026-04-13 08:41] |   |-- memory_bridge
+[2026-04-14 11:56] |   -- memory_dump
+[2026-04-14 11:23] |       |-- 2026-04-14 VIBE-AIP-FORK-o1 landing
+[2026-04-14 11:23] |       |   |-- Bootloader_s5.md.txt
+[2026-04-14 10:47] |       |   |-- FUSION_MEMORY_Bibliotecario_S1.md.txt
+[2026-04-14 10:46] |       |   |-- FUSION_MEMORY_Bulldozer_S1.md.txt
+[2026-04-14 10:16] |       |   |-- FUSION_MEMORY_Core Architect_S1.md.txt
+[2026-04-14 10:43] |       |   |-- FUSION_MEMORY_Git Master Manus_S1.md.txt
+[2026-04-14 10:48] |       |   |-- FUSION_MEMORY_Junior Dev-ChatGPT_S1.md.txt
+[2026-04-14 10:45] |       |   |-- FUSION_MEMORY_Junior Dev-Kimi_S1.md.txt
+[2026-04-14 10:45] |       |   |-- FUSION_MEMORY_Junior Dev-Perplexity_S1.md.txt
+[2026-04-14 10:47] |       |   |-- FUSION_MEMORY_Junior Dev-Qwen_S1.md.txt
+[2026-04-14 10:42] |       |   |-- FUSION_MEMORY_Lead Architect_S1.md.txt
+[2026-04-14 10:19] |       |   |-- FUSION_MEMORY_Sentinel-preskill_S1.md.txt
+[2026-04-14 10:18] |       |   |-- FUSION_MEMORY_Sentinel_S1.md.txt
+[2026-04-14 10:41] |       |   -- FUSION_MEMORY_Stitch_S1.md.txt
+[2026-04-14 11:27] |       |-- BOOTLOADER_Sprint_04_2026-04-14.md
+[2026-04-13 08:45] |       |-- CONVERSATION_INDEX_Sprint_00.md
+[2026-04-13 08:54] |       |-- CONVERSATION_INDEX_Sprint_01.md
+[2026-04-14 11:56] |       |-- CONVERSATION_INDEX_Sprint_04.md
+[2026-04-13 09:28] |       |-- REPORTE_BIBLIOTECARIO_2026-04-13.md
+[2026-04-14 11:56] |       -- REPORTE_BIBLIOTECARIO_2026-04-14.md
+[2026-04-13 09:42] |-- 01_arquitectura
+[2026-03-15 22:21] |   |-- AGNOSTIC_ADAPTABILITY_STANDARDS.md
+[2026-03-15 22:21] |   |-- AIP_AIP_MASTER_ARCH.md
+[2026-04-13 08:48] |   |-- AIP_LANDING_DOCTRINE.md
+[2026-03-15 22:21] |   |-- GATEKEEPER_TRUTH_TABLES.md
+[2026-04-13 09:42] |   |-- INTEGRITY_SCORE_SCHEMA.md
+[2026-03-15 22:21] |   |-- MASTER_INGESTION_FLOW.md
+[2026-03-15 22:21] |   |-- SKELETON_META_FACTORY_MANIFESTO.md
+[2026-04-13 09:40] |   |-- SPRINT_DEFINITIONS.md
+[2026-04-13 16:21] |   |-- TRINITY_GEOMETRY_SPEC.md
+[2026-03-15 22:21] |   |-- UNIVERSAL_API_INTERFACES.md
+[2026-03-15 22:21] |   |-- UNIVERSAL_GATEKEEPER_LOGIC.md
+[2026-04-13 08:09] |   |-- ref-app-shell.md
+[2026-04-13 08:12] |   |-- ref-passport-engine.md
+[2026-04-13 08:10] |   |-- ref-scene-manager.md
+[2026-04-13 08:07] |   -- ref-store.md
+[2026-04-14 14:06] |-- 02_auditoria
+[2026-04-14 14:38] |   -- indexacion de planos CPII 2026-04-14
+[2026-04-14 14:52] |       |-- access-form-schema.js
+[2026-04-14 14:52] |       |-- firebase-triple-write.js
+[2026-04-14 14:52] |       |-- golden-gate.js
+[2026-04-14 14:53] |       |-- indexacion de planos CPII
+[2026-04-14 14:52] |       |-- landing-orbit-logic.js
+[2026-04-14 15:00] |       -- passport-engine.js
+[2026-04-13 08:41] |-- 02_esquemas_datos
+[2026-04-13 08:41] |-- 03_prototipo
+[2026-04-13 08:45] |-- README.md
+[2026-04-13 08:45] |-- RECOVERY_MAP.md
+[2026-04-13 08:41] |-- assets
+[2026-04-13 08:41] |   |-- css
+[2026-04-13 08:41] |   -- img
+[2026-04-13 08:41] |-- bridge
+[2026-04-13 08:41] |   -- README.md
+[2026-04-13 08:41] |-- docs
+[2026-04-13 08:41] |   -- AGENT_FILE_SPEC.md
+[2026-04-14 08:54] |-- index.html
+[2026-04-14 08:31] |-- package-lock.json
+[2026-04-14 08:31] |-- package.json
+[2026-04-13 08:41] |-- public
+[2026-04-13 18:11] |-- src
+[2026-04-13 18:11] |   |-- components
+[2026-04-14 13:59] |   |   |-- app-shell.js
+[2026-04-13 16:15] |   |   -- ticker-module.js
+[2026-04-13 17:29] |   |-- config
+[2026-04-14 08:42] |   |   -- constants.js
+[2026-04-14 08:33] |   |-- core
+[2026-03-16 18:12] |   |   |-- aimon-client.js
+[2026-03-16 18:13] |   |   |-- auth-manager.js
+[2026-04-13 14:24] |   |   |-- compliance
+[2026-04-13 14:24] |   |   |   -- pre-kyc-engine.js
+[2026-03-16 18:11] |   |   |-- event-bus.js
+[2026-04-14 08:42] |   |   |-- firebase-connector.js
+[2026-04-13 09:43] |   |   |-- firebase.js
+[2026-04-13 21:44] |   |   |-- gatekeeper.js
+[2026-04-13 21:17] |   |   |-- genesis-engine.js
+[2026-04-13 17:16] |   |   |-- i18n-engine.js
+[2026-04-14 08:56] |   |   |-- passport-engine.js
+[2026-04-13 14:24] |   |   |-- referral-capture.js
+[2026-03-16 18:11] |   |   |-- router.js
+[2026-04-13 14:24] |   |   |-- routing
+[2026-04-13 14:24] |   |   |   -- jurisdiction-router.js
+[2026-04-13 18:11] |   |   |-- scene-manager.js
+[2026-04-14 08:42] |   |   |-- store.js
+[2026-03-16 18:12] |   |   |-- theme-engine.js
+[2026-04-14 08:55] |   |   -- ui-binder.js
+[2026-04-13 08:44] |   |-- features
+[2026-04-13 18:11] |   |   |-- access-gate.js
+[2026-03-18 17:11] |   |   -- universal_nav.js
+[2026-04-13 16:14] |   |-- locales
+[2026-04-13 21:44] |   |   -- locales.json
+[2026-04-13 21:57] |   |-- main.js
+[2026-04-13 08:44] |   -- styles
+[2026-03-16 18:48] |       |-- base.css
+[2026-04-13 17:19] |       |-- theme-landing.css
+[2026-03-16 19:03] |       -- workspace-layout.css
+[2026-04-14 17:52] -- tree_AIP_landing.txt

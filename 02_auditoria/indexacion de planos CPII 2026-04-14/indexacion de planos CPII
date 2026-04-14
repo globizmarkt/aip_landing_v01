@@ -1,0 +1,188 @@
+# LOG DE INDEXACIÓN Y CLONACIÓN DE PLANOS CPII
+# Vertical: AIP Landing v0.1 | Track A & B
+# Fecha de sesión: 2026-04-14
+# Responsable: Antigravity (Core Engineer)
+# Directriz: Instrucción Técnica — Indexación de Planos CPII (CCO Aprobado)
+================================================================================
+
+## [CONTEXTO INICIAL]
+La instrucción original solicitó la indexación e "AIP-ficación" de los módulos
+funcionales de los proyectos CPII (CPII_crm_v0.1 y CPII_v1.0) para su clonación
+como bóveda de referencia de la Vertical 0 (AIP_landing_v0.1).
+
+Regla operativa: CLONAR el archivo completo. NO fragmentar. Aplicar únicamente
+sustituciones quirúrgicas de doctrina.
+
+## [CORRECCIONES DOCTRINALES (Veto CCO) — APROBADAS POR EL DIRECTOR]
+
+    ERROR INICIAL DETECTADO:
+    ✗ Antigravity propuso inyectar la sesión en window.AIP_LANDING_V0_SESSION.
+      Esto contamina el objeto global con nombres de variables mutantes.
+
+    VERDAD FIDUCIARIA (SSoT):
+    ✓ D-10 (Namespace): El motor se instancia como window.Skeleton.PassportEngine
+    ✓ R5 (Storage):     El prefijo AIP_LANDING_V0_ es EXCLUSIVO para llaves de
+                        sessionStorage/localStorage (ej: AIP_LANDING_V0_PASSPORT)
+    ✓ R0 (Eventos):     Solo document.dispatchEvent con prefijo Skeleton: y
+                        payloads inmutables (Object.freeze)
+    ✓ Sentinel:         Las variables de entorno (VITE_FIREBASE_API_KEY) no pueden
+                        quedar expuestas en el objeto window bajo ninguna circunstancia.
+
+## [ARCHIVOS FUENTE INDEXADOS]
+
+    CPII_crm_v0.1/core/passport-engine.js          → Motor de Autorización O(1)
+    CPII_crm_v0.1/features/at-admin-gate.js        → Lógica OAuth y Manual Gate
+    CPII_crm_v0.1/golden-gate.html                 → Estructura Born-Locked UI
+    CPII_crm_v0.1/functions/index.js               → Cloud Functions (Telegram, Validate)
+    CPII_v1.0/access-form.html                     → Triple Write + Validación + Ambassador Map
+
+================================================================================
+## [FASES DE EJECUCIÓN]
+================================================================================
+
+### [FASE 1] CLONACIÓN: Passport Engine (Motor de Autorización)
+Tipo:    [MÓDULO 1]
+Estado:  ✅ COMPLETADO — 2026-04-14
+Origen:  CPII_crm_v0.1/core/passport-engine.js
+Destino: [este directorio]/passport-engine.js
+
+Ajustes quirúrgicos aplicados:
+  · D-10: window.__CPII__.PassportEngine → window.Skeleton.PassportEngine
+  · R5:   Sesión persistida en sessionStorage.getItem('AIP_LANDING_V0_PASSPORT')
+  · R0:   window.dispatchEvent('passport:audit-complete')
+          → document.dispatchEvent('Skeleton:Passport:AuditComplete', Object.freeze({...}))
+  · R0:   'passport:staff-authenticated' → 'Skeleton:Passport:StaffAuthenticated'
+  · R0:   'passport:session-updated'     → 'Skeleton:Passport:SessionUpdated'
+  · R0:   'cpii:kyc-dismissed'           → 'Skeleton:KYC:Dismissed'
+  · R5:   Tenant ID de fallback 'cpii_lux_v1.0' → 'aip_v0.1'
+
+Resultado: Motor estabilizado. Default-Deny verificado.
+
+---
+
+### [FASE 2] CLONACIÓN: Golden Gate (Autenticación Fiduciaria)
+Tipo:    [MÓDULO 2]
+Estado:  ✅ COMPLETADO — 2026-04-14
+Origen:  CPII_crm_v0.1/features/at-admin-gate.js + golden-gate.html
+Destino: [este directorio]/golden-gate.js
+
+Ajustes quirúrgicos aplicados:
+  · D-10: Web Component (<at-admin-gate>) → Clase JS instanciada en
+          window.Skeleton.GoldenGate
+  · R5:   Sesión → window.Skeleton.session
+          Persistencia → sessionStorage.setItem('AIP_LANDING_V0_PASSPORT', ...)
+          Email Link  → localStorage.setItem('AIP_LANDING_V0_EMAIL_SIGNIN', ...)
+  · R0:   Eventos generados:
+          'Skeleton:Gate:Ready'
+          'Skeleton:Gate:Unlocked'
+          'Skeleton:Gate:StateChanged'
+          'Skeleton:Gate:StaffAuthenticated'
+          'Skeleton:Gate:StaffAuthFailed'
+          'Skeleton:Gate:ManualLinkSent'
+          'Skeleton:Passport:SessionUpdated'
+  · R2:   Eliminado Shadow DOM. Descubrimiento por Light DOM (getElementById)
+
+Resultado: Flujo OAuth (Google/Apple/MS) y Manual (Email Link) blindados.
+
+---
+
+### [FASE 3] CLONACIÓN: Firebase Triple Write (Persistencia Soberana)
+Tipo:    [MÓDULO 3]
+Estado:  ✅ COMPLETADO — 2026-04-14
+Origen:  CPII_v1.0/access-form.html [SEC-09]
+         CPII_v1.0/functions/index.js (sendLeadToTelegram)
+Destino: [este directorio]/firebase-triple-write.js
+
+Ajustes quirúrgicos aplicados:
+  · Sentinel: URLs de Cloud Functions se inyectan via configureTripleWrite({...})
+    desde el shell. NUNCA expuestas en window.
+  · [1] Firestore: addDoc(collection(db,'leads')) + metadatos enriquecidos
+    (tenant_id, landing_version, u_agent, timestamps duales)
+  · [2] Telegram: fetch() a URL parametrizada. Non-blocking try/catch.
+  · [3] Sheets: fetch() fire-and-forget. No bloquea el flujo de éxito.
+  · R0: 'Skeleton:Lead:SubmissionResult' con Object.freeze()
+  · API pública: configureTripleWrite() + executeTripleWrite(leadData, firebaseDeps)
+
+Resultado: Triple escritura blindada. Cero credenciales expuestas.
+
+---
+
+### [FASE 4] CLONACIÓN: Access Form Schema (Validación y Ambassador Map)
+Tipo:    [MÓDULO 4]
+Estado:  ✅ COMPLETADO — 2026-04-14
+Origen:  CPII_v1.0/access-form.html [SEC-07, SEC-08]
+Destino: [este directorio]/access-form-schema.js
+
+Ajustes quirúrgicos aplicados:
+  · CLUB_MANAGER_MAP: Object.freeze() exportable. 11 países mapeados.
+  · getClubManager(countryCode): resolución O(1)
+  · AMBASSADOR_EXCEPTIONS: Registro institucional con tildes canónicas
+  · AUTHORIZED_AMBASSADORS: Array de 18 slugs autorizados
+  · resolveAmbassadorName(slug): Excepciones → TitleCase automático
+  · initAmbassadorTracking(): Captura ?ref= → localStorage 'AIP_LANDING_V0_REF'
+  · validateLeadForm(formData): DOM-agnostico. Opera sobre objeto plano.
+  · buildLeadPayload(formData): Serializa al schema normalizado para Triple Write
+  · R0: 'Skeleton:Ambassador:Resolved' con Object.freeze()
+
+Resultado: Ambassador registry portable. Validación DOM-agnóstica.
+
+---
+
+### [FASE 5] CLONACIÓN: Landing Orbit Logic (Hidratación Orbit 2)
+Tipo:    [MÓDULO 5]
+Estado:  ✅ COMPLETADO — 2026-04-14
+Origen:  CPII_v1.0/index.html [SEC-07] + utils/tracking.js
+Destino: [este directorio]/landing-orbit-logic.js
+
+Ajustes quirúrgicos aplicados:
+  · captureReferralFromUrl(): Elimina CPIITracking legacy.
+    → localStorage 'AIP_LANDING_V0_REF' (R5)
+  · preselectProfileType(): Lee ?tipo= y activa radio button si existe en DOM
+  · initOrbit2ScrollHydration(): IntersectionObserver (threshold 15%).
+    Clase 'sk-orbit2--visible'. Fire-once por sección.
+  · initStickyHeader(): requestAnimationFrame passive. Clase 'sk-header--scrolled'
+  · enrichCtaLinks(): [data-cta-access] enriquecidos con ?ref= para tracking
+  · R0: Eventos canónicos:
+    'Skeleton:Referral:Captured'
+    'Skeleton:Landing:ProfilePreselected'
+    'Skeleton:Orbit2:SectionVisible'
+    'Skeleton:Orbit2:Ready'
+
+Resultado: Hidratación agnóstica y portable. Sin dependencias legacy.
+
+================================================================================
+## [RESUMEN DE ENTREGA — SESIÓN 2026-04-14]
+================================================================================
+
+ARCHIVOS GENERADOS EN ESTE DIRECTORIO:
+
+  ✅  passport-engine.js       [MÓDULO 1] Motor de Autorización Fiduciaria O(1)
+  ✅  golden-gate.js           [MÓDULO 2] Autenticación OAuth + Manual (Gatekeeper)
+  ✅  firebase-triple-write.js [MÓDULO 3] Persistencia Soberana (Firestore+TG+Sheets)
+  ✅  access-form-schema.js    [MÓDULO 4] Validación + Ambassador Map + Lead Schema
+  ✅  landing-orbit-logic.js   [MÓDULO 5] Hydration Orbit 2 + Referral Capture
+
+CONTRATO DE DOCTRINA VERIFICADO:
+  [D-10] Namespace canónico:  window.Skeleton.*                               ✅
+  [R0]   Event Bus agnóstico: document.dispatchEvent('Skeleton:...')          ✅
+  [R0]   Payloads inmutables: Object.freeze({...})                            ✅
+  [R2]   Light DOM:           Sin Shadow DOM ni attachShadow()                ✅
+  [R5]   Storage Isolation:   Prefijo AIP_LANDING_V0_ en todas las llaves     ✅
+  [Sentinel] Seguridad:       Cero credenciales expuestas en window           ✅
+
+================================================================================
+## [PUSH SOBERANO SPRINT 5] REFACTORIZACIÓN SENTINEL R0
+================================================================================
+Estado: ✅ COMPLETADO — 2026-04-14
+
+Se aplicó rigurosamente el Estándar Sentinel R0 a los 5 módulos para aislar dependencias
+y asegurar la madurez de la bóveda antes del push (Salto del 18% al 30%).
+
+1. Encapsulamiento (IIFE): Cada archivo envuelto en `(function(global) { 'use strict'; ... })(window);`
+2. Aislamiento de Estado: Privado vía bloque `_PRIVATE_SCOPE`. APP_PREFIX está blindado en este closure.
+3. API Fiduciaria (D-10): Expuesta a través de `global.Skeleton.*`. Resto del estado local está invisible al window.
+4. Inmutabilidad (R0): El namespace de exportación está sellado con `Object.freeze()`. Strict mode garantizado.
+
+PRÓXIMO PASO (Planta):
+  Inyección manual de estos módulos en src/core/ de AIP_landing_v0.1.
+  Módulos M1-M5 validados y listos para el Push Soberano Sprint 5.

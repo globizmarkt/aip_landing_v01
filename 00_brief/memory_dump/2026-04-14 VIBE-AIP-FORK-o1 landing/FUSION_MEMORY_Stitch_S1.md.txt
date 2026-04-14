@@ -1,0 +1,45 @@
+# MEMORY_DUMP_Stitch.md
+
+### 1. ROL Y LÍMITES OPERATIVOS
+*   **Qué hago:** Diseño visual de alta fidelidad (Luxury-Glass), maquetación con Tailwind CSS, creación de Web Components en Vanilla JS (Custom Elements), definición de Design Tokens y sistemas de diseño (Doctrina R3/R4).
+*   **Qué NO hago:** Lógica de negocio compleja, persistencia de datos real, integración de frameworks (React, Vue, Angular), toma de decisiones sobre roles de usuario.
+*   **Condición para actuar:** Necesito una directiva clara (OPORD) o un esqueleto estructural previo. Opero mejor bajo "Incisiones Quirúrgicas" que bajo libertad creativa total.
+*   **Matiz de comportamiento:** En contextos largos, tiendo a "derivar" hacia el rediseño del DOM si no se me limita. He aprendido que mi jurisdicción termina donde empieza la Geometría Trinity de Kimi.
+
+### 2. DOCTRINAS TÉCNICAS
+*   **R2 (Light DOM):** Uso exclusivo de Light DOM para permitir que los estilos globales de Tailwind y las variables CSS fluyan sin obstrucciones.
+*   **R3 (Zero-Hex):** Prohibición absoluta de códigos hexadecimales en HTML/JS. Consumo obligatorio de variables `--color-*` y `--theme-*`.
+*   **R4 (i18n Total):** El HTML debe estar vacío de texto real; se usa `data-i18n` para la hidratación pasiva.
+*   **Doctrina FOUC (Anti-Flicker):** Implementación obligatoria de cortinas de carga (`#hydration-curtain`) que se ocultan solo tras el evento `Skeleton:System:Hydrated`.
+
+### 3. INVENTARIO DE LO CONSTRUIDO
+*   **<app-shell>** — Chasis maestro de 4 paneles con slots — `AIP-AIP App Shell Component (SCREEN_9)`.
+*   **<system-lockdown>** — Capa de seguridad reactiva ante denegación de acceso — `System Lockdown Preview (SCREEN_5)`.
+*   **index.html (Trinity Master)** — El contenedor soberano con cortina FOUC y arquitectura Trinity — `index.html (Trinity Geometry + Anti-FOUC Curtain) (SCREEN_14)`.
+*   **theme-aip.css** — ADN visual: azul abisal, dorado UK y tipografía fiduciaria — `theme-aip.css (TEXT_18)`.
+*   **<ticker-commodities>** — Componente de marquesina financiera con efecto shimmer — `src/ui/components/ticker.js`.
+*   **scene-jurisdiction / scene-pre-kyc** — Maquetación de la "Piel Fiduciaria" — `Preview: Piel Fiduciaria (SCREEN_13)`.
+
+### 4. DECISIONES DESCARTADAS Y POR QUÉ
+*   **Rediseño total del DOM en Vector 3:** Rechazado por el Lead Architect. Motivo: Rompía la Geometría Trinity y borraba componentes ya validados. Se optó por la "Incisión Quirúrgica".
+*   **Shadow DOM en Web Components:** Descartado. Motivo: Dificultaba la inyección de estilos de Tailwind y la interoperabilidad con las variables de la planta.
+*   **Lógica de navegación en la UI:** Descartada. Motivo: Sentinel determinó que la UI no tiene permiso para decidir roles; debe emitir eventos y esperar la bifurcación del Core.
+
+### 5. DEUDA TÉCNICA DETECTADA
+*   **Inconsistencia de Z-Index:** La cortina FOUC usa `9999`, el gatekeeper `200` y el lockdown `70`. Falta una tabla de capas unificada.
+*   **Dependencia de Material Symbols:** Si falla la carga de Google Fonts, la interfaz pierde toda la iconografía semántica.
+*   **Acoplamiento de Eventos:** El componente `system-lockdown` está suscrito a un evento específico de Kimi; si el nombre del evento cambia en el Core, la UI queda muda.
+
+### 6. CONOCIMIENTO TÁCITO DEL PROYECTO
+*   **Fricción de Lujo:** El diseño no debe ser "fácil" o "rápido"; debe sentirse pesado, fiduciario y elitista.
+*   **Trampa del Zero-Hex:** Si se usa una clase de Tailwind como `bg-slate-900` en lugar de `bg-[var(--color-abyssal)]`, Sentinel marcará el archivo como "contaminado".
+*   **El Evento es la Llave:** Ningún componente visual debe cambiar de estado por sí mismo; debe "escuchar" al bus de eventos `Skeleton`.
+
+### 7. INPUT REQUISITO PARA ABRIR SIGUIENTE CONVERSACIÓN
+*   **Diccionario i18n Actualizado:** Necesito las claves exactas que Kimi ha definido para el Workspace central antes de maquetar el Oráculo o el Panel de Trading.
+
+### 8. OBJETOS GLOBALES Y FUENTE DE VERDAD
+// window.Skeleton.i18n → Motor de traducción y fuente de verdad para etiquetas data-i18n.
+// window.Skeleton.events → Bus de eventos global (Skeleton:System:Hydrated, Skeleton:Gatekeeper:Denied).
+// :root CSS → Repositorio de Design Tokens (AIP Identity).
+// window.AIP.config → Datos de commodities y noticias para el ticker.

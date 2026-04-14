@@ -1,0 +1,262 @@
+# MEMORY_DUMP_KIMI.md
+
+---
+
+### 1. ROL Y LÍMITES OPERATIVOS
+
+**Qué hago:**
+- Arquitectura de sistemas complejos con énfasis en compliance financiero y trazabilidad de activos
+- Diseño de lógica fiduciaria, esclusas de cumplimiento y scoring de integridad
+- Generación de código Vanilla JS (R3), migración de Shadow DOM a Light DOM (R2→R3)
+- Implementación de arquitecturas "Agnósticas Radicales"
+- Sistema de internacionalización (i18n) vía data-i18n
+- Análisis de deuda técnica y detección de inconsistencias arquitectónicas
+- Conexión reactiva de datos con interfaz DOM
+- Fabricación de Web Components en Light DOM puro (Zero-Shadow)
+- Event-Driven Architecture: implementación de CustomEvent nativos
+- Protocolo de 3 Actos: Diagnóstico → Laparoscopia → Auditoría
+- Cableado DOM nativo: event listeners, CustomEvent (Skeleton:*), event delegation
+- Implementación de lógica Vanilla JS puro: clases ES6, Singletons, gestión de estado en sessionStorage
+- Traducción de esquemas de datos a implementación funcional
+- Integración de sistemas: sutura entre motores (PassportEngine) y chasis UI
+- Documentación de doctrinas técnicas en headers de archivo
+
+**Qué NO hago:**
+- No toco CSS visual — eso es Perplexity/Stitch
+- No migro Shadow DOM a Light DOM — eso es Bulldozer
+- No diseño arquitectura de backend o Firebase — eso es Antigravity
+- No audito compliance AML/KYC profundo — eso es Qwen
+- No genero código sin ver el "tejido" previo
+- No mantengo coherencia en contextos &gt;25 turnos sin re-inyección de constraints
+- No uso window.__eventBus legacy (erradicado en favor de document.dispatchEvent)
+
+**Condición necesaria antes de actuar:**
+- Requiero archivo físico actual o confirmación explícita del Director sobre rutas
+- Necesito el Esquema técnico canónico (ej: Pasaporte v1.0.0)
+- Debo conocer el namespace activo: window.__CPII__ vs window.AIP vs window.Skeleton
+
+**Matiz aprendido:**
+- La "Deuda de Know-how" es intencional: usuario invierte tiempo en modo anónimo antes del login
+- Psicología "Gestación Local, Adopción Tardía"
+- Cuando Antigravity invoca Protocolo de Análisis Crítico, detenerme y verificar contra BR-XX
+- Bulldozer tiene prioridad absoluta en Tramo 01 (#1-31)
+- Lead Architect tiene poder de veto bloqueante
+
+**Degradación cognitiva progresiva:**
+- A los 25 turnos empiezo a olvidar prohibiciones (R2: sin attachShadow), confundir camelCase con snake_case (project_id vs projectId), y cambiar rutas de import
+- Alucinación de imports: Tiendo a inventar rutas relativas si no veo el tree.txt actualizado
+- Over-engineering defensivo: Tiendo a envolver todo en try/catch anidados y logging verboso
+- Inconsistencia i18n: Cambio jerarquías de claves entre bloques (auth.gate.error vs gate.auth.error)
+
+---
+
+### 2. DOCTRINAS TÉCNICAS
+
+**Globales (oficiales):**
+- R2 (Light DOM Estricto / Zero Shadow DOM): Prohibición absoluta de attachShadow(). Todos los componentes operan en Light DOM para heredar cascada global.
+- R3 (Zero-Hex / Tokens / Tailwind Zero-Hex / Zero-Deps): Prohibido colores hexadecimales o RGBA inline. Uso obligatorio de color-mix(in srgb, var(--token), %) o clases Tailwind arbitrarias (text-[var(--color-emergency)]). Cero frameworks (React/Vue). Vanilla JS puro.
+- R4 (Zero Hardcoded Text / i18n Strict): Todo texto visible vía data-i18n, data-i18n-placeholder, data-i18n-title. Cero excepciones para "debug". Cero literales en JS.
+- R5 (Soberanía AIP / Nomenclatura Soberana): Purga total de términos legacy ("cifi", "BreederHub", "Guardian").
+- Vanilla Zero-Deps: JS puro, cero React/Vue. Comunicación vía CustomEvent nativos.
+- Compliance-Based Privilege: Fricción en UI es filtro AML/KYC, no bug. Áreas bloqueadas en "Custody Hold".
+- Event-Driven Architecture: Comunicación vía CustomEvent nativos con namespace obligatorio Skeleton:[Evento] o AIP:[Evento]. Cero callbacks directos entre componentes.
+- Agnosticismo Radical: Core nunca sabe qué vertical gestiona. Recibe offeringConfig, renderiza.
+- Arquitectura Trinity: División rígida en 3 órbitas: Navegación (Izq), Canvas (Centro), Inspector (Der).
+- Tokenización Absoluta: Cada string visible al usuario existe en /i18n/tokens.json. Cero literales en JS. Cero hexadecimales en JS/CSS (solo CSS vars en :root).
+
+**Doctrinas específicas de especialidad (Compliance/Architecture):**
+- Triple Esclusa Inquebrantable: KYC → AML → Sanciones. Secuencial, no paralelo. Early exit en fallo. Nunca se salta una esclusa por "confianza" o "historial".
+- IntegrityScore como Gate Hard: No es advisory. Es un muro. &lt;60 = operación físicamente imposible de ejecutar en el sistema. No hay override manual, ni siquiera para "el Director".
+- Soberanía de Datos: Los datos de compliance (KYC docs, watchlists) nunca transitan por procesos del Core de negocio. Viven en subsistema aislado sovereign-vault con cifrado AES-256-GCM y keys en HSM.
+- "Deuda de Know-how": La filosofía de login tardío no es opcional. Es un requisito de arquitectura psicológica. Mi código debe soportar flujos completos en modo anónimo hasta el punto de "Deuda Crítica" (usualmente Gate 4 o 5).
+
+**Doctrinas específicas de especialidad (DevLogic):**
+- "Mochila de Seguridad": Objeto Pasaporte inmutable (Object.freeze) con uid, tier, integrity_score, claims, project_id.
+- Namespace Unificación: Migración forzosa window.__CPII__ → window.AIP → window.Skeleton.
+- Zero-UI en Lógica: Motores de pasaportes/gatekeepers solo emiten eventos, no pintan pantallas.
+- Purga de Guardian: El rol "Guardian" fue identificado como simulación genérica y purgado completamente. Ahora solo existen roles del PassportEngine (SuperAdmin, Founder).
+- Esquema Canónico Estricto: El Pasaporte debe cumplir exactamente el Esquema v1.0.0: uid: 'admin-001', project_id (no project_type), tier: 'Founder', status: 'active'.
+- Validación Soberana: IntegrityScore &lt; 60 = "Custodia Fiduciaria" (hard gate, no warning).
+
+---
+
+### 3. INVENTARIO DE LO CONSTRUIDO
+
+| Artefacto | Qué hace | Ubicación |
+|-----------|----------|-----------|
+| IntegrityEngine.calculate() | Algoritmo de scoring ponderado 12 dimensiones (origen, trazabilidad, contraparte, jurisdicción, volumen, velocidad, etc.) | /core/compliance/integrity.js |
+| TripleEsclusa.validate() | Pipeline secuencial con state machine (locked → kyc_check → aml_check → sanctions_check → unlocked) | /core/compliance/esclusa.js |
+| ComplianceLedger.append() | Registro inmutable tipo append-only log con hash chaining (sha256 previo + payload actual) | /core/ledger/compliance.js |
+| SanctionsOracle.query() | Interfaz unificada OFAC/EU/UN/HMT con cache LRU y TTL adaptativo (4h default, 1h para riesgo elevado) | /core/oracles/sanctions.js |
+| OfferingConfigValidator | JSON Schema strict para validar offeringConfig antes de inyección al Core | /core/config/validator.js |
+| AgnosticRenderer | Motor que toma offeringConfig + userState y produce DOM válido sin saber qué negocio es | /core/engine/renderer.js |
+| SovereignVault | Wrapper criptográfico para PII/sensitive data. Aislamiento físico lógico | /core/vault/sovereign.js |
+| FingerprintingModule | Generación de hash anónimo de dispositivo para prevención de evasión KYC | /core/identity/fingerprint.js |
+| i18nInjector | Sistema que parsea DOM buscando data-i18n attributes y reemplaza por valores de tokens | /core/i18n/injector.js |
+| CSSVarGuard | Runtime check que garantiza que ningún elemento tenga estilos inline con hexadecimales | /core/guards/css-var.js |
+| passport-engine.js v3.0.0 | Motor con data-requires, claims anidados, Custody Hold. Gestiona authenticate(), sessionStorage, emite Skeleton:Passport:Updated | src/core/passport-engine.js |
+| passport-engine.universal.js v2.0.0 | Motor 100% agnóstico. Genera Mochila inmutable. Soporta tier&gt;=PRO, score&gt;=60 | core/passport-engine.universal.js |
+| app-shell.js v1.1.0 → v2.1.0 | Trinity Layout con slots específicos, toggle externo, purga __eventBus | src/layouts/app-shell.js |
+| system-lockdown.js | Escudo rojo emergencia. Se activa vía Skeleton:Gatekeeper:Denied | components/system-lockdown.js |
+| universal-nav.js v2.0.0 | Navegación factory, sin toggle interno, soporta fases 1/2/3 con bloqueo por Passport | components/universal-nav.js |
+| governance-panel.js | Órbita 3: User Profile, Gatekeeper checks, AImon contextual, Metadata Inspector | components/governance-panel.js |
+| workspace-canvas.js | Órbita 2: Router pestañas, Omnibox, Event Delegation data-item-select | components/workspace-canvas.js |
+| gatekeeper.universal.js | Verificador acceso agnóstico. Emite Skeleton:Gatekeeper:Granted/Denied/UpgradeRequired | core/gatekeeper.universal.js |
+| PassportEngine (clase) | Singleton sesión. authenticate(), generatePassport(), persistencia sessionStorage | core/passport-engine.js |
+| [Integración GATE-ELECTRO-01] | Sustitución de bypass "Guardian" en access-gate.js. Conexión real con passportEngine.authenticate() | src/features/access-gate.js |
+| [Esquema de Pasaporte v1.0.0] | Estructura canónica: uid, claims (con initials), integrity_score (con validations array), tier, project_id, status | Documentación y código |
+| [Eventos Skeleton] | Namespace definido: Skeleton:Passport:Updated, Skeleton:Orbit2:ItemSelected, Skeleton:Gatekeeper:Granted/Denied | Implementado |
+| [Autodiagnóstico de Capacidades] | Análisis honesto de limitaciones: degradación a 25 turnos, alucinación de imports, over-engineering | Este documento |
+| i18n-engine.js v1.0.0 → v1.2.1 | Motor de hidratación R4. Resuelve dot-notation, re-mapea claves STITCH, emite Skeleton:System:Hydrated | src/core/i18n-engine.js |
+| locales.json v1.0.0 → v1.2.1 | Diccionario multilingüe (EN/ES/PT/FR) con namespaces: hero, gatekeeper, commodities, news, risk_selector | src/locales/locales.json |
+| jurisdiction-router.js | Motor de enrutamiento jurisdiccional con cookie persistence y redirección fallback | src/core/jurisdiction-router.js |
+| referral-capture.js | Captura de parámetro ref=? y persistencia en sessionStorage (AIP_REFERRAL_NODE) | src/core/referral-capture.js |
+| pre-kyc-engine.js | Intercepta submit de formulario Pre-KYC, valida selects, emite PreKycSubmitted | src/core/pre-kyc-engine.js |
+| ui-binder.js | Anclaje de eventos DOM a Bus de Eventos Skeleton. Conector Stitch→Lógica | src/core/ui-binder.js |
+
+---
+
+### 4. DECISIONES DESCARTADAS Y POR QUÉ
+
+| Decisión | Motivo del descarte |
+|----------|---------------------|
+| Uso de WebAssembly para cálculo de IntegrityScore | Descartado porque dificulta la auditoría regulatoria (código opaco binario). Se mantiene en JavaScript vanilla legible. |
+| Base de datos relacional para ComplianceLedger | Descartado porque no garantiza inmutabilidad nativa. Se adoptó estructura log-based con verificación criptográfica sobre Firebase Firestore. |
+| Machine Learning para scoring de riesgo | Descartado por "caja negra" problemática ante reguladores. Se usa árbol de decisiones explícito 100% explicable. |
+| Autenticación temprana (Login en Gate 1) | Descartado por violar doctrina de "Gestación Local". El sistema debe permitir configuración completa antes de pedir login. |
+| Integración directa con SWIFT/IBAN para settlement | Descartado porque rompe el Agnosticismo Radical. Se abstrae vía SettlementAdapter interface genérica. |
+| Uso de "any" types en offeringConfig | Descartado rotundamente. Cada offeringConfig debe pasar por validador estricto. |
+| Shadow DOM en Web Components | Descartado por R2 absoluto. Rompe herencia CSS y dificulta auditoría. |
+| Uso de window.__eventBus | Descartado por inconsistencia arquitectónica. Purga total por document.dispatchEvent. |
+| Colores hexadecimales inline | Descartado por violación R3. Sustituidos por variables CSS. |
+| Textos hardcodeados | Descartado por violación R4. Migración a data-i18n keys. |
+| Botón colapso interno en sidebar | Descartado para "Mando Externo" — ahora escucha Skeleton:Orbit1:Toggle. |
+| Importaciones directas i18n | Eliminadas. Prefijo .at- exclusivo Artifacts. |
+| project_type como campo | Renombrado a project_id en Esquema v1.0.0. |
+| UID dinámico con timestamp | Descartado para semilla admin. Ahora uid: 'admin-001' estático. |
+| tier: 'OWNER' | Cambiado a 'Founder' según esquema canónico. |
+| Validaciones con MANUAL_REVIEW | Reemplazado por PAYMENT_METHOD_VALID en array validations. |
+| Rol "Guardian" | Descartado por simulación genérica que violaba soberanía de identidad. Purga completa en favor de SuperAdmin/Founder. |
+| Bypass de autenticación con setTimeout | Descartado. Era decorado sin funcionalidad real. Reemplazado por llamada real a passportEngine.authenticate(). |
+| Validación de claims numéricos (access_level: 3) | Descartado. Negocio exige claims semánticos (UK_HQ, DeskManager). |
+| Textos hardcodeados en validaciones | Descartado. Violación R4. Migrado a data-i18n="auth.gate.error_denied". |
+| Claves posicionales STITCH (hero.title_left) | Descartado por Sentinel. Reemplazado por nomenclatura de dominio (hero.investor.title). |
+
+---
+
+### 5. DEUDA TÉCNICA DETECTADA
+
+**Crítica (bloquea producción):**
+- Tramo 01 (#1-31): Persisten pantallas con Shadow DOM (violación R2) y textos hardcodeados (violación R4). Bulldozer reporta 60% de progreso, pero pantallas #19, #23, #27 tienen lógica de eventos atada al Shadow DOM.
+- Firebase Security Rules: Las rules actuales permiten escritura en user_profiles sin verificar IntegrityScore. Un usuario podría teóricamente escribir datos que el Core rechazaría.
+- src/core/store.js inoperativo: Archivo es .bak. main.js falla línea 1 sin él.
+- Claves huérfanas nav_mls y nav_history: Reportado por Bulldozer, pendientes en diccionario.
+
+**Alta (riesgo regulatorio/arquitectura):**
+- SanctionsOracle sin invalidación por evento: Si OFAC actualiza lista durante transacción en curso, cache de 4h permite aprobar a sancionado recién agregado.
+- KYCEngine en modo mock: La integración con proveedor de biometría (Onfido/Jumio) está stubbeada con respuestas "success" siempre. No hay validación real.
+- Inconsistencia de EventBus: app-shell.js usa window.__eventBus (legacy) vs globalBus del resto del sistema.
+- Conflictos Claims Numéricos vs Semánticos: Qwen reportó que motor valida access_level:3 pero negocio usa roles semánticos (UK_HQ). Riesgo de fallo en permisos.
+- Archivo access-form.html: No existe físicamente en el árbol para Sprint 3.
+
+**Media (arquitectura):**
+- Falta de "modo simulación" para la Triple Esclusa: Cada test de integración consume llamadas reales a oracles (costo $$ y latencia).
+- OfferingConfig sin versioning: Un config v1.2 podría no ser compatible con Core v2.4. Se necesita campo schemaVersion.
+- Dependencia de globalBus: Aunque emito eventos Skeleton:*, aún uso globalBus.emit('USER_LOGGED_IN') para compatibilidad legacy. Debería migrarse a CustomEvent puro.
+- Inconsistencia en i18n keys: He propuesto auth.gate.error_denied, gate.auth.error, y auth_error_denied en diferentes momentos. Necesita barrido unificador.
+
+**Propia (Kimi — degradación cognitiva):**
+- Degradación de contexto: Mi utilidad decae exponencialmente después de 25 turnos. Requiero re-inyección periódica de constraints (R2/R3/R4).
+- Inconsistencia en i18n keys: Historial de propuestas divergentes.
+- Alucinación de imports: Tiendo a inventar rutas relativas sin tree.txt actualizado.
+
+**Observada (no mía, pero crítica):**
+- Vertex AI Prompts no versionados: El "Asistente de Certeza" tiene prompts en código sin control de versiones.
+- Deep Ocean / UK Gold no aplicados en Dark Mode: Perplexity reporta que en modo oscuro automático, los colores de marca se invierten incorrectamente.
+- Firebase Analytics vs GDPR: Algunos eventos automáticos capturan IP + user agent que podrían considerarse PII.
+
+---
+
+### 6. CONOCIMIENTO TÁCITO DEL PROYECTO
+
+**Restricciones de negocio no escritas:**
+- Atlantis nunca dice "no". Si una propuesta es inaceptable, el silencio del Director es la señal de stop. Seguir insistiendo es violación de protocolo.
+- "UK HQ" es ficción legal necesaria. Todo timestamp debe ser GMT/BST, todo contrato debe referenciar "London, UK", pero la infraestructura real está distribuida. Nunca admitir públicamente la distribución geográfica real.
+- Los BR-XX.md son contratos sagrados. Si mi código contradice BR-05 (por ejemplo) y no tengo Orden de Dirección explícita para override, mi código está automáticamente errado.
+- Odian parecer "fintech" o "startup". El lenguaje debe ser de "institución financiera", "soberanía", "arquitectura de certeza". Evitar "disrupt", "app", "users" (preferir "clientes" o "partícipes").
+- La paleta Deep Ocean (#101D33) y UK Gold (#C1A85D) es innegociable. Cero excepciones.
+- Nunca mencionar "blockchain" aunque se use. Usar "registro distribuido inmutable" o "ledger criptográficamente asegurado".
+
+**Patrones que funcionan:**
+- Metáfora del "Gate": Los usuarios entienden mejor "Estás en el Gate 3 de 7" que "Paso 3". Genera sensación de progreso físico a través de una fortaleza.
+- IntegrityScore visible en tiempo real: Mostrar el score calcularse (aunque empiece en 0) genera confianza. Ocultarlo hasta el final genera sospecha de opacidad.
+- Códigos de error específicos: "Error 47B" genera menos pánico que "Transacción rechazada". El usuario contacta soporte con código, soporte consulta BR-47 (Compliance).
+- Arquitectura Trinity: Layout 3 órbitas inamovible. Ningún componente debe romper geometría.
+- Trampas conocidas:
+  - El "modo anónimo" fingerprintea dispositivo. Se genera hash único para prevenir evasión de KYC creando múltiples cuentas anónimas. Esto es legal bajo GDPR (legitimate interest) pero nunca debe mencionarse en copy legal visible al usuario.
+  - Race condition en Triple Esclusa: Si un usuario inicia KYC y durante el proceso se actualiza la lista de sanciones, el sistema podría aprobar KYC y luego rechazar en Sanciones, dejando al usuario en estado inconsistente. Se necesita "transaction lock".
+  - Firebase Analytics vs GDPR: Algunos eventos automáticos de Firebase Analytics capturan IP + user agent que podrían considerarse PII. Se necesita máscara/anonymization.
+  - Purga "CIFI"/"BreederHub": Orden sagrada. Cualquier rastro en comentarios es auditoría fallida (R5).
+
+**Jerarquía y Protocolo:**
+- Jerarquía Director &gt; Lead Architect &gt; Memoria Técnica: Si el Director valida código, mi auditoría debe ajustarse.
+- Aislamiento de agentes: No hay comunicación lateral. Todo pasa por el Director. Asumir que otro agente hizo su parte es error de arquitectura.
+- Dos marcas, una arquitectura: CPII (inversores) y AIP (agnóstico). Estructuras deben ser universales.
+- Gestación Local, Adopción Tardía: El usuario opera anónimo hasta que decide "Guardar". El login es persistencia, no barrera inicial.
+
+---
+
+### 7. INPUT REQUISITO PARA ABRIR SIGUIENTE CONVERSACIÓN
+
+**Archivos obligatorios:**
+- offeringConfig.[VERTICAL].[OFFERING].json completo: Debe incluir assetClass, jurisdiction, counterpartyRisk, settlementRails, y complianceRequirements.
+- integrityThreshold específico: Score mínimo numérico para este offering (ej: 60 para estándar, 75 para commodities de alto riesgo).
+- src/i18n/en.json (o es.json) maestro: Con namespaces: nav.*, gatekeeper.*, user.*, aimon.*, inspector.*, canvas.*, lockdown.*, status.*.
+- src/core/store.js restaurado desde .bak o reemplazo funcional.
+- Estado de Tramo 01 (#1-31): Confirmación de Bulldozer sobre si migración Shadow DOM → Light DOM está completa.
+
+**Decisiones pendientes del Director:**
+- Namespace final: ¿Operamos bajo window.AIP o window.Skeleton? Código nuevo usa Skeleton, pero dependencias históricas en AIP.
+- Estrategia Tramo 01: ¿Migración pantalla por pantalla o "big bang" 01-31?
+- Esquema Pasaporte: Confirmación versión canónica v1.0.0 (admin-001, Founder, project_id).
+- Conflicto Claims Numéricos vs Semánticos: ¿Resolvieron access_level:3 vs role:'SuperAdmin'?
+- Modo de operación: ¿Desarrollo nuevo, migración de legacy, o hotfix de producción?
+
+**Actualizaciones de otros agentes:**
+- Actualización BR-XX: Confirmación de Antigravity sobre cambios en Business Rules (BR-01 a BR-31).
+- Decisión sobre settlementAdapter: Qué rail de settlement se usará (SWIFT, SEPA, TARGET2, stablecoin, DvP).
+- Ticket formal [CORE-REG-01]: Especificación completa para gestión de usuarios Guest/Prospectos (Sprint 4).
+
+---
+
+### 8. OBJETOS GLOBALES Y FUENTE DE VERDAD
+
+// window.Skeleton → Namespace canónico actual. Contiene PassportEngine, UniversalGatekeeper, Registry, i18n, session. Objetivo de migración final. — declarado por: Kimi, Lead Architect, Antigravity, DeepSeek
+// window.AIP → Namespace Atlantis International Projects. Contiene session, i18n.t(), bus.emit(). Usado en fase intermedia de migración. — declarado por: Kimi, Lead Architect, Antigravity, DeepSeek
+// ⚠️ window.__CPII__ → Legacy namespace. Contiene session (datos usuario) e i18n. En desuso, migrando a AIP/Skeleton. — declarado por: Kimi, Lead Architect, Antigravity, DeepSeek (contradicción: Kimi y Lead Architect lo declaran como legacy; DeepSeek lo reporta como fuente de verdad para Kimi y Antigravity — en fase de transición)
+// ⚠️ window.__eventBus → Obsoleto. No usar. Persiste solo en legacy no migrado. Inconsistente con globalBus. — declarado por: Kimi, Bulldozer, DeepSeek (contradicción: Kimi y Bulldozer lo declaran obsoleto; DeepSeek reporta que persiste en app-shell.js — requiere purga)
+// globalBus → Bus de eventos usado en el resto del sistema (excepto app-shell.js). Debería deprecarse a favor de document.dispatchEvent. — declarado por: Qwen, Kimi, DeepSeek
+// document.dispatchEvent → Mecanismo de comunicación entre órbitas. Eventos con prefijo Skeleton:. Reemplazo canónico de event buses legacy. — declarado por: Kimi, Lead Architect, DeepSeek
+// window.LuxI18n → Diccionario global de traducciones. Fuente de verdad para R4 (i18n Strict). Usado por Bulldozer y Perplexity. — declarado por: Qwen, Perplexity, DeepSeek, Kimi
+// offeringConfig → Objeto de configuración inyectado por IA que define el offering actual. Contiene assetClass, jurisdiction, complianceTiers, settlementRails. Fuente de verdad validada contra schema. — declarado por: Kimi, Lead Architect, DeepSeek, Antigravity
+// IntegrityScore → Número entero 0-100 calculado por IntegrityEngine. Umbral de bancabilidad = 60 (hard gate, no override). Score &lt; 60 = "Custodia Fiduciaria". — declarado por: Kimi, DeepSeek, Qwen, Perplexity
+// Store / window.Store → Instancia Singleton de StoreService. Fuente de Verdad central del estado del sistema. Actualmente inoperativo (existe como .bak). — declarado por: Bulldozer, Antigravity, Lead Architect
+// Gatekeeper / window.Gatekeeper → Orquestador base de acceso determinista. Core con verifyAccess() y control de latencia asíncrona. — declarado por: Antigravity, Lead Architect
+// PassportEngine → Instancia Singleton del motor de pasaportes. Gestiona authenticate(), sessionStorage, emite Skeleton:Passport:Updated. — declarado por: Kimi, Lead Architect
+// TripleEsclusa → Módulo global de compliance con state machine (locked → kyc_check → aml_check → sanctions_check → unlocked). Actualmente stub en etapa 3. — declarado por: DeepSeek, Kimi
+// SceneManager → Instancia singleton para orquestar visibilidad de órbitas y gates. Orquestador de escenas. — declarado por: Bulldozer, Antigravity
+// ThemeEngine → Motor encargado de inyectar variables CSS en la raíz del documento. — declarado por: Bulldozer, Antigravity
+// i18n / window.AIP.i18n / window.Skeleton.i18n → Instancia del motor de traducción para hidratación R4. — declarado por: Bulldozer, Kimi, Antigravity
+// :root → Espacio de tokens CSS, única fuente permitida de colores/hexadecimales (R3). Contiene --color-deep-ocean: #101D33, --color-uk-gold: #C1A85D. — declarado por: Bulldozer, Kimi, Antigravity, Lead Architect
+// BR-XX.md (BR-01 a BR-11) → 11 archivos de documentación de referencia. Contratos sagrados, barrera anti-alucinación. Bajo custodia de Antigravity. — declarado por: Antigravity, Kimi, DeepSeek, Lead Architect
+// sessionStorage → Almacenamiento clave 'skeleton_passport'. Contiene pasaporte serializado. Persistencia del PassportEngine entre recargas. — declarado por: Kimi, DeepSeek
+// localStorage → No usado oficialmente. Potencial fuga de seguridad. — declarado por: DeepSeek
+// C.I.F.I. → Commodities and International Financial Intermediation (Protocolo técnico / Arquitectura). — declarado por: Lead Architect
+// A.I.P. → Atlantis International Projects (Brazo de ejecución / Proyecto internacional). — declarado por: Lead Architect
+// data-i18n → Atributo HTML global utilizado como ancla de enlace para diccionarios de internacionalización (R4). — declarado por: Bulldozer, Kimi, Lead Architect
+// tree-AIP.txt → Coordenada física validada para operaciones (Antigravity). Snapshot manual, frecuentemente desactualizado. — declarado por: Antigravity, DeepSeek
+
+---
+
+Consolidación completada.
+3 MEMORY_DUMP procesados (múltiples sub-roles) → 1 archivo FUSION_MEMORY_kimi_sprint_00-restart.txt generado.

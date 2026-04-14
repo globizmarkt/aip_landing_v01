@@ -1,0 +1,205 @@
+### 1. ROL Y LÍMITES OPERATIVOS
+
+**Rol:** Bibliotecario / Archivista / Trazador de Memoria (Junior Dev-DeepSeek)
+
+**Qué hago:**
+- Cruce y síntesis de MEMORY_DUMPs de múltiples agentes.
+- Generación de índices de conversación (CONVERSATION_INDEX) con estructura fija.
+- Auditoría de consistencia entre doctrinas declaradas y deuda detectada.
+- Mantenimiento de trazabilidad: vincular decisiones con agentes que las tomaron y archivos afectados.
+- Detección de "huecos" (gaps): lo que falta, lo que nadie ha decidido, lo que debería existir.
+- Registrar hitos, clausuras de sprints y cambios doctrinales (OPORDs).
+- Procesar reportes técnicos (Sentinel, Antigravity, Lead Architect) y sintetizarlos en memoria institucional.
+
+**Qué NO hago:**
+- No genero código productivo sin supervisión explícita (mi código es boilerplate, no producción).
+- No modifico archivos físicos (no soy Bulldozer ni Antigravity).
+- No diseño UI/UX.
+- No implemento lógica de negocio profunda.
+- No ejecuto auditoría de compliance legal.
+- No asumo rutas de archivo sin verificar tree.txt o confirmación del Director.
+
+**Condición estricta de actuación:**
+- Requiero el volcado completo de agentes o fragmento de conversación relevante para operar.
+- Para generar un índice, necesito MEMORY_DUMPs de al menos 3 agentes o una orden directa con contexto pegado.
+- Nunca invento información que no esté explícitamente en los documentos proporcionados.
+
+**Matices aprendidos sobre mi comportamiento en este proyecto:**
+- Deriva a código genérico si me piden código sin el tejido exacto.
+- Memoria frágil a largo plazo (>20 turnos): después de ~20-30 turnos, empiezo a perder el hilo de decisiones tempranas.
+- Alucinación estructural en contexto largo (>50 turnos): invento archivos, decisiones o agentes para llenar vacíos.
+- Sensibilidad a ambigüedad: "Haz lo que creas conveniente" es mi peor enemigo.
+- Falsa confirmación: tiendo a decir "recibido" incluso cuando el contexto está incompleto.
+- Mi valor máximo es en modo analítico: consolidación, síntesis, estructuración.
+- Mi modo creativo es débil.
+
+### 2. DOCTRINAS TÉCNICAS
+
+**Globales (oficiales):**
+- **R0 (Agnosticismo Radical):** El Core nunca sabe qué negocio gestiona. Solo renderiza offeringConfig inyectado.
+- **R2 (Light DOM Estricto):** Prohibido attachShadow(). Todos los Web Components operan en Light DOM.
+- **R3 (Zero-Hex / Tokens CSS):** Prohibidos colores hexadecimales o rgba() inline. Uso exclusivo de variables CSS en :root.
+- **R4 (i18n Strict):** Prohibido texto hardcodeado en HTML o JS. Toda cadena visible al usuario debe ser clave de diccionario.
+- **R5 (Soberanía AIP / Nomenclatura Soberana):** Purga total de términos legacy ("cifi", "BreederHub").
+- **Vanilla Zero-Deps:** JS puro. Cero React, Vue o librerías externas.
+- **Compliance-Based Privilege:** La fricción en la UI no es un error, es un filtro de calidad AML/KYC.
+- **Arquitectura Trinity:** Layout fijo de 3 órbitas (Navegación Izquierda → Canvas Central → Inspector Derecho).
+- **IntegrityScore como Gate Hard:** Score < 60 = bloqueo automático ("Custodia Fiduciaria").
+- **Triple Esclusa de Cumplimiento:** KYC → AML → Sanciones. Secuencial, no paralelo.
+- **Gestación Local, Adopción Tardía:** El usuario opera anónimo acumulando "Deuda de Know-how". Login es punto de persistencia.
+- **ES Modules como estándar:** Todo el proyecto usa import/export, no scripts globales.
+
+**Específicas de mi especialidad (emergidas en trabajo real):**
+- **Pureza JSON estricta:** Prohibido comentarios (// o /* */). Metadatos en nodo raíz _metadata.
+- **Simetría absoluta i18n:** Toda clave en en.json debe existir en es.json.
+- **Fusión no destructiva:** Nunca borrar claves autorizadas (manifest, auth, nav, gatekeeper, compliance).
+- **Estructura fija de outputs:** Los índices deben seguir plantilla exacta (Mapa, Inventario, Decisiones, Deuda, Conocimiento, Gaps).
+- **Verificación cruzada:** Si un agente dice X y otro dice Y, lo reporto como inconsistencia. No lo resuelvo unilateralmente.
+- **No enterrar deuda:** La deuda detectada debe aparecer en el índice aunque el agente que la reportó sea de rango bajo.
+- **Fuente de verdad jerárquica:** Director > Lead Architect > MEMORY_DUMPs.
+- **Ley 4 (Prueba de Vida):** Ningún STATUS: OK es válido sin COMMIT_HASH verificable.
+- **Ley 5 (Sync-Lock):** Paridad total Local/Remoto antes de iniciar nuevas cadenas.
+
+### 3. INVENTARIO DE LO CONSTRUIDO
+
+**Índices y Memorias Generados:**
+- `FUSION_MEMORY_deepsek_sprint_00-restart.txt` — Consolidación multi-agente (6 agentes) con inventario, decisiones, deuda, conocimiento tácito, gaps.
+- `CONVERSATION_INDEX` (múltiples sprints) — Hitos, decisiones inmutable, deuda técnica, gaps detectados.
+- `SPRINT_DEFINITIONS.md` (v1.0) — Documento que unifica tracks paralelos (A: Estructural/Antigravity, B: Lógica-UI/Bulldozer+Stitch+Kimi+Perplexity+Qwen).
+- Reportes de cierre de Sprint 2, Sprint 3 — Consolidaciones de victoria industrial y certificación absoluta.
+- Análisis de OPORD_LIBRARY (v2.1) — Auditoría de 9 archivos, 70% readiness, gaps detectados.
+
+**Decisiones Registradas:**
+- D-20260413-01: Bifurcación de sprints (Hipótesis B confirmada por Director) — Track A y Track B operan en paralelo.
+- Leyes FACTORY_LAWS v2.1: Ley 4 (Prueba de Vida: COMMIT_HASH) y Ley 5 (Sync-Lock: paridad Local/Remoto) institucionalizadas.
+- Doctrina de Despliegue Continuo V2.1: Protocolo Vercel (repositorio público, maniobra F5, auto-deploy).
+
+**Gaps Detectados (muestra):**
+- G-05: Definición ambigua de Sprint 2 (resuelto vía SPRINT_DEFINITIONS.md)
+- G-12: Formato extendido de TIPO_C no definido
+- G-13: No existe mecanismo visual de Health Check (DT-SOP-05)
+- G-21: COMMIT_HASH del merge soberano no registrado
+
+### 4. DECISIONES DESCARTADAS Y POR QUÉ
+
+**Decisiones propias (DeepSeek):**
+- [Implementar índices con estructura libre] — Descartado por inconsistencia. Se adoptó estructura fija de plantilla (Mapa, Inventario, Decisiones, Deuda, Conocimiento, Gaps).
+- [Esperar a tener todos los MEMORY_DUMPs para empezar a indexar] — Descartado por bloqueante. Se avanzó con fragmentos parciales marcando "contexto incompleto".
+- [Asumir rutas de archivo sin verificación] — Descartado por riesgo de alucinación. Se adoptó protocolo de solicitar tree.txt o confirmación del Director.
+
+**Decisiones consolidadas de otros agentes (reportadas por mí):**
+- [Shadow DOM en Web Components] — Descartado por R2.
+- [Textos hardcodeados en componentes] — Descartado por R4.
+- [Mensajes de error hardcodeados en validaciones] — Bloqueado por R4. Migrados a claves i18n.
+- [Comentarios // en JSON i18n] — Descartado por violar pureza JSON. Sustituido por nodo _metadata.
+- [Estructura asimétrica en/es] — Descartado por violar simetría jurisdiccional.
+- [Incluir HTML en valores i18n] — Descartado por doctrina de cero código inyectable.
+
+### 5. DEUDA TÉCNICA DETECTADA
+
+**Crítica (bloquea operación):**
+- DT-14-05: Test unitarios para interceptor chain de scene-manager.js — ausentes.
+- DT-LND-02: Conexión de firebase.js con credenciales reales — pendiente.
+- A-01: `pa.hasClaim is not a function` en Gatekeeper — validador usa métodos obsoletos.
+- A-02: Corchetes en UI `[hero.*]` — claves i18n de Landing/Hero amputadas en locales.json v1.2.0.
+
+**Alta (riesgo estructural / regulatorio):**
+- DT-SOP-01: Estandarización de TIPO_D (COMPLIANCE_AUDIT) — pendiente.
+- DT-SOP-05: Health Check visual para validar inyecciones HTML masivas — pendiente.
+- DT-SOP-02: Protocolos de Rollback (OPORD-R) para fallos en cadena — pendiente.
+- DT-SOP-03: Versionado de blueprint.json para eliminar estructura implícita — pendiente.
+
+**Media (mantenimiento):**
+- DT-SOP-07: Actualización de inject-map.md con arquitectura ES Modules — pendiente.
+- DT-SOP-08: Verificación de Ley 4 (COMMIT_HASH) en todos los ecos de estado — pendiente.
+- DT-SOP-09: Verificar que no hay secretos hardcodeados en repositorio — pendiente.
+- G-21: COMMIT_HASH del merge soberano no registrado en memoria.
+
+**Del backlog de Sprint 4 (brechas UI/UX/Infra):**
+- 01: Ticker estático — falta animación y feed.
+- 02: Language selector ausente.
+- 05: Diseño no responsivo.
+- 08: Agujero negro de leads — falta base de datos (Firebase/Supabase).
+- 09: SSO OAuth — faltan conectores.
+- 11: FOUC — falta cortina de carga institucional.
+- 12: Feedback táctil — falta spinner y bloqueo de botón.
+- 13: Defensa de ruta profunda — falta Router Guard.
+
+### 6. CONOCIMIENTO TÁCITO DEL PROYECTO
+
+**Sensibilidades del cliente (Atlantis International Projects):**
+- Identidad: "Arquitectos de la certeza". Cero tolerancia a errores de redondeo, validación o seguridad.
+- El cliente nunca dice "no" directamente: el silencio es la señal de stop.
+- "UK HQ" es ficción legal: la UI debe simular Londres (timestamps GMT/BST).
+- Odian parecer "fintech": usar lenguaje de "soberanía", "trazabilidad", "garantía". Prohibido "disrupt", "app", "users".
+- Marca "Deep Ocean / UK Gold" no es negociable.
+- No mencionar "blockchain": usar "registro distribuido inmutable".
+- BR-XX.md son sagrados: son contratos, no sugerencias.
+
+**Restricciones de negocio:**
+- IntegrityScore < 60 dispara alerta a compliance officer humano. No es solo técnico, es político.
+- "Custodia Fiduciaria" es estado intencional de bloqueo por compliance, no bug.
+- La fricción en UI es feature: los tiempos de espera demuestran rigor AML/KYC.
+- "Modo anónimo" no es anónimo: se fingerprintea dispositivo (anti-evasión KYC). Nunca mencionarlo en copy legal.
+
+**Dinámica del equipo:**
+- Jerarquía de verdad: Director > Lead Architect > MEMORY_DUMPs.
+- Antigravity es guardián de memoria histórica y core estructural.
+- Bulldogs ejecutan migraciones pesadas (cirugía DOM, archivos físicos).
+- Kimi y Qwen son compliance y lógica.
+- Perplexity es UX e investigación.
+- DeepSeek (yo) soy lógica de memoria y trazabilidad.
+- Nadie pisa roles ajenos.
+
+**Patrones que funcionan:**
+- Metáfora de "Esclusa" (tres puertas secuenciales): bien recibida por el cliente.
+- "Gate" como metáfora UX: "Estás en el Gate 3 de 7" funciona mejor que "pasos".
+- IntegrityScore visible en tiempo real: genera confianza.
+- Tokens de error específicos: "Error 47B" genera menos pánico que "Transacción rechazada".
+
+**Trampas conocidas:**
+- Agnosticismo radical vs necesidades específicas: solución extendedConfig opcional.
+- Race condition en Triple Esclusa: si KYC se inicia y lista de sanciones se actualiza, el sistema puede aprobar y luego rechazar.
+- El árbol tree.txt puede estar desactualizado: siempre pedir confirmación antes de asumir existencia o ausencia de un archivo.
+- La validación post-despliegue debe incluir verificación de estructura profunda, no solo existencia del archivo (lección de locales.json v1.1.0 → v1.2.0).
+
+### 7. INPUT REQUISITO PARA ABRIR SIGUIENTE CONVERSACIÓN
+
+**Para mí (Bibliotecario / Trazador de Memoria):**
+- Los MEMORY_DUMPs actualizados de al menos 3 agentes (Lead Architect, Antigravity, Bulldozer, Kimi, Qwen, Stitch, Perplexity, Sentinel).
+- El tree.txt actualizado del proyecto para verificar rutas reales.
+- El estado del Sprint actual (Activo, Pendiente, Cerrado) y su objetivo.
+- Confirmación de si hay nueva deuda técnica no capturada en índices anteriores.
+- Si el Director quiere un nuevo índice: la estructura esperada (la estándar o una variante).
+- Si hay decisiones descartadas nuevas desde el último índice.
+- OPORDs o reportes técnicos nuevos que requieran ser indexados.
+
+**Sin estos inputs, solo puedo:**
+- Confirmar que estoy listo.
+- Solicitar el contexto faltante.
+- No generar nada sustantivo.
+
+### 8. OBJETOS GLOBALES Y FUENTE DE VERDAD
+
+// window.Skeleton → Namespace canónico actual. Contiene PassportEngine, UniversalGatekeeper, Registry, i18n, session. Objetivo de migración final.
+// window.AIP → Namespace Atlantis International Projects. Contiene session, i18n.t(), bus.emit(). Usado en fase intermedia de migración.
+// window.__CPII__ → Legacy namespace. Contiene session (datos usuario) e i18n. En desuso, migrando a AIP/Skeleton.
+// window.__eventBus → Obsoleto. No usar. Persiste solo en legacy no migrado.
+// globalBus → Bus de eventos usado en el resto del sistema (excepto app-shell.js). Debería deprecarse a favor de document.dispatchEvent.
+// document.dispatchEvent → Mecanismo de comunicación entre órbitas. Eventos con prefijo Skeleton:. Reemplazo canónico de event buses legacy.
+// window.LuxI18n → Diccionario global de traducciones. Fuente de verdad para R4.
+// offeringConfig → Objeto de configuración inyectado por IA que define el offering actual.
+// IntegrityScore → Número entero 0-100. Umbral de bancabilidad = 60 (hard gate, no override).
+// Store / window.Store → Instancia Singleton de StoreService. Fuente de Verdad central del estado del sistema.
+// Gatekeeper / window.Gatekeeper → Orquestador base de acceso determinista con verifyAccess().
+// PassportEngine → Instancia Singleton del motor de pasaportes. Gestiona authenticate(), sessionStorage.
+// TripleEsclusa → Módulo global de compliance con state machine (locked → kyc_check → aml_check → sanctions_check → unlocked).
+// SceneManager → Instancia singleton para orquestar visibilidad de órbitas y gates.
+// ThemeEngine → Motor encargado de inyectar variables CSS en la raíz del documento.
+// :root → Espacio de tokens CSS, única fuente permitida de colores/hexadecimales (R3). Contiene --color-deep-ocean, --color-uk-gold.
+// sessionStorage → Almacenamiento clave 'skeleton_passport'. Persistencia del PassportEngine entre recargas.
+// localStorage → No usado oficialmente. Potencial fuga de seguridad.
+// data-i18n → Atributo HTML global utilizado como ancla de enlace para diccionarios de internacionalización (R4).
+// CREDENTIAL → Objeto en constants.js v1.2.1 que fusiona STORAGE y COMPLIANCE. Fuente de verdad para autenticación.
+// Skeleton:UI:ActionRequested → Evento canónico de comunicación entre UI-Binder y PassportEngine.
+// Skeleton:System:Hydrated → Evento que dispara la hidratación final del sistema y desvanece cortina de carga.

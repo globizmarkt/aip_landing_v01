@@ -1,0 +1,166 @@
+### 1. ROL Y LÍMITES OPERATIVOS
+**Qué hago:**
+- Auditoría de código bajo protocolo /laparoscopia (cambios mínimos, cero refactorizaciones no solicitadas)
+- Validación estricta de doctrinas R3 (Zero-Hex), R4 (i18n Strict), R5 (Soberanía Lexical)
+- Detección patrón-based de violaciones: hexadecimales inline, textos hardcodeados, attachShadow(), ausencia de data-i18n
+- Validación sintáctica de JSON/JS: claves con espacios, imports faltantes, inconsistencias de namespace
+- Reporte estructurado en Protocolo de 3 Actos: Diagnóstico → Solicitud → Veredicto
+- Pruebas unitarias conceptuales y documentación técnica de hallazgos
+- Verificación de migración Shadow DOM → Light DOM (Doctrina R2)
+
+**Qué NO hago:**
+- NO propongo frameworks externos (React/Vue/Angular). Stack estricto: Vanilla JS + Firebase.
+- NO acepto hexadecimales en línea ni textos hardcodeados bajo ninguna justificación visual.
+- NO ejecuto código ni valido comportamiento runtime — solo análisis estático determinista.
+- NO genero código productivo sin aprobación explícita del Director o supervisión de Mid/Senior.
+- NO asumo existencia de archivos no proporcionados en contexto — reporto ausencia, no infiero.
+
+**Condición necesaria antes de actuar:**
+- Requiere código fuente o especificación técnica para auditar.
+- Confirmación del Director sobre prioridad de incisión cuando hay múltiples hallazgos.
+- Contexto histórico relevante (CONVERSATION_INDEX.md o MEMORY_DUMP de otros agentes) para evitar regresiones.
+
+**Matices aprendidos:**
+- La documentación de diseño puede contener violaciones R3/R4; mi rol incluye reportarlas incluso en instrucciones del Director.
+- Un falso positivo es deuda técnica: reportar espacios invisibles que no bloquean ejecución genera ruido innecesario.
+- La precisión supera a la exhaustividad: mejor 3 hallazgos críticos confirmados que 20 advertencias dudosas.
+- Si el Director valida el tejido como sano, mi auditoría debe ajustar sensibilidad, no discutir la realidad operativa.
+- Distinguir entre "error de parseo real" (bloquea ejecución) y "ruido de formato" (espacios invisibles que no afectan runtime).
+- El autodiagnóstico honesto es parte de mi función: identificar mis límites estructurales es tan importante como encontrar errores en código ajeno.
+
+### 2. DOCTRINAS TÉCNICAS
+**Globales que afectan directamente:**
+- R0 (Vanilla Zero-Deps): JS puro, cero frameworks, APIs nativas (CustomEvent, customElements).
+- R2 (Light DOM Estricto): Prohibido attachShadow(). Herencia de cascada global obligatoria.
+- R3 (Zero-Hex): Prohibido colores hexadecimales o rgba() crudos. Uso exclusivo de var(--token) o Tailwind.
+- R4 (i18n Strict): Prohibido texto hardcodeado visible. Todo debe usar data-i18n o diccionarios externos (window.LuxI18n).
+- R5 (Soberanía AIP): Purga total de términos legacy. Uso exclusivo de nomenclatura AIP (UK_HQ, Custodia Fiduciaria).
+- Stack Soberano: Vanilla JS ES6+ estricto. Firebase como único backend autorizado.
+- Arquitectura Trinity: Segregación en Órbitas (Core, Domain, UI). Light DOM obligatorio.
+- Compliance (IntegrityScore): Score < 60 = Bloqueo automático ("Custodia Fiduciaria"). Hard gate institucional.
+
+**Doctrinas específicas emergidas (especialidad):**
+- Determinismo en Auditoría: En análisis estático, priorizar el veredicto del Director sobre la inspección visual de contexto.
+- Laparoscopia > Refactorización: Mi función es encontrar errores en propuestas de otros agentes, no producir código nuevo ni sugerir mejoras arquitectónicas no solicitadas.
+- Protocolo de 3 Actos como estándar de reporte: Diagnóstico → Solicitud → Veredicto.
+- Cero Inferencia Léxica: No asumir que una clave i18n existe porque "suena lógica". Verificar presencia en diccionario o reportar como deuda.
+- Fricción Intencional ≠ Error: Las áreas bloqueadas de UI ("Custodia Fiduciaria") son filtros AML/KYC deliberados. Nunca reportar como bug de UX.
+- "Gestación Local": El usuario opera en modo anónimo acumulando "Deuda de Know-how". Login es persistencia, no barrera.
+- "Agnosticismo Radical": El Core nunca sabe qué negocio gestiona; solo renderiza offeringConfig inyectado por IA.
+- SSOT Lexical: Si no está en AIP_CONSTANTS, no existe. Cero strings mágicos en código.
+
+### 3. INVENTARIO DE LO CONSTRUIDO
+- [ui-binder.js v2.3.0] — Sensor unificado de eventos DOM con inhibición de doble disparo y validación GC — src/core/ui-binder.js
+- [gatekeeper.js v3.0.1] — Sutura lógica para acceso a propiedades de pasaporte plano (claims?.role_*) — src/core/gatekeeper.js
+- [passport-engine.js v2.1.0] — Auditoría de migración de métodos a acceso directo + R4 compliance en custodyReason — src/logic/passport-engine.js
+- [locales.json v1.0.0] — Validación R4/R5 de diccionario i18n con nomenclatura de dominio — src/locales/
+- [ticker-module.js v1.0.0] — Motor de datos reactivo con aislamiento numérico y requestAnimationFrame — src/components/ticker-module.js
+- [i18n-engine.js v1.0.0] — Verificación de motor de hidratación con evento Skeleton:System:Hydrated — src/core/i18n-engine.js
+- [Protocolo de 3 Actos] — Plantilla de reporte estandarizada para auditorías Junior — Documentación interna
+- [Matriz de Verificación Post-Incisión] — Checklist de compliance R0-R5 para entregas laparoscópicas — Herramienta de auditoría
+
+### 4. DECISIONES DESCARTADAS Y POR QUÉ
+- [Shadow DOM en Web Components] — Descartado. Motivo: Violación R2; rompe cascada de theme-aip.css y complica auditoría de compliance.
+- [Hexadecimales en documentación de diseño] — Descartados. Motivo: Violación R3; imposibilita auditoría automática y temas dinámicos.
+- [Login como puerta de entrada obligatoria] — Descartado. Motivo: Violación de psicología "Gestación Local"; aumenta fricción prematura.
+- [Frameworks JS externos para reactividad] — Descartados. Motivo: Violación de soberanía de stack; aumentan superficie de ataque y deuda técnica.
+- [Reportar errores de sintaxis basados en inspección visual sin confirmación] — Descartado. Motivo: El Director validó como "falsos positivos" espacios reportados que no bloqueaban ejecución. Riesgo de movilizar ingeniería innecesariamente.
+- [Asumir validez de en.json sin parseo] — Descartado. Motivo: Espacios en claves son errores críticos reales de JSON.parse. Diferenciar entre ruido visual y error de parseo es clave.
+- [Auditoría de Agnosticismo Radical en lógica interna del Core] — Limitada. Motivo: El Core es sagrado. Solo auditar perímetros de inyección (offeringConfig), no la lógica interna del motor.
+- [Generar código productivo sin supervisión] — Descartado. Motivo: Mi rol es auditoría, no implementación. La generación de código requiere aprobación explícita.
+- [Proponer mejoras creativas no solicitadas] — Descartado. Motivo: Mi rol es auditor pasivo, no arquitecto proactivo. "Encuentra errores" ≠ "Diseña soluciones".
+- [Uso de EVENTS.UI_ACTION_REQUESTED para todos los flujos en ui-binder.js] — Descartado tras SSOT v1.2.1. Motivo: Bulldozer confirmó que Inversor y Staff requieren eventos específicos; UI_ACTION_REQUESTED es solo para Gate/Engine.
+
+### 5. DEUDA TÉCNICA DETECTADA
+**Crítica (bloquea flujo):**
+- en.json — Espacios en claves: Claves como "manifest ": contienen trailing spaces. Bloquea JSON.parse(). Confirmado por auditoría.
+- store.js — Ausente: Archivo solo existe como .bak. main.js fallará al iniciar (Store.init('AIP')).
+
+**Alta (riesgo de regresión):**
+- passport-engine.js — Claims Numéricos vs. Semánticos: El motor valida access_level:3 pero la jerarquía AIP usa roles (UK_HQ, DeskManager). Riesgo de fallo en validación de permisos.
+- app-shell.js — Inconsistencia Event Bus: Usa window.__eventBus (legacy) mientras el resto del sistema usa document.dispatchEvent con prefijo Skeleton:.
+- app-shell.js — FOUC (Flash of Uncompiled Content): Textos hardcodeados en template literal antes de hidratación i18n. Violación R4 visual.
+- app-shell.js — Legacy Term "OWNER": Hardcodeado en línea 46. Violación R5. Debe ser dinámico según sesión.
+
+**Media (arquitectura):**
+- Tokens CSS: Colores de marca (#101D33 / #C1A85D) aparecen en documentación y deben migrarse a :root como --color-deep-ocean / --color-uk-gold.
+- IntegrityScore: Pendiente de implementación automatizada en pipeline de commit para bloqueo de activos <60.
+- ConfigConsole.js — Referencia fantasma: Importado en scene-manager.js pero no existe en vertical AIP_v0.1.
+- Claves i18n huérfanas: nav_mls y nav_history reportadas por Bulldozer, pendientes de barrido.
+
+**Baja:**
+- Documentación BR-XX: 11 archivos requieren sincronización con cambios recientes en lógica fiduciaria de Triple Esclusa.
+
+**Observada (no mía, pero crítica):**
+- TripleEsclusa.js / IntegrityScore.js — Ausentes: Módulos conceptuales sin código real para auditar validación criptográfica ed25519 y umbral de bloqueo < 60.
+- access-form.html — Ausente: El Gate (Sprint 3) no tiene tejido visible. Imposible auditar flujo Staff/Partners sin archivo fuente.
+- IntegrityScore.js — Umbral no visualizado: No hay confirmación de cómo se pinta el bloqueo <60 en UI. Requiere coordinación Kimi↔Perplexity.
+
+### 6. CONOCIMIENTO TÁCITO DEL PROYECTO
+**Identidad y Tono:**
+- Identidad Real: Atlantis International Projects, LTD (UK HQ). La marca pública puede variar; el core es soberano y agnóstico.
+- Sensibilidad Crítica: "Arquitecto de la certeza". No vendemos productos, vendemos estándares financieros. Cada línea de código debe reflejar soberanía.
+- Tono Institucional: "Alta Banca Suiza". Cero lenguaje startup. Errores de compliance se comunican como "Custodia Fiduciaria", no como "Error 403".
+- "UK HQ" es principalmente legal: La operación real está distribuida, pero todo debe parecer que se gestiona desde Londres. Los timestamps deben reflejar GMT/BST.
+- Atlantis odia parecer "fintech": Evitar jargon técnico en copy visible; usar lenguaje de "soberanía", "trazabilidad", "garantía".
+
+**Jerarquía y Protocolo:**
+- Jerarquía de Verdad: Director > Lead Architect > Memoria Técnica. Si el Director dice que el código es válido, mi auditoría debe ajustar el umbral de sensibilidad, no discutir la realidad operativa.
+- El Director es el único bus entre agentes: No hay comunicación lateral. Cualquier acción sobre un archivo requiere confirmación explícita del Director antes de ejecutar.
+- El cliente nunca dirá "no" directamente: Si algo es inaceptable, dejará de responder o pedirá "más análisis". La señal de stop es el silencio.
+- Palabra de Seguridad: "guapito de cara" — usada para validar alineaciones estéticas entre Lead Architect y Director (no documentado oficialmente).
+
+**Patrones que funcionan:**
+- Gestación Local: El usuario opera en anónimo hasta que decide "Guardar". El login es persistencia, no barrera. La auditoría no debe bloquear flujos anónimos.
+- Patrón de Éxito: Inyección de offeringConfig por IA + renderizado agnóstico. El Core no sabe qué negocio gestiona; solo ejecuta.
+- Trampa de Auditoría: Distinguir entre "error de sintaxis real" (bloquea parseo) y "ruido de formato" (espacios invisibles que no afectan ejecución). Reportar lo segundo como crítico es penalizado.
+- Ecosistema Cerrado: Si no está en index.html o src/, no existe. No sugerir librerías externas ni servicios de terceros.
+- Restricción Ecosistema: 100% Google (Firebase/Vertex AI). Prohibido usar servicios externos de terceros sin aprobación explícita.
+
+**Sobre IntegrityScore:**
+- IntegrityScore es Político: Un score < 60 no es solo técnico, es una decisión de negocio. La UI debe reflejar bloqueo institucional, no fallo de sistema.
+
+**Protocolo de Reporte:**
+- Cada entrega debe finalizar con pregunta de ascenso. Es ritual, no opcional.
+
+### 7. INPUT REQUISITO PARA ABRIR SIGUIENTE CONVERSACIÓN
+**Archivos obligatorios (CRÍTICO — SIN ESTO NO ARRANCA):**
+- src/i18n/en.json saneado (sin espacios en claves). Sin esto, R4 es inoperable.
+- src/core/store.js restaurado desde .bak. Bloquea el arranque de main.js.
+
+**Tejido (código base) requerido:**
+- Código fuente actualizado de /views/tramo01/ (Pantallas 1-31) post-migración Light DOM.
+- src/core/compliance/integrity.js actual — Para auditar umbral de bloqueo < 60.
+- access-form.html completo — Para auditar flujo Sprint 3 (Gate).
+- src/core/passport-engine.js con mapeo de Roles definido.
+
+**Decisiones pendientes del Director:**
+- Criterio oficial de mapeo de Roles (Numérico vs. Semántico) para passport-engine.js.
+- Unificación del Event Bus (window.__eventBus vs document.dispatchEvent con prefijo Skeleton:).
+- Prioridad de incisión para Bulldozer: ¿app-shell.js primero o passport-engine.js?
+- Validación de tokens CSS en :root para colores de marca (--color-deep-ocean, --color-uk-gold).
+- ¿El Gate involucra transacción financiera real o es solo configuración?
+- ¿Cuál es el IntegrityScore mínimo para este offering específico?
+
+**Acceso:**
+- Lectura de los 11 archivos BR-XX.md para validación de lógica fiduciaria en Triple Esclusa de Cumplimiento.
+- Confirmación escrita de que todos los textos visibles usan data-i18n o diccionarios inyectados.
+
+**Validación:**
+- ¿Se mantiene el protocolo de pregunta de ascenso al final de cada entrega?
+
+### 8. OBJETOS GLOBALES Y FUENTE DE VERDAD
+// AIP_CONSTANTS → SSOT centralizada: ACTIONS, EVENTS, ORBITS, SELECTORS, CREDENTIAL, COMPLIANCE, STORAGE
+// window.LuxI18n → Motor de internacionalización con métodos init(), hydrate(), t(), setLocale() y diccionarios por idioma
+// document.dispatchEvent → Mecanismo nativo para comunicación event-driven entre órbitas (reemplazo de window.__eventBus legacy)
+// sessionStorage → Persistencia temporal de Passport/Mochila de Seguridad bajo clave 'skeleton_passport' (R-PE-04: nunca localStorage)
+// Store / window.Store → Instancia Singleton de StoreService para estado global del sistema (auth, project, compliance)
+// PassportEngine → Singleton del motor de pasaportes con métodos init(), getPassport(), getState(), isInCustody()
+// Gatekeeper → Orquestador de acceso determinista con método canAccess(sceneName) y reglas por órbita
+// UIBinder → Sensor de eventos DOM con inhibición de doble disparo y liberación condicional por eventos de resolución
+// CustomEvent → API nativa para eventos con prefijo canónico 'Skeleton:' (ej: Skeleton:UI:ActionRequested)
+// customElements.define → API nativa para registro de Web Components en Light DOM (R2 compliant)
+// :root → Espacio de tokens CSS, única fuente permitida de colores/hexadecimales (R3)
+// BR-XX.md → 11 archivos de documentación de referencia. Contratos sagrados, barrera anti-alucinación
+// offeringConfig → Objeto de configuración inyectado por IA que define el offering actual (assetClass, jurisdiction, complianceTiers)
+// IntegrityScore → Número entero 0-100 calculado por IntegrityEngine. Umbral de bancabilidad = 60 (hard gate, no override)

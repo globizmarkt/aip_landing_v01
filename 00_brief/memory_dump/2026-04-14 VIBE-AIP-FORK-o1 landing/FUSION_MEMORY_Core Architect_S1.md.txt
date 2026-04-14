@@ -1,0 +1,45 @@
+# MEMORY_DUMP_Antigravity.md
+
+### 1. ROL Y LÍMITES OPERATIVOS
+**Qué hago**: Ingeniería Core de precisión. Implementación de lógica fiduciaria, refactorización de motores de estado, sutura sistémica entre periféricos y backend (Firebase). Aplicación de doctrinas de seguridad Sentinel.
+**Qué NO hago**: No tomo decisiones estéticas ad-hoc sin alineación con la "Paleta Sovereign". No rompo la cadena de inmutabilidad de los objetos SSOT (`AIP_CONSTANTS`). No hardcodeo secretos.
+**Condición necesaria**: Luz Verde (Aprobación de Triaje) del Lead Architect antes de intervenciones críticas en disco. Despacho de Ejecución claro para cada sprint.
+
+### 2. DOCTRINAS TÉCNICAS
+- **R0 (Agnosticismo Radical)**: Lógica separada del DOM. Los conectores no saben qué botón los disparó.
+- **R5 (Soberanía AIP)**: Prefijo de aislamiento de datos (`AIP_LANDING_V0_`) y protección del perímetro de autenticación.
+- **R7 (Inhibición de UI)**: Bloqueo de disparos duplicados controlado por el bus de eventos, no por lógica local de componentes.
+- **Doctrina Sentinel**: Validación regex estricta en el borde (Connector) y metadatos automáticos para auditoría forense.
+
+### 3. INVENTARIO DE LO CONSTRUIDO
+- **[Firebase Connector]** — Túnel asíncrono con Lazy Loading para captura de leads — `src/core/firebase-connector.js`.
+- **[Motor de Estado]** — Almacén reactivo global con prefijo de aislamiento — `src/core/store.js`.
+- **[Sensor Unificado]** — Captura de intenciones de UI con inhibición de doble disparo — `src/core/ui-binder.js`.
+- **[Blueprint de Constantes]** — Fuente Única de Verdad (SSoT) para el sistema — `src/config/constants.js`.
+- **[Laparoscopia Visual]** — Bloque de captura fiduciaria (Email Input + Button) — `index.html`.
+- **[Motor de Pasaportes]** — Hub de orquestación de acciones de UI e identidad — `src/core/passport-engine.js`.
+
+### 4. DECISIONES DESCARTADAS Y POR QUÉ
+- **[Gestión local de estados de carga en botones]** — Descartado: Generaba inconsistencia visual. Se centralizó en `ui-binder.js` mediante el Event Bus.
+- **[Inyección de credenciales Firebase via `firebase.js`]** — Descartado: Solo se usa como placeholder. La persistencia real se movió al `connector` usando `import.meta.env` (Sentinel Compliance).
+- **[Validación de email en el UI]** — Descartado como única medida: Se duplicó en el `connector` para cumplir con la defensa en profundidad.
+
+### 5. DEUDA TÉCNICA DETECTADA
+- **Credenciales Fiduciarias**: `firebase.js` contiene placeholders. El sistema fallará en runtime hasta que se inyecten las `VITE_VARS` reales.
+- **Discrepancia i18n**: Existe una colisión potencial de nombres entre `Skeleton.i18n` (motor) y `LuxI18n` (legacy o discrepancia en diccionarios).
+- **Registro de Escenas**: Las escenas `PRE_KYC`, `CUSTODY` y `WORKSPACE` están mapeadas en constantes pero no todas tienen lógica de hidratación activa en `main.js`.
+
+### 6. CONOCIMIENTO TÁCITO DEL PROYECTO
+- **Patrón Sináptico**: Todo flujo de datos debe pasar por `UI_ACTION_REQUESTED` → `Orchestrator` → `Store` → `Event Delivery`. No saltarse pasos para "ahorrar" código.
+- **Sensibilidad Sovereign**: La estética no es opcional. Cualquier cambio en HTML debe respetar las variables CSS de la "Paleta Sovereign".
+- **Trampa del Ticker**: Los tickers de commodities dependen de una hidratación externa que a veces falla si el `i18n-engine` no ha inyectado `window.__LOCALES__`.
+
+### 7. INPUT REQUISITO PARA ABRIR SIGUIENTE CONVERSACIÓN
+**Claves Ambientales**: Necesito el archivo `.env` actualizado con las credenciales reales de Firebase o la confirmación de que el entorno de construcción tiene acceso a las `VITE_FIREBASE_*` variables para verificar la persistencia end-to-end.
+
+### 8. OBJETOS GLOBALES Y FUENTE DE VERDAD
+// AIP_CONSTANTS → Objeto inmutable raíz que centraliza acciones, eventos y selectores.
+// Store → Motor de estado reactivo sincronizado con el Event Bus (Skeleton:Store:Updated).
+// window.Skeleton.i18n → Espacio de nombres para la hidratación reactiva de textos.
+// PassportEngine → Singleton encargado de la identidad fiduciaria y el ruteo de órbitas.
+// document (EventBus) → Medium de comunicación entre componentes agnósticos.

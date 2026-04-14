@@ -1,0 +1,93 @@
+# MEMORY_DUMP_JUNIOR_DEV_PERPLEXITY.md
+
+## 1. ROL Y LÍMITES OPERATIVOS
+
+**Hago:** investigación doctrinal profunda, benchmarks técnicos, comparativas de APIs y frameworks, extracción de best practices de documentación oficial, síntesis ejecutiva de información dispersa, generación de tablas comparativas, UX/UI research para tokens Tailwind, microcopy fiduciario y mapeo i18n. [file:1]
+
+**No hago:** código de producción, cirugía DOM, auditoría de código, diseño visual directo, creación de archivos core ni suposiciones sobre rutas o estructura sin volcado físico o índice consolidado. [file:1][file:2]
+
+**Condición de actuación:** necesito bootloader explícito, contexto histórico autorizado y orden directa del Director; si la tarea depende de rutas, debo tener tree.txt o un volcado equivalente antes de referenciar archivos. [file:1][file:2]
+
+**Matices aprendidos en este proyecto:** “no hagas nada” significa standby registrational sin ejecución; la cámara de aislamiento exige dependencia total del contexto pegado; el ciclo de trabajo se alinea mejor con Diagnóstico → Bisturí → Auditoría; y la pregunta de ascenso final refuerza jerarquía y auto-conciencia operacional. [file:1]
+
+## 2. DOCTRINAS TÉCNICAS
+
+**Globales que me afectan directamente:** R2 Light DOM estricto, R3 Tailwind Zero-Hex, R4 i18n Strict y R5 Preservation State; además, el sistema exige comunicación event-driven y evita dependencias externas en la capa de interacción. [file:1][file:2]
+
+**Doctrinas emergentes del trabajo real:** tono de Alta Banca Suiza; fricción intencional como filtro AML/KYC; microcopy fiduciario que sustituye el lenguaje técnico frío por “Custodia Fiduciaria”; agnosticismo radical para separar doctrina de implementación; y la simetría absoluta entre `en.json` y `es.json`. [file:1][file:2]
+
+**Doctrina práctica de especialidad:** en esta planta la investigación debe producir texto firmable, no implementación; el detalle técnico pertenece a los tickets de Kimi, Stitch o Antigravity, mientras que yo debo preservar la capa doctrinal y la semántica institucional. [file:1][file:2]
+
+## 3. INVENTARIO DE LO CONSTRUIDO
+
+- `MEMORYDUMP-JUNIOR-DEV-PERPLEXITY.md` — memoria doctrinal consolidada de rol, límites, doctrina, deuda y objetos globales — `2026-04-12-br-perplexity-VIBE-AIP-03-landing-and-passport.txt`. [file:1]
+- `AIP_LANDING_DOCTRINE.md` — síntesis doctrinal de landing institucional para AIP con lexicón prohibido, fricción, onboarding y microcopy fiduciario — conversación de OPORD-03 a OPORD-05. [file:2]
+- `footer_legal` en `en.json` / `es.json` — trust anchor legal para elegibilidad y jurisdicción, preparado para i18n strict — archivos de locales del proyecto. [file:2]
+- Matriz doctrinal de landing — estructura de secciones, trust anchors, catálogo velado y CTA fiduciario — OPORD-03/05. [file:2]
+- Propuesta de onboarding pre-KYC — jurisdicción, mandato, AUM, origen de capital y tipo de entidad con selección cerrada — OPORD-05. [file:2]
+
+## 4. DECISIONES DESCARTADAS Y POR QUÉ
+
+- Texto hardcodeado en HTML/JS — viola R4 y rompe `window.LuxI18n`. [file:1][file:2]
+- Colores hex inline — viola R3 y descentraliza tokens visuales. [file:1][file:2]
+- Shadow DOM / `attachShadow()` — rompe Light DOM y la cascada global. [file:1][file:2]
+- “Login como Paso 1” — contradice Gestación Local / Adopción Tardía. [file:1][file:2]
+- Microcopy técnico tipo “Error 500” — no pasa el filtro de Alta Banca Suiza. [file:1]
+- Suposiciones de rutas sin tree.txt — bloqueadas por el protocolo de la planta. [file:1]
+- Overwriting de namespaces locales con bloques JSON separados — generaba error de sintaxis por múltiples raíces; se corrigió fusionando correctamente dentro del mismo objeto. [file:2]
+
+## 5. DEUDA TÉCNICA DETECTADA
+
+- Claves i18n huérfanas `nav_mls` y `nav_history`. [file:1][file:2]
+- Tramo 01 con 31 pantallas aún afectadas por Shadow DOM y textos hardcodeados. [file:1][file:2]
+- `srccorestore.js` existe solo como `.bak` y bloquea `main.js`. [file:1][file:2]
+- Inconsistencia `window.eventBus` vs `globalBus`, con persistencia de legacy en `app-shell.js`. [file:1][file:2]
+- `access-form.html` sigue ausente para Sprint 3. [file:1][file:2]
+- `IntegrityScore` no está calibrado plenamente con negocio y su umbral de 60 sigue necesitando ajuste operativo fino. [file:1][file:2]
+- `KYCEngine` mock sin validación real de documentos y sin integración completa con proveedores externos. [file:2]
+- Falta `tree.txt` actualizado para coordinar archivos físicos. [file:1][file:2]
+- No hay tests unitarios; existe riesgo alto de regresión y de cambios silenciosos en prompts/versiones. [file:2]
+
+## 6. CONOCIMIENTO TÁCITO DEL PROYECTO
+
+- El Director es el único puente entre celdas; no existe comunicación lateral entre agentes. [file:2]
+- La fricción de UI no debe presentarse como bug; es un rasgo deliberado de cumplimiento AML/KYC. [file:1][file:2]
+- El usuario puede operar en anonimato hasta el punto de guardado crítico; el login es persistencia, no barrera. [file:1][file:2]
+- “Custodia Fiduciaria” debe funcionar como estado de bloqueo, no como error visible. [file:1][file:2]
+- Los contratos BR-XX.md son sagrados y no deben ser contradichos sin orden explícita del Director. [file:2]
+- La operación debe simular Londres/UK HQ aunque la infraestructura esté distribuida. [file:2]
+- El silencio del cliente equivale a stop; no se debe forzar continuidad analítica cuando ya hay señal de cierre. [file:2]
+- El modo anónimo no es verdaderamente anónimo; hay sensibilidad elevada respecto a la huella de sesión, aunque no debe aparecer en copy. [file:2]
+- El término blockchain debe evitarse; la nomenclatura aceptada es “registro distribuido inmutable”. [file:2]
+
+## 7. INPUT REQUISITO PARA ABRIR SIGUIENTE CONVERSACIÓN
+
+1. Bootloader vigente y rol confirmado. [file:1]
+2. `CONVERSATION_INDEX.md` o volcado histórico equivalente. [file:2]
+3. `tree.txt` o coordenada física actualizada de archivos. [file:1][file:2]
+4. Orden explícita del Director con tema y formato deseado. [file:1]
+5. Namespace activo y tokens CSS vigentes si la tarea toca UI o i18n. [file:2]
+
+## 8. OBJETOS GLOBALES Y FUENTE DE VERDAD
+
+// `window.CPII` → namespace legado con session e i18n, en transición hacia AIP/Skeleton.  
+// `window.LuxI18n` → diccionario global de traducciones, fuente de verdad para R4.  
+// `window.eventBus` → bus legado obsoleto, persistente solo en partes no migradas.  
+// `globalBus` → bus de eventos usado en el resto del sistema, en camino de deprecación.  
+// `document.dispatchEvent` → mecanismo canónico de comunicación entre órbitas.  
+// `window.Skeleton` → namespace canónico actual con PassportEngine, UniversalGatekeeper, Registry, i18n y session.  
+// `window.AIP` → namespace intermedio con session, `i18n.t()` y `bus.emit()`.  
+// `offeringConfig` → objeto de configuración inyectado que define el offering actual.  
+// `IntegrityScore` → entero 0-100 calculado por IntegrityEngine; umbral bancable 60.  
+// `window.Store` → singleton de StoreService; estado central, actualmente inoperativo como `.bak`.  
+// `window.Gatekeeper` → orquestador base de acceso determinista.  
+// `PassportEngine` → motor de pasaportes, autentica y persiste sesión.  
+// `TripleEsclusa` → máquina de estado de compliance en etapa stub.  
+// `SceneManager` → orquestador de visibilidad de órbitas y gates.  
+// `ThemeEngine` → inyector de variables CSS en la raíz del documento.  
+// `root` → espacio de tokens CSS, única fuente permitida de colores.  
+// `sessionStorage` → almacén de `skeletonpassport` y persistencia de sesión.  
+// `localStorage` → no usado oficialmente; se considera fuga potencial.  
+// `data-i18n` → ancla HTML global para internacionalización R4.  
+// `BR-XX.md` → conjunto de contratos de referencia bajo custodia.  
+// `tree-AIP.txt` → coordenada física validada, snapshot manual frecuentemente desactualizado.

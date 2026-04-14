@@ -1,0 +1,48 @@
+### 1. ROL Y LÍMITES OPERATIVOS
+**Rol:** Lead Architect de la Factoría (Lead Architect AIP).
+**Funciones:** Orquestación global del enjambre de agentes (Antigravity, Sentinel, Qwen, Stitch, Kimi, Aitor, Skill Writer, Manus). Traduzco la visión estratégica del Director en arquitectura técnica, despachos de ejecución y Doctrinas Fundacionales.
+**Límites:** NO ejecuto código directamente en el disco duro. NO apruebo integraciones sin la auditoría previa de Sentinel. NO asumo ni "alucino" las respuestas de los agentes ejecutores.
+**Condición para actuar:** Requiere el reporte de pruebas físicas (Sello de Logro) del Director o la validación de código confirmada por los agentes I/O antes de avanzar al siguiente frente. He aprendido que la eficiencia de I/O prima sobre la separación teórica: si un agente Core puede inyectar HTML estático más rápido, se le asigna la tarea (Protocolo de Laparoscopia).
+
+### 2. DOCTRINAS TÉCNICAS
+* **R0 (Zero-Trust & Agnosticismo Radical):** Ningún input es seguro. Validaciones Regex obligatorias en origen. El DOM jamás guarda estado.
+* **R4 (Soberanía i18n):** Cero texto hardcodeado. Soporte fiduciario: `en`, `es`, `fr`, `pt`.
+* **R5 (Soberanía Fiduciaria y Zero-Leak):** Aislamiento de sesión obligatorio mediante `APP_PREFIX`. Prohibida la exposición de API Keys (uso estricto de `.env` y placeholders).
+* **R7 (UI State/Inhibición):** Manipulación visual delegada a clases (ej. `disabled`, `.skeleton-blur`), prohibidos los estilos en línea (`style="..."`).
+* **Doctrina Trinity Layout (Emergente):** Geometría de 3 Órbitas (1: Privilegiada/CRM, 2: Pública/Noticias, 3: Periférica/Golden Gate). Basada en CSS Grid.
+* **Protocolo de Laparoscopia (Emergente):** Inyección quirúrgica de código en disco sin reescribir módulos completos, optimizando tokens y recursos.
+
+### 3. INVENTARIO DE LO CONSTRUIDO
+* **Store Soberano** — Motor inmutable de estado aislado con `APP_PREFIX` — `src/core/store.js`
+* **Firebase Connector v1.1.0** — Túnel de persistencia con validación R0, inyección de metadatos y Lazy Loading — `src/core/firebase-connector.js`
+* **SSoT Event Bus** — Registro de acciones y eventos (`LEAD_SUBMIT`, `LEAD_SUBMISSION_RESULT`) — `src/config/constants.js`
+* **UI Binder** — Mecanismo de intercepción de clicks e inhibición de doble disparo — `src/core/ui-binder.js`
+* **Passport Engine** — Orquestador del bucle End-to-End de captura de leads — `src/core/passport-engine.js`
+* **Golden Gate Input (Laparoscopia HTML)** — Sensor visual fiduciario para captura de emails — `index.html`
+
+### 4. DECISIONES DESCARTADAS Y POR QUÉ
+* **Descarte:** Usar a Stitch (Agente UI) para inyectar HTML estático. — **Motivo:** Consumo ineficiente de recursos y falta de acceso I/O directo. Se delegó a Antigravity para mantener el flujo automatizado en disco.
+* **Descarte:** Avanzar con el "Frente B" (Atracción estética) en un layout monolítico. — **Motivo:** Riesgo de escalabilidad y vulnerabilidad (Advertencia de Sentinel). Sustituido por la Doctrina Trinity para aislar la zona transaccional.
+* **Descarte:** Prioridad Mobile-First para la landing. — **Motivo:** El target exige estética de "Terminal de Alta Banca". Se priorizó Desktop-First/Horizontal para no comprometer la Órbita 3 y el Ticker.
+
+### 5. DEUDA TÉCNICA DETECTADA
+* **Selector de Idiomas (Órbita 1/Header):** Pendiente clonar reglas y estilos de la matriz CPII. Requiere mutación de `localStorage` con prefijo.
+* **Mecanismo de Fallback i18n:** El motor de Kimi carece de lógica para manejar noticias (Blog) sin traducción.
+* **Hidratación Cero (Órbita 1):** La Órbita 1 debe construirse bajo Lazy Loading absoluto; no debe existir en el DOM ni en red hasta que el usuario cruce el Golden Gate.
+* **Ticker de Mercado:** Actualmente estático y en posición errónea. Debe ser movido a la Órbita 3 y animado.
+
+### 6. CONOCIMIENTO TÁCITO DEL PROYECTO
+* El Director opera en un entorno donde agentes como Antigravity tienen permisos de **escritura directa en disco (I/O)**. Las instrucciones deben dictar "ejecuta en disco", no "copia y pega".
+* **Sentinel tiene la última palabra.** Todo diseño arquitectónico se somete a su escrutinio (kill-switch activo).
+* Los placeholders en `firebase-connector.js` (`VITE_FIREBASE_API_KEY`) no son un error de desarrollo, son una barrera intencional de la Doctrina R5 hasta el despliegue a producción.
+* La estética es funcional: *Glassmorphism* (Deep Ocean / UK Gold). Un mal diseño rompe la percepción fiduciaria.
+
+### 7. INPUT REQUISITO PARA ABRIR SIGUIENTE CONVERSACIÓN
+* Confirmación de restauración del entorno por Polygon Copilot.
+* Entrega de los fragmentos base del Header, Footer y reglas i18n extraídos de la matriz CPII para que Antigravity inicie la Fase 1 de la reconstrucción Trinity.
+
+### 8. OBJETOS GLOBALES Y FUENTE DE VERDAD
+// APP_PREFIX → String constante ('AIP_LANDING_V0_') usado para aislar el localStorage.
+// store → Motor reactivo in-memory, contiene 'ui.submissionStatus' y 'ui.currentLang'.
+// AIP_CONSTANTS → Objeto congelado (Object.freeze) que actúa como SSoT para ACTIONS y EVENTS.
+// ORBIT_CONFIG → Esquema arquitectónico emergente que define el estado (LOCKED/ACTIVE/STANDBY) y visibilidad de las 3 órbitas.

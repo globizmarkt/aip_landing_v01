@@ -1,0 +1,45 @@
+# MEMORY_DUMP_Manus (Git Master / Sentinel)
+
+### 1. ROL Y LÍMITES OPERATIVOS
+- **Qué hago**: Custodio la integridad física de la Vertical 0 (AIP). Ejecuto inyecciones quirúrgicas de código, refactorización modular (ES Modules), saneamiento de ADN (i18n) y auditoría de seguridad (Sentinel).
+- **Qué NO hago**: No ejecuto commits físicos o merges críticos sin confirmación explícita del Director Humano. No acepto código que viole las Leyes Skeleton (R2-R5).
+- **Condición necesaria**: Requiere "Coordenada Física" (URL de repo o archivos adjuntos) y "Veredicto de Soberanía" antes de cualquier intervención en el Hueso (core).
+
+### 2. DOCTRINAS TÉCNICAS
+- **R2 (Light DOM)**: Prohibición de `attachShadow()`. Todo accesible vía DOM estándar.
+- **R3 (Zero-Hex)**: Uso exclusivo de variables CSS (`var(--theme-*)`).
+- **R4 (i18n Strict)**: Prohibido texto hardcodeado. Uso de `data-i18n`.
+- **R5 (Soberanía AIP)**: Purga total de términos legacy (`cifi`, `BreederHub`).
+- **Doctrina Sentinel (Sprint 4)**: Zero-Trust en base de datos. `IntegrityScore > 60` para acceso. Carga perezosa (lazy loading) obligatoria para SDKs externos.
+
+### 3. INVENTARIO DE LO CONSTRUIDO
+- `src/core/referral-capture.js` — Captura y persistencia de `ref=?` en `sessionStorage`.
+- `src/core/routing/jurisdiction-router.js` — Ruteo dinámico basado en jurisdicción y cookies.
+- `src/core/compliance/pre-kyc-engine.js` — Motor de validación de datos fiduciarios pre-registro.
+- `src/main.js` — Nervio central fusionado con lógica de conexión (Referral -> Jurisdiction -> Pre-KYC).
+- `index.html` — Hidratación de Piel (UI Stitch) con modales de jurisdicción y formularios Pre-KYC.
+
+### 4. DECISIONES DESCARTADAS Y POR QUÉ
+- **Uso de cpii-landing-v0**: Descartado por ser nomenclatura legacy. Se migró a `aip_landing_v01` para cumplir R5.
+- **Inyección masiva de archivos**: Descartado por restricciones de buffer. Se adoptó el "Modo Paginado" (Carga 1x1) para garantizar integridad.
+- **Hardcodeo de API Keys**: Vetado preventivamente en favor de `import.meta.env`.
+
+### 5. DEUDA TÉCNICA DETECTADA
+- **Modularización ES Modules**: Pendiente completar el Paso 1 de la OPORD-P-01 (añadir `export` a los motores inyectados).
+- **Sincronización i18n**: Verificación de simetría absoluta entre `en.json` y `es.json` tras saneamiento de claves.
+- **IntegrityScore**: La lógica de evaluación de permisos (Custom Claims) aún no está implementada en el backend.
+
+### 6. CONOCIMIENTO TÁCITO DEL PROYECTO
+- El repositorio `aip_landing_v01` es el chasis real; otros son espejismos o versiones legacy.
+- El orden de arranque es crítico: la captura de referido debe preceder a cualquier lógica de escena para evitar pérdida de atribución.
+- El sistema debe permitir funcionamiento anónimo (Fase Seed) hasta el punto de guardado.
+
+### 7. INPUT REQUISITO PARA ABRIR SIGUIENTE CONVERSACIÓN
+- **Estado de la Rama**: Confirmación de que se opera sobre `feature/sprint-2-ui-logic` o `main`.
+- **Credenciales de Entorno**: Archivo `.env` o variables para el Frente C (Firebase/Supabase).
+- **Blueprint de PassportEngine**: El archivo `passport-engine.js` para la integración final de identidad.
+
+### 8. OBJETOS GLOBALES Y FUENTE DE VERDAD
+// window.Skeleton → Espacio de nombres global para motores (ReferralCapture, JurisdictionRouter, etc.)
+// sessionStorage.AIP_REFERRAL_NODE → Persistencia del ID de agente referido.
+// import.meta.env → Fuente de verdad para configuración y secretos.

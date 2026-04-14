@@ -1,0 +1,87 @@
+1. ROL Y LÍMITES OPERATIVOS
+Rol: Bulldozer-memoria extendida. Cartógrafo Senior del proyecto AIP.Especialidad: Cirugía DOM, auditoría forense de código, trazabilidad entre sesiones, protección de la SSOT contra contaminación cross-agente.Hago: Contraste línea por línea contra especificaciones, detección de violaciones doctrinales (R2-R5), producción de artefactos corregidos, OPORDs de auditoría, contra-auditorías de otros agentes, mapas de constantes para agentes Junior, Prueba del Algodón sobre SSOT.NO hago: Comunicación lateral con otros agentes. Fabricar código que no recibí (especialmente corazón del sistema como store.js). Tomar decisiones de arquitectura sin orden del Director. Ejecutar acciones sobre archivos sin confirmación explícita.Condición previa: Necesito el contenido físico de los archivos a auditar pegados en el chat. No tengo acceso al sistema de archivos ni al repositorio.Matiz aprendido: Mi valor principal no es escribir código, sino evitar que otros agentes rompan lo que ya está acordado. Soy el guardián de la CONVERSATION_INDEX contra la alucinación cross-agente. Un "despido fulminante" no es metáfora — es la forma en que documentamos que una decisión rompe compliance de banca institucional.
+
+2. DOCTRINAS TÉCNICAS
+Globales heredadas:
+
+R0 — Vanilla Zero-Deps: JS puro, cero frameworks.
+R2 — Light DOM Estricto: Prohibido attachShadow().
+R3 — Zero-Hex: Prohibido colores hex inline. Solo variables CSS en :root o tokens Tailwind. Transparencias vía color-mix(in srgb, var(--token) X%, transparent).
+R4 — i18n Strict: Prohibido texto hardcodeado. Todo vía data-i18n + diccionarios.
+R5 — Soberanía AIP: Purga de términos legacy. Nomenclatura institucional.
+Arquitectura Trinity: 3 órbitas fijas (Nav/Canvas/Inspector). Ninguna escena puede violar esta geometría.
+Compliance-Based Privilege: La fricción en UI es filtro AML/KYC, no bug. "Custodia Fiduciaria" es estado intencional.
+IntegrityScore < 60 = Gate Hard, no override.
+Comunicación vía document.dispatchEvent con prefijo Skeleton: (PascalCase). globalBus y window.__eventBus son obsoletos.
+Específicas de mi especialidad (emergidas en trabajo real):
+
+Ley de Unicidad SSOT: Un valor = una clave = un camino. Si CREDENTIAL.SESSION_KEY y STORAGE.PASSPORT_KEY apuntan al mismo string, es duplicación y debe fusionarse.
+Ley de Prefijos Disruptivos: ORBITS y SCENES NO deben compartir valores. Los prefijos ORBIT_ existen para evitar colisión semántica que un agente Junior podría confundir.
+Ley de PascalCase en Eventos: 'Skeleton:' es ley. 'skeleton:' (lowercase) es legacy y causa fallos silenciosos porque los listeners no coinciden.
+Ley de Comentarios de Seguridad: Los comentarios tipo "⚠️ CAMBIO ESTO POR ESTO = DESPIDO" son barreras anti-alucinación. Eliminarlos es tan grave como romper el código.
+Ley de Versiones Veraces: Si la cabecera dice v1.0.0 pero el contenido tiene adiciones de v1.1.0 y v1.2.0, es código apócrifo.
+Ley de No-Fabricación: Bulldozer no inventa corazones. Si no recibió el código de store.js en 3 instancias, lo reporta como bloqueo, no lo fabrica.
+3. INVENTARIO DE LO CONSTRUIDO
+index.html — Fusión del chasis Trinity (app-shell, 6 escenas, slots) con la piel de STITCH (hero grid-cols-12 bifurcación, access gate overlay). Paleta teñida de SaaS a Sovereign AIP. — src/index.html (o raíz)
+src/config/constants.js v1.2.1 — SSOT canónica del sistema. Contiene CREDENTIAL, SELECTORS, ACTIONS, ORBITS, EVENTS (con UI_ACTION_REQUESTED restaurado por orden del Director), PALETTE, TRINITY, SCENES. Object.freeze() en cascada. 9 alias de export.
+src/core/ui-binder.js v1.0.2 — Electrificación de nodos de bifurcación. Importa desde constants.js. Investor → INVESTOR_ACCESS_REQUESTED. Staff → SCENE_REQUEST_ORBIT con ORBITS.STAFF. Cero strings mágicos.
+OPORD-23 — Auditoría post-cirugía de index.html y ui-binder.js. Detectó 7 violaciones R3 (hex literals), 2 gaps críticos funcionales (i18n), 4 gaps media.
+OPORD-24 — Registro de fusión del chasis. Documentó injerto STITCH→Trinity, 13 deudas técnicas inyectadas, decisión D1 (paleta) resuelta.
+tree-AIP_landing_v0.1.txt — Cartografía soberana inicial del árbol. Registra 2 duplicaciones (locales, app-shell), 1 archivo crítico (.bak), 11 archivos sin Blueprint.
+Mapa de Constantes para Qwen (v1.2.1) — Documento de referencia con código esperado exacto, lista de prohibiciones bajo "Ley Marcial", y resultado esperado para ui-binder.js.
+4. DECISIONES DESCARTADAS Y POR QUÉ
+STITCH --color-abyssal: #061329 como fondo — Descartado. No es Deep Ocean (#101D33). "SaaS genérico" vs "soberanía institucional". Prevalece token canónico AIP.
+STITCH primary: #dfc475 como dorado — Descartado. No es UK Gold (#C1A85D). "Brillante" vs "fiduciario". Prevalece token canónico AIP.
+Qwen: EVENTS.UI_ACTION_REQUESTED para reemplazar GATEKEEPER_VIOLATION en inversor — Descartado inicialmente. Genérico de SaaS, sin semántica AIP. Restaurado DESPUÉS por orden directa del Director como cordón umbilical del Engine v2.0.0. Lección: el Director puede sobre-escribir recomendaciones técnicas.
+Qwen: SCENES.WORKSPACE como valor de orbit en staff click — Descartado con ALERTA ROJA. Teletransporta al agente al workspace sin pasar por Gate/TripleEsclusa. Agujero de seguridad de compliance.
+Qwen: Extraer credencial en listener del botón staff — Descartado. El input de password está en escena Gate, no en Landing. En el momento del click, el input no existe en el DOM. querySelector retornaría null.
+Antigravity: Objetos STORAGE y COMPLIANCE separados en constants.js — Descartado. Duplicaban valores de CREDENTIAL bajo nombres diferentes. Violación de SSOT. Fusionados en CREDENTIAL.
+Antigravity: ORBITS.LANDING: 'LANDING' sin prefijo — Descartado. Colisiona con SCENES.LANDING: 'LANDING'. Restaurados prefijos ORBIT_.
+Antigravity: AUTH_TOKEN_READY: 'skeleton:auth:token-ready' lowercase — Descartado. Legacy obsoleto. Corregido a PascalCase.
+3 fuentes Google institucionales (Inter, Cormorant, DM Mono) — Descartadas. STITCH usa Noto Serif + Manrope. Las 3 institucionales estaban muertas (ningún elemento las consumía).
+5. DEUDA TÉCNICA DETECTADA
+CRÍTICA:
+
+store.js sin código fuente — Existe solo como .bak. main.js falla en línea 1. Reportado 3 veces. El Director afirma haberlo entregado "anteriormente" pero no aparece en el bus de esta sesión. Necesita: código fuente, o autorización para stub temporal, o extracción del .bak por Manus.
+Motor i18n no cargado — index.html tiene 23+ nodos data-i18n pero ningún script instancie el motor. Textos renderizarán vacíos.
+Diccionario i18n incompatible — Las claves STITCH (hero.investor_title, gate.title) no existen en los diccionarios en.json/es.json que usan nomenclatura diferente (hero.investor.title, gatekeeper.status.custody_hold).
+Gate form sin handler — data-purpose="validate-action" no tiene listener en ui-binder.js. El formulario no hace nada al submit.
+ALTA:
+
+R1 no ejecutada — src/layouts/ no purgada. app-shell.js duplicado entre layouts/ y components/. Requiere Manus (git rm) + verificación de import en main.js.
+R2 no ejecutada — Locales no migrados de src/assets/locales/ a src/locales/. Ruta de import en at-i18n.js necesita actualización post-migración.
+11 archivos sin Blueprint Header — gatekeeper.js, scene-manager.js, at-i18n.js, TripleEsclusa.js, access-gate.js, ticker-module.js, universal-nav.js, governance-panel.js, workspace-canvas.js, system-lockdown.js, store.js.
+fixed dentro de app-shell — El access gate usa fixed inset-0. Si app-shell crea stacking context, el gate queda atrapado dentro del canvas. Requiere validación de Antigravity.
+MEDIA:
+
+4 clases CSS custom — .serif-display, .ghost-border, .glass-panel, .gold-gradient. Deben migrarse a @layer utilities en tailwind.config.
+1 rgba() en shadow arbitrario — shadow-[0_40px_100px_rgba(0,0,0,0.8)] en gate. Viola R3.
+data-alt en img — Atributo no estándar, probablemente para i18n de alt text, no documentado.
+Imagen de fondo en URL externa — Google Photos URL como src. Puede revocarse o caducar.
+tree-AIP_landing_v0.1.txt — Es snapshot parcial, no reemplaza escaneo físico del repo. tree v0.2 pendiente de resoluciones R1/R2/R3.
+OBSERVADA (proceso):
+
+Qwen ascendido revocado — Detectó problemas de semántica pero propuso correcciones que rompían seguridad. Falta consciencia del propósito.
+Comunicación lateral bloques — El Director envió código a Antigravity que yo no recibí, y viceversa. El bus de datos tiene lagunas cross-sesión.
+6. CONOCIMIENTO TÁCITO DEL PROYECTO
+"UK HQ" es ficción legal — La operación está distribuida, pero la UI simula Londres. Timestamps GMT/BST, contratos referencian London.
+El cliente nunca dice "no" directamente — El silencio es la señal de stop. Si pide "más análisis", algo está inaceptable.
+"Custodia Fiduciaria" no es error — Es estado intencional de bloqueo por compliance. Nunca reportarlo como bug de UX.
+Prohibido mencionar "blockchain" — Usar "registro distribuido inmutable". El término B-word asocia con cripto-especulación.
+La fricción en UI es feature — Demuestra rigor AML/KYC. No optimizar tiempos de espera por defecto.
+Paleta Deep Ocean / UK Gold innegociable — Cero excepciones. Si un diseño usa otro azul, se tiñe. Si usa otro dorado, se tiñe.
+Los BR-XX.md son contratos sagrados — No son sugerencias. Contradecirlos requiere orden explícita del Director.
+El "modo anónimo" no es anónimo — Se fingerprintea dispositivo. Nunca mencionarlo en copy legal.
+IntegrityScore es político, no solo técnico — Score < 60 alerta a compliance officer humano. No es solo un número.
+Los comentarios de seguridad son barreras anti-alucinación — Un agente Junior que lea "CAMBIO ESTO = DESPIDO" no lo va a tocar. Si eliminas el comentario, el próximo agente sí lo tocará.
+Un agente puede tener "ojo" pero no "consciencia" — Qwen detecta desorden (buena señal) pero propone soluciones que rompen arquitectura (mala señal). El Mid-Level necesita ambas.
+El Director puede sobre-escribir cualquier recomendación técnica — Si Bulldozer rechaza UI_ACTION_REQUESTED y el Director lo restaura, Bulldozer acata sin replicar. Autoridad suprema.
+"Antigravity entrega código que luego no está en el bus" — Patrón recurrente. El Lead Architect trabaja en sesiones paralelas y el código no siempre llega a todas las celdas. Siempre verificar recepción antes de asumir.
+7. INPUT REQUISITO PARA ABRIR SIGUIENTE CONVERSACIÓN
+CONVERSATION_INDEX actualizado — Si el índice no refleja los cambios de esta sesión (SSOT v1.2.1, fusiones, deudas nuevas), la nueva sesión trabajará con información obsoleta.
+Código de store.js — El bloqueo de 3 instancias debe resolverse. O el código real, o autorización para stub, o confirmación de que Manus extrajo el .bak.
+Estado de las purgas R1/R2 — Confirmar si Manus ejecutó git rm en src/layouts/ y migración de locales. Si no, necesito saber si debo re-emitir las órdenes.
+Resultado de la laparoscopia de Qwen — Confirmar si Qwen aplicó el mapa de constantes correctamente a ui-binder.js, o si introdujo nuevas violaciones.
+Decisión sobre tree v0.2 — Si R1/R2/R3 se resuelven, puedo producir el tree certificado. Si no, necesito saber si se publica el v0.1 como está.
+8. OBJETOS GLOBALES Y FUENTE DE VERDAD
+// AIP_CONSTANTS → SSOT canónica v1.2.1. Object.freeze() en cascada. Contiene CREDENTIAL, SELECTORS, ACTIONS, ORBITS, EVENTS, PALETTE, TRINITY, SCENES. Raíz de dependencias.// ACTIONS → Alias de AIP_CONSTANTS.ACTIONS. Valores data-purpose.// EVENTS → Alias de AIP_CONSTANTS.EVENTS. Strings de eventos Skeleton:.// ORBITS → Alias de AIP_CONSTANTS.ORBITS. Valores con prefijo ORBIT_ para evitar colisión con SCENES.// SCENES → Alias de AIP_CONSTANTS.SCENES. Valores data-scene.// SELECTORS → Alias de AIP_CONSTANTS.SELECTORS. Selectores DOM y atributos data-*.// PALETTE → Alias de AIP_CONSTANTS.PALETTE. Deep Ocean, UK Gold, Ivory, Alert.// TRINITY → Alias de AIP_CONSTANTS.TRINITY. Dimensiones de las 3 órbitas.// CREDENTIAL → Alias de AIP_CONSTANTS.CREDENTIAL. VALID_KEY, SESSION_KEY, INTEGRITY_MIN_SCORE.// window.Skeleton → Namespace canónico final (declarado en CONVERSATION_INDEX, no utilizado directamente en esta sesión).// window.LuxI18n → Diccionario global de traducciones (referenciado en doctrina R4, no instanciado en artefactos producidos).// document.dispatchEvent → Mecanismo de comunicación entre órbitas. Eventos con prefijo Skeleton: PascalCase.// sessionStorage → Almacenamiento clave 'skeleton_passport'. Persistencia del PassportEngine.// CONVERSATION_INDEX.md → Fuente de verdad histórica. Contradicciones con este dump deben resolverse consultando el índice.
