@@ -32,13 +32,13 @@ export const GoldenGate = Object.freeze({
 
     init: function () {
         try {
-            if (typeof global.firebase === 'undefined' || !global.firebase.auth) {
+            if (typeof window.firebase === 'undefined' || !window.firebase.auth) {
                 console.error('[GoldenGate] ❌ Firebase no disponible');
                 this._dispatchEvent('Skeleton:Gate:Error', { error: 'FIREBASE_MISSING' });
                 return;
             }
 
-            _PRIVATE_SCOPE.auth = global.firebase.auth();
+            _PRIVATE_SCOPE.auth = window.firebase.auth();
             this._discoverElements();
             this._activateControls();
             this._setupOAuthListeners();
@@ -147,15 +147,15 @@ export const GoldenGate = Object.freeze({
             let provider;
             switch (providerId) {
                 case 'google.com':
-                    provider = new global.firebase.auth.GoogleAuthProvider();
+                    provider = new window.firebase.auth.GoogleAuthProvider();
                     provider.addScope('profile');
                     provider.addScope('email');
                     break;
                 case 'apple.com':
-                    provider = new global.firebase.auth.OAuthProvider('apple.com');
+                    provider = new window.firebase.auth.OAuthProvider('apple.com');
                     break;
                 case 'microsoft.com':
-                    provider = new global.firebase.auth.OAuthProvider('microsoft.com');
+                    provider = new window.firebase.auth.OAuthProvider('microsoft.com');
                     break;
                 default:
                     throw new Error(`PROVIDER_NOT_SUPPORTED: ${providerId}`);
@@ -167,8 +167,8 @@ export const GoldenGate = Object.freeze({
 
             const session = this._buildSession(result.user, providerName);
 
-            if (!global.Skeleton) global.Skeleton = {};
-            global.Skeleton.session = session;
+            if (!window.Skeleton) window.Skeleton = {};
+            window.Skeleton.session = session;
 
             try {
                 sessionStorage.setItem(`${_PRIVATE_SCOPE.APP_PREFIX}PASSPORT`, JSON.stringify(session));
@@ -187,7 +187,7 @@ export const GoldenGate = Object.freeze({
 
             setTimeout(() => {
                 const redirectUrl = _PRIVATE_SCOPE.elements.root?.dataset?.redirect || '/index.html';
-                global.location.href = redirectUrl;
+                window.location.href = redirectUrl;
             }, 1200);
 
         } catch (error) {
@@ -205,14 +205,14 @@ export const GoldenGate = Object.freeze({
         this._setState('loading');
         try {
             const actionCodeSettings = {
-                url: global.location.href,
+                url: window.location.href,
                 handleCodeInApp: true
             };
 
             await _PRIVATE_SCOPE.auth.sendSignInLinkToEmail(email, actionCodeSettings);
 
-            if (global.localStorage) {
-                global.localStorage.setItem(`${_PRIVATE_SCOPE.APP_PREFIX}EMAIL_SIGNIN`, email);
+            if (window.localStorage) {
+                window.localStorage.setItem(`${_PRIVATE_SCOPE.APP_PREFIX}EMAIL_SIGNIN`, email);
             }
 
             if (_PRIVATE_SCOPE.elements.manualConfirm) {
