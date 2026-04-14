@@ -14,6 +14,7 @@
 
 import { Store } from './store.js';
 import { AIP_CONSTANTS } from '../config/constants.js';
+import { saveLead } from './firebase-connector.js';
 
 /* [SEC-01] CONSTANTES INTERNAS (Suturadas a CREDENTIAL) */
 const _PASSPORT_KEY = AIP_CONSTANTS.CREDENTIAL.SESSION_KEY;
@@ -128,6 +129,33 @@ export const PassportEngine = {
                     'gatekeeper.violation.invalid_credential'
                 );
             }
+        }
+
+        // ACCIÓN: Captura de Lead (Frente C — FASE 2)
+        if (action === AIP_CONSTANTS.ACTIONS.LEAD_SUBMIT) {
+            Store.setState({ ui: { submissionStatus: 'loading' } });
+
+            saveLead(credential)
+                .then((res) => {
+                    // Limpieza reactiva del input
+                    const input = document.getElementById('investor-email-input');
+                    if (input) input.value = '';
+
+                    Store.setState({ ui: { submissionStatus: 'success' } });
+                    
+                    document.dispatchEvent(new CustomEvent(AIP_CONSTANTS.EVENTS.LEAD_SUBMISSION_RESULT, {
+                        bubbles: true,
+                        detail: { success: true, id: res.id }
+                    }));
+                })
+                .catch(err => {
+                    Store.setState({ ui: { submissionStatus: 'error' } });
+                    document.dispatchEvent(new CustomEvent(AIP_CONSTANTS.EVENTS.LEAD_SUBMISSION_RESULT, {
+                        bubbles: true,
+                        detail: { success: false, error: err.message }
+                    }));
+                    console.error('[PASSPORT-ENGINE] Error crítico en captura de lead:', err);
+                });
         }
     },
 

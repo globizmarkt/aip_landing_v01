@@ -11,6 +11,8 @@
  * ═══════════════════════════════════════════════════════════════════
  */
 
+ export const APP_PREFIX = 'AIP_LANDING_V0_';
+
 export const Store = {
 
     _state: {
@@ -33,7 +35,8 @@ export const Store = {
         },
         ui: {
             theme: 'dark',
-            gateVisible: true
+            gateVisible: true,
+            submissionStatus: 'idle'
         }
     },
 

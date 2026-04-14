@@ -66,7 +66,8 @@ export const AIP_CONSTANTS = Object.freeze({
         INVESTOR_CTA: 'investor-cta',
         AGENT_SELECT: 'agent-select',
         AGENT_LOGIN: 'agent-login',
-        VALIDATE_GATE: 'validate-action'
+        VALIDATE_GATE: 'validate-action',
+        LEAD_SUBMIT: 'lead-submit'
     }),
 
     // ─── ÓRBITAS DE NAVEGACIÓN ────────────────────────────────
@@ -95,7 +96,8 @@ export const AIP_CONSTANTS = Object.freeze({
         PASSPORT_CLEARED: 'Skeleton:Passport:Cleared',
         AUTH_TOKEN_READY: 'Skeleton:Auth:TokenReady',
         COMPLIANCE_STATUS: 'Skeleton:Compliance:Status',
-        UI_ACTION_REQUESTED: 'Skeleton:UI:ActionRequested'
+        UI_ACTION_REQUESTED: 'Skeleton:UI:ActionRequested',
+        LEAD_SUBMISSION_RESULT: 'Skeleton:Lead:SubmissionResult'
     }),
 
     // ─── PALETA SOBERANA ──────────────────────────────────────

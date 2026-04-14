@@ -26,6 +26,7 @@ export const UIBinder = {
         // Escuchadores de resolución para liberar el bloqueo táctil
         document.addEventListener(AIP_CONSTANTS.EVENTS.PASSPORT_UPDATED, () => this._resetState());
         document.addEventListener(AIP_CONSTANTS.EVENTS.GATEKEEPER_VIOLATION, () => this._resetState());
+        document.addEventListener(AIP_CONSTANTS.EVENTS.LEAD_SUBMISSION_RESULT, () => this._resetState());
 
         console.log('[UI-BINDER] ✅ Sinapsis activa. Inhibición de doble disparo habilitada.');
     },
@@ -54,7 +55,13 @@ export const UIBinder = {
             credential = input?.value || null;
         }
 
-        // Despacho unificado (El Engine v2.0.0 escucha esto)
+        // VECTOR 3: Captura de Lead (Email)
+        if (action === AIP_CONSTANTS.ACTIONS.LEAD_SUBMIT) {
+            const input = document.getElementById('investor-email-input');
+            credential = input?.value || null;
+        }
+
+        // Despacho unificado (El Engine v2.1.1 escucha esto)
         document.dispatchEvent(new CustomEvent(AIP_CONSTANTS.EVENTS.UI_ACTION_REQUESTED, {
             bubbles: true,
             detail: { action, credential, timestamp: Date.now() }

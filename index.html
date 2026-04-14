@@ -230,17 +230,16 @@
                                 data-i18n="hero.investor_title"></h1>
                             <p class="text-on-surface-variant font-light text-lg mb-12 max-w-md leading-relaxed"
                                 data-i18n="hero.investor_desc"></p>
-                            <button class="group/btn relative px-10 py-5 overflow-hidden rounded-md"
-                                data-purpose="investor-cta">
-                                <div
-                                    class="absolute inset-0 gold-gradient transition-transform duration-300 group-hover/btn:scale-105">
-                                </div>
-                                <span
-                                    class="relative z-10 flex items-center gap-3 text-on-primary font-extrabold tracking-widest uppercase text-xs">
-                                    <span data-i18n="hero.investor_button"></span>
-                                    <span class="material-symbols-outlined text-sm">arrow_forward_ios</span>
-                                </span>
-                            </button>
+                            <div class="mt-8 flex flex-col gap-4 max-w-sm">
+                                <input type="email" id="investor-email-input" class="w-full bg-surface-container-highest/50 border-outline-variant/40 border p-4 text-on-surface focus:border-primary focus:ring-0 transition-all font-mono text-xs tracking-widest placeholder:text-on-surface-variant/50" data-i18n-placeholder="hero.investor_input_placeholder" placeholder="INSTITUTIONAL EMAIL" />
+                                <button class="group/btn relative px-10 py-5 overflow-hidden rounded-md w-full" data-purpose="lead-submit">
+                                    <div class="absolute inset-0 gold-gradient transition-transform duration-300 group-hover/btn:scale-105"></div>
+                                    <span class="relative z-10 flex items-center justify-center gap-3 text-on-primary font-extrabold tracking-widest uppercase text-xs">
+                                        <span data-i18n="hero.investor_button">Access Fiduciary Suite</span>
+                                        <span class="material-symbols-outlined text-sm">arrow_forward_ios</span>
+                                    </span>
+                                </button>
+                            </div>
                         </div>
                     </div>
 
