@@ -189,24 +189,17 @@
         Geometría Trinity: orbit-1 (Nav) | orbit-2 (Canvas) | orbit-3 (Inspector)
         Paleta: Deep Ocean #101D33 + UK Gold #C1A85D — Soberanía AIP
     -->
-    <app-shell theme="dark" orbit-1-visible="false" orbit-3-visible="false" locale="es" id="sk-root">
+    <app-shell theme="dark" locale="es" id="sk-root" class="trinity-workspace">
 
-        <!-- ÓRBITA 1: NAV — oculta en landing, visible en workspace -->
-        <nav slot="orbit-1" id="sk-nav">
-            <!-- Hidratado por universal_nav.js tras login -->
-        </nav>
+        <nav slot="orbit-1" id="sk-nav" style="display: none;"></nav>
 
-        <!-- ÓRBITA 2: CANVAS -->
-        <div slot="orbit-2" id="sk-canvas">
+        <div slot="orbit-2" id="sk-canvas" class="orbit2-canvas">
 
-            <!-- ESCENA: LANDING -->
             <section id="scene-landing" data-scene="LANDING" class="sk-scene sk-scene--active">
                 <ticker-commodities></ticker-commodities>
 
-                <!-- Hero Bifurcation Grid — Paleta Sovereign -->
                 <section class="flex-grow grid grid-cols-1 lg:grid-cols-12 min-h-[870px]">
 
-                    <!-- Left: Investor Access — col-span-7 -->
                     <div class="lg:col-span-7 flex flex-col justify-center px-8 lg:px-24 py-20 relative overflow-hidden group"
                         data-purpose="investor-select">
                         <div
@@ -243,7 +236,6 @@
                         </div>
                     </div>
 
-                    <!-- Right: Staff/Agent Access — col-span-5 -->
                     <div class="lg:col-span-5 flex flex-col justify-center px-8 lg:px-16 py-20 bg-surface-container-low border-l border-outline-variant/10 relative"
                         data-purpose="agent-select">
                         <div class="relative z-10">
@@ -285,66 +277,60 @@
                 </section>
             </section>
 
-            <!-- Escena: Jurisdiction Router -->
             <section id="scene-jurisdiction" data-scene="JURISDICTION" class="sk-scene"></section>
 
-            <!-- Escena: Pre-KYC / Fiduciary Dialogue -->
             <section id="scene-pre-kyc" data-scene="PRE_KYC" class="sk-scene"></section>
 
-            <!-- ESCENA: GATE (MOVED TO BODY ROOT PER D9) -->
             <section id="scene-gate" data-scene="GATE" class="sk-scene"></section>
 
-            <!-- Escena: Custodia Fiduciaria -->
             <section id="scene-custody" data-scene="CUSTODY" class="sk-scene"></section>
 
-            <!-- Escena: Workspace (post-login) -->
             <section id="scene-workspace" data-scene="WORKSPACE" class="sk-scene"></section>
 
         </div>
 
-        <!-- ÓRBITA 3: INSPECTOR -->
-        <aside slot="orbit-3" id="sk-inspector"></aside>
+        <aside slot="orbit-3" id="sk-inspector" class="orbit3-access-panel">
+            <div id="access-gate-container" class="w-full h-full flex flex-col justify-center hidden">
+                <div
+                    class="max-w-md w-full glass-panel p-10 lg:p-16 border border-primary/20 shadow-[0_40px_100px_rgba(0,0,0,0.8)] relative overflow-hidden">
+                    <div class="absolute -top-24 -left-24 w-48 h-48 bg-primary/10 blur-[80px]"></div>
+                    <div class="absolute -bottom-24 -right-24 w-48 h-48 bg-primary/10 blur-[80px]"></div>
+                    <div class="relative z-10 text-center">
+                        <div
+                            class="mb-10 inline-flex items-center justify-center w-20 h-20 rounded-full border border-primary/40 bg-surface-container-highest">
+                            <span class="material-symbols-outlined text-3xl text-primary"
+                                style="font-variation-settings: 'wght' 200;">shield_person"></span>
+                        </div>
+                        <h3 class="serif-display text-3xl mb-4 text-on-surface" data-i18n="gate.title"></h3>
+                        <p class="text-on-surface-variant text-xs tracking-widest uppercase mb-12" data-i18n="gate.subtitle">
+                        </p>
+                        <form class="space-y-8">
+                            <div class="relative group">
+                                <label
+                                    class="absolute -top-2.5 left-4 px-2 bg-surface-container-high text-[10px] font-bold tracking-widest text-primary uppercase z-20"
+                                    data-i18n="gate.input_label"></label>
+                                <input
+                                    class="w-full bg-transparent border-outline-variant/40 border p-5 text-on-surface focus:border-primary focus:ring-0 transition-all rounded-none font-mono text-center tracking-[0.5em]"
+                                    data-i18n-placeholder="gate.placeholder" type="password" />
+                                <div
+                                    class="absolute inset-0 border-primary/0 border pointer-events-none group-focus-within:border-primary/40 blur-[2px] transition-all">
+                                </div>
+                            </div>
+                            <button
+                                class="w-full py-5 gold-gradient text-on-primary font-extrabold tracking-[0.3em] uppercase text-xs shadow-lg shadow-primary/10 hover:shadow-primary/20 transition-all"
+                                data-purpose="validate-action" type="submit">
+                                <span data-i18n="gate.cta"></span>
+                            </button>
+                        </form>
+                        <p class="mt-10 text-[10px] text-outline leading-loose" data-i18n="gate.disclaimer"></p>
+                    </div>
+                </div>
+            </div>
+        </aside>
 
     </app-shell>
 
-    <!-- ESCENA: GATE (D9 ROOT BLINDAGE) -->
-    <div class="fixed inset-0 z-[200] flex items-center justify-center p-6 bg-surface/80 backdrop-blur-xl hidden"
-        id="access-gate-container">
-        <div
-            class="max-w-md w-full glass-panel p-10 lg:p-16 border border-primary/20 shadow-[0_40px_100px_rgba(0,0,0,0.8)] relative overflow-hidden">
-            <div class="absolute -top-24 -left-24 w-48 h-48 bg-primary/10 blur-[80px]"></div>
-            <div class="absolute -bottom-24 -right-24 w-48 h-48 bg-primary/10 blur-[80px]"></div>
-            <div class="relative z-10 text-center">
-                <div
-                    class="mb-10 inline-flex items-center justify-center w-20 h-20 rounded-full border border-primary/40 bg-surface-container-highest">
-                    <span class="material-symbols-outlined text-3xl text-primary"
-                        style="font-variation-settings: 'wght' 200;">shield_person"></span>
-                </div>
-                <h3 class="serif-display text-3xl mb-4 text-on-surface" data-i18n="gate.title"></h3>
-                <p class="text-on-surface-variant text-xs tracking-widest uppercase mb-12" data-i18n="gate.subtitle">
-                </p>
-                <form class="space-y-8">
-                    <div class="relative group">
-                        <label
-                            class="absolute -top-2.5 left-4 px-2 bg-surface-container-high text-[10px] font-bold tracking-widest text-primary uppercase z-20"
-                            data-i18n="gate.input_label"></label>
-                        <input
-                            class="w-full bg-transparent border-outline-variant/40 border p-5 text-on-surface focus:border-primary focus:ring-0 transition-all rounded-none font-mono text-center tracking-[0.5em]"
-                            data-i18n-placeholder="gate.placeholder" type="password" />
-                        <div
-                            class="absolute inset-0 border-primary/0 border pointer-events-none group-focus-within:border-primary/40 blur-[2px] transition-all">
-                        </div>
-                    </div>
-                    <button
-                        class="w-full py-5 gold-gradient text-on-primary font-extrabold tracking-[0.3em] uppercase text-xs shadow-lg shadow-primary/10 hover:shadow-primary/20 transition-all"
-                        data-purpose="validate-action" type="submit">
-                        <span data-i18n="gate.cta"></span>
-                    </button>
-                </form>
-                <p class="mt-10 text-[10px] text-outline leading-loose" data-i18n="gate.disclaimer"></p>
-            </div>
-        </div>
-    </div>
+
 
     <!-- Punto de ignición -->
     <script type="module" src="src/main.js"></script>
