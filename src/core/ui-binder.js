@@ -89,3 +89,18 @@ if (document.readyState === 'loading') {
 } else {
     UIBinder.init();
 }
+
+// Protocolo de Activación Segura (Sentinel Approved)
+document.addEventListener('Skeleton:System:BridgeReady', (e) => {
+    if (e.isTrusted === false) return; // R0: Bloqueo de ataques de consola
+
+    const gateContainer = document.querySelector('.skeleton-blur');
+    const submitBtn = document.getElementById('gate-submit');
+
+    if (gateContainer && submitBtn) {
+        gateContainer.classList.remove('skeleton-blur');
+        submitBtn.removeAttribute('disabled');
+        submitBtn.classList.add('shadow-[0_0_20px_rgba(255,255,255,0.1)]');
+        console.log('🛡️ [Gate] Cuarentena levantada. Sistema listo para autenticación.');
+    }
+});

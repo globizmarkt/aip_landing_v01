@@ -290,40 +290,24 @@
         </div>
 
         <aside slot="orbit-3" id="sk-inspector" class="orbit3-access-panel">
-            <div id="access-gate-container" class="w-full h-full flex flex-col justify-center hidden">
-                <div
-                    class="max-w-md w-full glass-panel p-10 lg:p-16 border border-primary/20 shadow-[0_40px_100px_rgba(0,0,0,0.8)] relative overflow-hidden">
-                    <div class="absolute -top-24 -left-24 w-48 h-48 bg-primary/10 blur-[80px]"></div>
-                    <div class="absolute -bottom-24 -right-24 w-48 h-48 bg-primary/10 blur-[80px]"></div>
-                    <div class="relative z-10 text-center">
-                        <div
-                            class="mb-10 inline-flex items-center justify-center w-20 h-20 rounded-full border border-primary/40 bg-surface-container-highest">
-                            <span class="material-symbols-outlined text-3xl text-primary"
-                                style="font-variation-settings: 'wght' 200;">shield_person"></span>
-                        </div>
-                        <h3 class="serif-display text-3xl mb-4 text-on-surface" data-i18n="gate.title"></h3>
-                        <p class="text-on-surface-variant text-xs tracking-widest uppercase mb-12" data-i18n="gate.subtitle">
-                        </p>
-                        <form class="space-y-8">
-                            <div class="relative group">
-                                <label
-                                    class="absolute -top-2.5 left-4 px-2 bg-surface-container-high text-[10px] font-bold tracking-widest text-primary uppercase z-20"
-                                    data-i18n="gate.input_label"></label>
-                                <input
-                                    class="w-full bg-transparent border-outline-variant/40 border p-5 text-on-surface focus:border-primary focus:ring-0 transition-all rounded-none font-mono text-center tracking-[0.5em]"
-                                    data-i18n-placeholder="gate.placeholder" type="password" />
-                                <div
-                                    class="absolute inset-0 border-primary/0 border pointer-events-none group-focus-within:border-primary/40 blur-[2px] transition-all">
-                                </div>
-                            </div>
-                            <button
-                                class="w-full py-5 gold-gradient text-on-primary font-extrabold tracking-[0.3em] uppercase text-xs shadow-lg shadow-primary/10 hover:shadow-primary/20 transition-all"
-                                data-purpose="validate-action" type="submit">
-                                <span data-i18n="gate.cta"></span>
-                            </button>
-                        </form>
-                        <p class="mt-10 text-[10px] text-outline leading-loose" data-i18n="gate.disclaimer"></p>
+            <div class="skeleton-blur w-full max-w-sm mx-auto p-6 rounded-xl backdrop-blur-xl bg-white/5 border border-white/20 shadow-2xl">
+                <div class="mb-6">
+                    <h2 data-i18n="gate.title" class="text-xl font-bold tracking-wide text-white/90 mb-2"></h2>
+                    <p data-i18n="gate.description" class="text-xs text-white/50 font-mono"></p>
+                </div>
+                <form id="gate-access-form" class="space-y-4" onsubmit="return false;">
+                    <div class="group">
+                        <label for="gate-access-key" data-i18n="gate.label" class="block text-[10px] uppercase tracking-[0.2em] text-white/40 mb-2 font-mono"></label>
+                        <input id="gate-access-key" type="password" data-i18n-placeholder="gate.placeholder" autocomplete="off"
+                            class="w-full px-4 py-3 bg-black/40 border border-white/10 rounded-lg text-white/90 font-mono text-sm placeholder-white/30 focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/10 transition-all duration-300" />
                     </div>
+                    <button id="gate-submit" type="button" data-purpose="validate-action" disabled
+                        class="relative w-full py-3 mt-2 bg-white/5 border border-white/20 rounded-lg text-white/60 font-mono text-xs uppercase tracking-[0.15em] hover:bg-white/10 hover:text-white/80 transition-all duration-300"
+                        data-i18n="gate.submit">
+                    </button>
+                </form>
+                <div class="mt-6 pt-4 border-t border-white/5">
+                    <p data-i18n="gate.disclaimer" class="text-[10px] text-white/30 font-mono text-center leading-relaxed"></p>
                 </div>
             </div>
         </aside>
